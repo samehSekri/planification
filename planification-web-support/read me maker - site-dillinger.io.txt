@@ -1,0 +1,61 @@
+# Introdution
+
+Cette application web permet la gestion des quais, la visualisation du traffic sur les quais (Visualisation des différents flux d'expédition et de réception) ainsi que la gestion des alertes et notifications.
+L'application comporte :
+  - Interface de tableau de bord : qui constitut l'écran de pilotage CEL.
+  - Interface d'administration : accessible aux utilisateurs de profil "Administrateur" et qui permet la : 
+  -- gestion des entrepôts, 
+  -- gestion des donneurs d'ordre, 
+  -- gestion des quis
+  -- gestion des utilisateurs.
+  - Interface de visualisation quais : accessible aux utilisateurs de profils quai
+  - Interface de gestion des préférences utilisateur : qui offre à l'utilisateur la possiblité de gérer l'affichage des bâtiments et des heures de nuit au niveau de l'écran Tableau de bord.
+  - Interface de gestion de son profil : qui permet à l'utilisateur connecté de gérer ses informations de son compte (Nom, prénom, adresse email, mot de passe).
+
+# Guide d'installation
+
+  - Il faut tout d'abord commencer par télécharger et installaer PostgresSQL
+  -- https://www.postgresql.org/download/
+  - Choisir la version adéquate à installer compatible avec son type OS.
+    #### OS windows :
+  - Lancer l'installation de Postgres  
+  - Suivre les différentes instructions
+  - Définir un mot de passe d'accès à postgres
+- Cliquer sur suivant jusqu'à ce que l'installation soit terminée.
+- Chercher et ouvrir pgAdmin (démarrer -> rechercher : pgAdmin)
+- Cliquer 2 fois sur le serveur PostgreSQL
+- Entrer le mot de passe d'accès postgres.
+- Cliquer avec le bouton droit sur Base de données et choisir ajouter une base de données
+- Entrer dans le nom de la base le nom suivant : fmLogisticV1.0.0
+- Retourner vers l'archive de l'application, dézipper le dans un dossier (dossier de déploiement).
+- A partir de ce dossier, ouvrir le fichier application.properties qui existe sous le dossier config/application.properties à l'aide d'un éditeur de texte (notepad++ par exemple).
+- Chercher fmLogistic.database.password = et mettre le mot de passe chosit précédemment lors de l'installation de postgres. 
+- Chercher le bloc de configuration du compte SMTP pour l'envoi des emails (SMTP Account Configuration) et mettre les bonnes valeurs pour :
+    - fmlogistic.mail.host
+    - fmlogistic.mail.port
+    - fmlogistic.mail.username
+    - fmlogistic.mail.password
+- Ouvrir l'invite de commande et se positionner sur le dossier d'installation et exécuter cette commande :
+```sh
+    java -Dspring.config.location=config/application.properties -jar ./quay-visualization-v1.0.0.jar
+```
+-  L'application sera donc lancée et les différentes tables seront donc créees.
+-  Une fois terminé, retourner vers pgadmin et placez-vous sur la base de données fmLogisticV1.0.0 puis cliquer sur le bouton SQL pour ouvrir l'éditeur SQL.
+-  lancer le script suivant :
+```sh
+DELETE FROM USERS;
+DELETE FROM ROLES;
+INSERT INTO ROLES (id, name) VALUES (1, 'ROLE_ADMIN');
+INSERT INTO ROLES (id, name) VALUES (2, 'ROLE_USER');
+INSERT INTO ROLES (id, name) VALUES (3, 'ROLE_DOCK');
+INSERT INTO USERS (id, email, enabled, firstname, last_password_reset_date, lastname, password, username, role_id) 
+VALUES (nextval('users_id_seq'), 'wael.trabelsi@wevioo.com', TRUE, 'admin', now(), 'admin', '$2a$04$NV2YrsczQaXUpgmBWTmlVeSHE8I.S6vCPyIMrkws3cWCnK5W8/CYW', 'admin', 1);
+```
+# C'est fini, Lancement de l'application
+- L'application est désormais accessible sur l'adresse http://127.0.0.1/8085
+- Ouvrir le browser et accèder à l'adresse http://127.0.0.1:8085
+- Vous pouvez accéder via le compte suiviant 
+```sh
+Login : admin
+Mot de passe : admin
+```

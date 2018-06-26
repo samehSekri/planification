@@ -1,0 +1,283 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.wevioo</groupId>
+	<artifactId>planification</artifactId>
+	<version>1.0.0</version>
+	<packaging>pom</packaging>
+
+
+	<!-- ================================================================================ -->
+	<!-- Project Description ============================================================ -->
+	<!-- ================================================================================ -->
+	<name>planification</name>
+	<description>Planification de la production</description>
+	<inceptionYear>2017</inceptionYear>
+	<url><!-- TODO --></url>
+	<mailingLists>
+		<mailingList>
+			<name></name>
+			<post></post>
+		</mailingList>
+	</mailingLists>
+
+	<!-- ================================================================================ -->
+	<organization>
+		<name>Wevioo</name>
+		<url>http://www.wevioo.com</url>
+	</organization>
+
+
+	<!-- ================================================================================ -->
+	<!-- Project Developers ============================================================= -->
+	<!-- ================================================================================ -->
+	<developers>
+		<developer>
+			<id>wat</id>
+			<name>Wael TRABELSI</name>
+			<email>Wael.Trabelsi@wevioo.com</email>
+			<roles>
+				<role>Software Engineer</role>
+			</roles>
+		</developer>
+		<developer>
+			<id>jik</id>
+			<name>Jihed KAOUECH</name>
+			<email>Jihed.Kaouech@wevioo.com</email>
+			<roles>
+				<role>Architect</role>
+				<role>Software Engineer</role>
+			</roles>
+		</developer>
+	</developers>
+
+	<!-- ================================================================================ -->
+	<!-- Properties : Managing version numbers ========================================== -->
+	<!-- ================================================================================ -->
+	<properties>
+
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+		<!-- Generic properties -->
+		<java.version>1.8</java.version>
+		<project.global.version>1.0.0</project.global.version>
+
+		<!-- Spring properties -->
+		<org.springframework.version>4.3.8.RELEASE</org.springframework.version>
+		<org.springframework.security.version>4.2.2.RELEASE</org.springframework.security.version>
+		<org.springframework.boot.version>1.5.2.RELEASE</org.springframework.boot.version>
+
+		<!-- Hibernate -->
+		<org.hibernate.version>5.2.10.Final</org.hibernate.version>
+
+		<!-- Aspectj -->
+		<org.aspectj.version>1.8.10</org.aspectj.version>
+
+		<!-- Logging -->
+		<org.apache.logging.log4j.version>2.8.2</org.apache.logging.log4j.version>
+		<org.slf4j-version>1.7.25</org.slf4j-version>
+
+		<!-- Test -->
+		<junit.version>4.12</junit.version>
+
+		<!-- javax-api -->
+		<javax.validation.version>1.1.0.Final</javax.validation.version>
+		<javax.annotation.version>1.3</javax.annotation.version>
+
+		<com.fasterxml.jackson.version>2.8.8</com.fasterxml.jackson.version>
+
+	</properties>
+
+	<!-- ================================================================================ -->
+	<!-- Plugin management ============================================================== -->
+	<!-- ================================================================================ -->
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<!-- ================================================================================ -->
+	<!-- Profile management ============================================================= -->
+	<!-- ================================================================================ -->
+	<profiles>
+		<!-- TODO -->
+	</profiles>
+
+	<!-- ================================================================================ -->
+	<!-- Dependencies Manager =========================================================== -->
+	<!-- ================================================================================ -->
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.wevioo</groupId>
+				<artifactId>planification-core</artifactId>
+				<version>${project.global.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.slf4j</groupId>
+						<artifactId>slf4j-api</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>com.wevioo</groupId>
+				<artifactId>planification-jdbc</artifactId>
+				<version>${project.global.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.slf4j</groupId>
+						<artifactId>slf4j-api</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>com.wevioo</groupId>
+				<artifactId>planification-business</artifactId>
+				<version>${project.global.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.slf4j</groupId>
+						<artifactId>slf4j-api</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>com.wevioo</groupId>
+				<artifactId>planification-security-support</artifactId>
+				<version>${project.global.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.slf4j</groupId>
+						<artifactId>slf4j-api</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>com.wevioo</groupId>
+				<artifactId>planification-web-support</artifactId>
+				<version>${project.global.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.slf4j</groupId>
+						<artifactId>slf4j-api</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>com.wevioo</groupId>
+				<artifactId>planification-integration</artifactId>
+				<version>${project.global.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.slf4j</groupId>
+						<artifactId>slf4j-api</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<!-- ================================================================================ -->
+	<!-- Common dependencies for all modules ============================================ -->
+	<!-- ================================================================================ -->
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>${org.apache.logging.log4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-1.2-api</artifactId>
+			<version>${org.apache.logging.log4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>${org.slf4j-version}</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>com.lmax</groupId>
+			<artifactId>disruptor</artifactId>
+			<version>3.3.2</version>
+		</dependency>
+
+		<!-- TESTS -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${org.springframework.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.16.18</version>
+		</dependency>
+	</dependencies>
+
+	<!-- ================================================================================ -->
+	<!-- Nexus repository management ==================================================== -->
+	<!-- ================================================================================ -->
+	<distributionManagement>
+		<!-- TODO -->
+	</distributionManagement>
+
+	<!-- ================================================================================ -->
+	<!-- Source Code Manager ============================================================ -->
+	<!-- ================================================================================ -->
+	<scm>
+		<connection></connection>
+		<developerConnection></developerConnection>
+		<url></url>
+	</scm>
+
+	<!-- ================================================================================ -->
+	<!-- Continuous integration ========================================================= -->
+	<!-- ================================================================================ -->
+	<ciManagement>
+		<!-- TODO -->
+	</ciManagement>
+
+	<!-- ================================================================================ -->
+	<!-- Modules ======================================================================== -->
+	<!-- ================================================================================ -->
+	<modules>
+		<module>planification-core</module>
+		<module>planification-jdbc</module>
+		<module>planification-business</module>
+		<module>planification-integration</module>
+		<module>planification-security-support</module>
+		<module>planification-web-support</module>
+	</modules>
+</project>

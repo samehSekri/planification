@@ -1,0 +1,62 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.wevioo</groupId>
+		<artifactId>planification</artifactId>
+		<version>1.0.0</version>
+	</parent>
+	<artifactId>planification-security-support</artifactId>
+	<version>${project.global.version}</version>
+
+	<!-- ================================================================================ -->
+	<properties>
+		<io.jsonwebtoken.version>0.7.0</io.jsonwebtoken.version>
+		<org.springframework.mobile.version>1.1.5.RELEASE</org.springframework.mobile.version>
+		<org.apache.tomcat.embed>8.5.14</org.apache.tomcat.embed>
+	</properties>
+
+	<!-- ================================================================================ -->
+	<dependencies>
+		<dependency>
+			<groupId>com.wevioo</groupId>
+			<artifactId>planification-jdbc</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>${org.springframework.security.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${org.springframework.security.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.integration</groupId>
+			<artifactId>spring-integration-core</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.mobile</groupId>
+			<artifactId>spring-mobile-device</artifactId>
+			<version>${org.springframework.mobile.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-core</artifactId>
+			<version>${org.apache.tomcat.embed}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+			<version>${io.jsonwebtoken.version}</version>
+		</dependency>
+
+	</dependencies>
+</project>

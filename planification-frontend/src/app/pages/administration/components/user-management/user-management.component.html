@@ -1,0 +1,56 @@
+<p-confirmDialog [message]="'message.confirmDeleteAction' | translate" header="Confirmation" icon="fa fa-trash" width="425"></p-confirmDialog>
+<div class="widgets">
+  <div class="row">
+    <div class="col-lg-12 col-md-12">
+      <ba-card [title]="'general.userManagement.usersList' | translate" baCardClass="with-scroll table-panel">
+
+        <p-dataTable [value]="users" [rows]="10" [paginator]="true" [responsive]="true" [emptyMessage]="'message.emptyList' | translate"
+          #dt>
+          <p-header>
+            <div class="ui-helper-clearfix">
+              <button type="button" class="btn btn-success btn-with-icon" style="float:left" data-toggle="tooltip" title="{{'action.new' | translate}}"
+                [routerLink]="['../user-management/', 'new']">
+              <i class="ion-person-add"></i>{{'action.new' | translate}}
+            </button>
+            </div>
+          </p-header>
+
+          <p-column field="username" [header]="'general.userManagement.username' | translate" [filter]="true" filterPlaceholder="{{'action.search' | translate}}"
+            [sortable]="true" filterMatchMode="contains">
+            <ng-template let-col let-item="rowData" pTemplate="body">
+              <div class="align-center">
+                <div class="user-login" [title]="item[col.field]">{{item[col.field]}}</div>
+              </div>
+            </ng-template>
+          </p-column>
+          <p-column field="firstname" [header]="'general.userManagement.firstname' | translate" [filter]="true" filterPlaceholder="{{'action.search' | translate}}"
+            filterMatchMode="contains" [sortable]="true"></p-column>
+          <p-column field="lastname" [header]="'general.userManagement.lastname' | translate" [filter]="true" filterPlaceholder="{{'action.search' | translate}}"
+            filterMatchMode="contains" [sortable]="true"></p-column>
+          <p-column field="roleName" [header]="'general.userManagement.profil' | translate" [filter]="true" [style]="{'overflow':'visible'}"
+            [filterPlaceholder]="'action.search' | translate" [sortable]="true" filterMatchMode="equals">
+            <ng-template pTemplate="filter" let-col let-item="rowData">
+              <p-dropdown [options]="roleEnum" [style]="{'width':'100%'}" (onChange)="dt.filter($event.value, col.field, col.filterMatchMode)"
+                styleClass="ui-column-filter"></p-dropdown>
+            </ng-template>
+            <ng-template let-col let-item="rowData" pTemplate="body">
+              <span class="ui-cell-data">{{getRoleNameTranslation(item[col.field])}}</span>
+            </ng-template>
+          </p-column>
+          <p-column styleClass="col-button" field="enabled" [header]="'general.userManagement.actions' | translate">
+            <ng-template let-col let-item="rowData" pTemplate="body">
+              <div class="align-middle text-center">
+                <button type="submit" class="btn btn-primary btn-icon" data-toggle="tooltip" [title]="'action.edit' | translate" [routerLink]="['../user-management', item.id]"><i class="ion-edit"></i></button>
+                <button type="button" class="btn btn-danger btn-icon" [disabled]="currentUser.id == item.id" *ngIf="item[col.field]" data-toggle="tooltip"
+                  [title]="'action.disable' | translate" (click)="confirmDelete(item)"><i class="ion-trash-b"></i></button>
+                <button type="button" class="btn btn-success btn-icon" [disabled]="currentUser.id == item.id" *ngIf="! item[col.field]" data-toggle="tooltip"
+                  [title]="'action.enable' | translate" (click)="changeUserStatus(item)"><i class="ion-checkmark"></i></button>
+              </div>
+            </ng-template>
+          </p-column>
+        </p-dataTable>
+      </ba-card>
+    </div>
+  </div>
+</div>
+<p-organizationChart [value]="data"></p-organizationChart>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuration>
+
+	<Appenders>
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout
+				pattern="%-5level |%d{HH:mm:ss.SSS}| %logger{36}.%M() @%L - %msg%n}" />
+		</Console>
+
+		<RollingFile name="file-log" fileName="C:/LOG/ticketvioo.log"
+			filePattern="C:/LOG/ticketvioo-%d{yyyy-MM-dd}.log">
+			<PatternLayout
+				pattern="%-5level |%d{dd/MM/yyyy HH:mm:ss}| %t |%c|: %msg%n%throwable" />	
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1"
+					modulate="true" />
+			</Policies>
+		</RollingFile>
+
+		</Appenders>
+
+	<Loggers>
+
+		<!-- Application classes -->
+<!-- 		<AsyncLogger name="com.wevioo.dao" level="TRACE" /> -->
+		<!-- <AsyncLogger name="com.wevioo.dao" level="DEBUG"/> -->
+		<!-- <AsyncLogger name="com.wevioo.dao" level="INFO"/> -->
+		<!-- <AsyncLogger name="com.wevioo.dao" level="WARN"/> -->
+		<!-- <AsyncLogger name="com.wevioo.dao" level="ERROR" /> -->
+		<!-- <AsyncLogger name="com.wevioo.dao" level="FATAL"/> -->
+		<AsyncLogger name="org.hibernate" level="INFO" />
+
+
+		<AsyncRoot level="INFO">
+			<AppenderRef ref="Console" />
+			<AppenderRef ref="file-log" />
+		</AsyncRoot>
+	</Loggers>
+
+</Configuration>

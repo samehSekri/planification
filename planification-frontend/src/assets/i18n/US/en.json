@@ -1,0 +1,210 @@
+{
+	"login": {
+		"login": "Login",
+		"password": "Password",
+		"authentication": "Authentication",
+		"forgotPassword": "Forgot password ?",
+		"email": "Email"
+	},
+	"dockviewer": {
+		"dateAndTime": "DATE ET HEURE : ",
+		"dockNumber": "QUAI N° : ",
+		"operation": {
+			"startingDate": "Heure prévue",
+			"step": "Etape",
+			"type": "Recep / Expé",
+			"appointementNumber": "N° RDV",
+			"transporter": "TRANSPORTEUR &",
+			"destinationOrigin": "Dest./Origin",
+			"totalPallets": "Palettes Totales"
+		}
+	},
+	"message": {
+		"confirmDeleteAction": "Are you sure that you want to perform this action?",
+		"confirmDeleteDialogTitle": "Delete Confirmation",
+		"errConnectionRefused": "Error, Le serveur a refusé la connexion",
+		"errPageNotFound": "… Oops! Something is missing",
+		"username": {
+			"isrequired": "Username is required (minimum 5 characters)."
+		},
+		"password": {
+			"isrequired": "Password is required (minimum 5 characters).",
+			"notmatch": "Passwords don't match."
+		},
+		"firstname": {
+			"isrequired": "The first name is required (minimum 2 characters)."
+		},
+		"lastname": {
+			"isrequired": "The last name is required (minimum 2 characters)."
+		},
+		"email": {
+			"isrequired": "The email is required (minimum 4 characters).",
+			"isinvalid": "The email is invalid.",
+			"resetPasswordSuccess": "Votre mot de passe a été initialisée. Un email contenant le nouveau mot de passe vous a été envoyé."
+		},
+		"role": {
+			"isrequired": "The role is required."
+		},
+		"warehouse": {
+			"isrequired": "The warehouse is required.",
+			"notFound": "You must be affected to a warehouse to continue working."
+		},
+		"save" :{
+			"successMsg": "Enregistrement effectué avec succès",
+			"successMsgTitle": "Succès",
+			"failedMsg": "Validation échouée",
+			"failedMsgTitle": "Erreur"
+		},
+		"dock": {
+			"isrequired": "You must select a dock number",
+			"buildingRequired": "Building is required",
+			"buildingMax": "Building name must be less than 50 characters and greater than 2 characters",
+			"numberMax": "The number must be less than 50 characters and greater than 2 characters",
+			"displayOrderRequired": "The display order is required",
+			"displayOrderMax": "The display order must be greater than 0"
+		},
+		"emptyList": "No records found",
+		"displayDockWithAlert": "Display docks with alert"
+	},
+	"action": {
+		"delete": "Delete",
+		"cancel": "Cancel",
+		"new": "New",
+		"edit": "Edit",
+		"save": "Save",
+		"update": "Update",
+		"enable": "Enable",
+		"disable": "Disable",
+		"signIn": "Sign in",
+		"signOut": "Sign out",
+		"search": "Search",
+		"close": "Close",
+		"return": "Return",
+		"send": "Send",
+		"refresh": "Refresh",
+		"home": "HOME"
+	},
+	"general": {
+		"application": {
+			"title": "Planification de la production",
+			"version": "1.0.0"
+		},
+		"home": "Home",
+		"dashboard": {
+			"search": "Recherche",
+			"dockViewing": "Visualisation quai",
+			"dock": "Dock",
+			"building": "Building",
+			"acquisitionChannels": "Acquisition Channels",
+			"usersByCountry": "Users by Country",
+			"revenue": "Revenue",
+			"feed": "Feed",
+			"toDoList": "To Do List",
+			"calendar": "Calendar",
+			"newVisits": "New Visits",
+			"purchases": "Purchases",
+			"activeUsers": "Active Users",
+			"returned": "Returned"
+		},
+		"userManagement": {
+			"usersList": "Users list",
+			"username": "Login",
+			"firstname": "First name",
+			"lastname": "Last name",
+			"profil": "Profile",
+			"dock": "Dock",
+			"actions": "Actions",
+			"userDetails": "User details"
+		},
+		"userDetails": {
+			"editTitle": "Edit",
+			"createTitle": "New user",
+			"username": "Login",
+			"password": "Password",
+			"confirmPassword": "Repeat",
+			"firstname": "First name",
+			"lastname": "Last name",
+			"email": "Email",
+			"profil": "Role",
+			"dock": "Dock",
+			"warehouse": "Warehouse"
+		},
+		"dockManagement": {
+			"docksList": "Docks list",
+			"number": "Dock N°",
+			"building": "Building",
+			"direction": "Sens",
+			"displayOrder": "Display order",
+			"newDock": "New dock",
+			"updateDock": "Update dock",
+			"selectWarehouse": "Select a warehouse"
+		},
+		"warehouseManagement": {
+			"warehousesList": "Liste des entrepôts",
+			"id": "Id entrepôt",
+			"name": "Désignation",
+			"newWarehouse": "Ajout d'un entrepôt",
+			"updateWarehouse": "Modification d'un entrepôt"
+		},
+		"activityManagement": {
+			"activitiesList": "List activities",
+			"name": "Activity",
+			"endPointUrl": "Web service URL",
+			"newActivity": "New server",
+			"updateActivity": "Update server",
+			"nameToolTip": "Activity in the WMS",
+			"degerbageStdTime": "Temps standard dégerbage",
+			"degerbageStdTimeToolTip": "Palettes/H en dégerbage",
+			"pickingStdTime": "Temps standard ramassage",
+			"pickingStdTimeToolTip": "Colis/H en picking (moyenne)",
+			"forkliftDriverNbr": "Nombre de cariste",
+			"forkliftDriverNbrToolTip": "Nb cariste en moyenne par RDV pour le dégerbage",
+			"pickerNbr": "Nombre de préparateur",
+			"pickerNbrToolTip": "Nb préparateur en moyenne par RDV pour le picking",
+			"homogeneousTime": "Délai homogène",
+			"homogeneousTimeToolTip": "Délai en min de l'avance à prendre en dégerbage avant l'heure de RDV",
+			"pickingTime": "Délai ramassage",
+			"pickingTimeToolTip": "Délai en min de l'avance à prendre en picking avant l'heure de RDV",
+			"receptionDuration": "Durée de réception",
+			"receptionDurationToolTip": "Temps en H entre l'heure de réception prévue et l'heure à laquelle le quai sera vide et réutilisable",
+			"expeditionDuration": "Durée d'expédition",
+			"expeditionDurationToolTip": "Temps en H entre le début de dépose des premières palettes de l'expédition et le départ du camion",
+			"appointmentTruckDelay": "Délai RDV camion",
+			"appointmentTruckDelayToolTip": "Délai en min entre l'arrivée du camion poste de garde vers le quai",
+			"receptionControlStartDelay": "Délai début contrôle réception",
+			"receptionControlStartDelayToolTip": "Temps max en heure entre réception et début contrôle"
+		},
+		"settings": {
+			"application": "Application settings",
+			"manageProfile": "My profile",
+			"actualisationTime": "Actualisation time",
+			"popupTime": "Popup notification time"
+		},
+		"preferences": {
+			"mybuildings": "Buildings list",
+			"availableBuildings": "Available buildings",
+			"selectedBuildings": "My buildings"
+		},
+		"role": {
+			"admin": "Administrator",
+			"dock": "Dock",
+			"user": "User"
+		},
+		"direction": {
+			"left": "left",
+			"right": "right"
+		},
+		"menu": {
+			"dashboard": "Dashboard",
+			"administration": "Administration",
+			"userManagement": "Users management",
+			"warehouseManagement": "Warehouse management",
+			"dockManagement": "Docks management",
+			"activityManagement": "WMS servers management",
+			"userPreferences": "My preferences",
+			"settings": "Settings",
+			"profile": "Profile",
+			"signout": "Sign out"
+		}
+	}
+}

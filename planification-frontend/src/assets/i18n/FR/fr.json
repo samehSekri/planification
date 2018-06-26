@@ -1,0 +1,143 @@
+{
+	"login": {
+		"login": "Identifiant",
+		"password": "Mot de passe",
+		"authentication": "Authentification",
+		"forgotPassword": "Mot de passe oublié ?",
+		"email": "Email"
+	},
+	"message": {
+		"confirmDeleteAction": "Est ce que vous êtes sûr de vouloir continuer ?",
+		"confirmDeleteDialogTitle": "Confirmation de suppression",
+		"errConnectionRefused": "Erreur, Le serveur a refusé la connexion",
+		"errPageNotFound": "… Oops! Page non trouvée.",
+		"username": {
+			"isrequired": "Le login est obligatoire (minimum 5 caractères)."
+		},
+		"matricule": {
+			"isrequired": "La matricule est obligatoire (minimum 5 caractères)."
+		},
+		"password": {
+			"isrequired": "Le mot de passe est obligatoire (minimum 5 caractères).",
+			"notmatch": "Les Mots de passe ne sont pas conformes."
+		},
+		"firstname": {
+			"isrequired": "Le prénom utilisateur doit contenir au moins 2 caractères."
+		},
+		"lastname": {
+			"isrequired": "Le nom utilisateur doit contenir au moins 2 caractères."
+		},
+		"email": {
+			"isrequired": "L'adresse email doit contenir au moins 4 caractères",
+			"isinvalid": "L'adresse email est invalide.",
+			"resetPasswordSuccess": "Votre mot de passe a été initialisé. Un email contenant le nouveau mot de passe vous a été envoyé."
+		},
+		"role": {
+			"isrequired": "Le role utilisateur est obligatoire."
+		},
+		"save": {
+			"successMsg": "Enregistrement effectué avec succès",
+			"successMsgTitle": "Succès",
+			"failedMsg": "Validation échouée",
+			"failedMsgTitle": "Erreur"
+		},
+		"emptyList": "Aucun enregistrement trouvé"
+	},
+	"action": {
+		"delete": "Supprimer",
+		"cancel": "Annuler",
+		"new": "Nouveau",
+		"edit": "Editer",
+		"save": "Enregistrer",
+		"update": "Modifier",
+		"enable": "Activer",
+		"disable": "Désactiver",
+		"signIn": "Se connecter",
+		"signOut": "Se déconnecter",
+		"search": "Chercher",
+		"close": "Fermer",
+		"return": "Retour",
+		"send": "Envoyer",
+		"refresh": "Actualiser",
+		"home": "ACCUEIL",
+		"collapse": "Réduire",
+		"expand": "Agrandir"
+	},
+	"general": {
+		"application": {
+			"title": "Planification de la production",
+			"version": "1.0.0"
+		},
+		"home": "Home",
+		"dashboard": {
+			"search": "Recherche",
+			"dockViewing": "Visualisation quai",
+			"dock": "Quai",
+			"building": "Bâtiment",
+			"acquisitionChannels": "Acquisition Channels",
+			"usersByCountry": "Users by Country",
+			"revenue": "Revenue",
+			"feed": "Feed",
+			"toDoList": "To Do List",
+			"calendar": "Calendar",
+			"newVisits": "New Visits",
+			"purchases": "Purchases",
+			"activeUsers": "Active Users",
+			"returned": "Returned"
+		},
+		"userManagement": {
+			"usersList": "Liste des utilisateurs",
+			"username": "Login",
+			"firstname": "Prénom",
+			"lastname": "Nom",
+			"profil": "Profil",
+			"actions": "Actions",
+			"userDetails": "Détails utilisateur"
+		},
+		"userDetails": {
+			"editTitle": "Edition utilisateur",
+			"createTitle": "Nouvel utilisateur",
+			"username": "Login",
+			"password": "Mot de passe",
+			"confirmPassword": "Confirmation",
+			"firstname": "Prénom",
+			"lastname": "Nom",
+			"email": "Email",
+			"profil": "Role"
+		},
+		
+		"operatorManagement": {
+			"newoperator": "Nouvel opérateur",
+			"firstname": "Prénom",
+			"lastname": "Nom",
+			"email": "Email",
+			"matricule": "Matricule",
+			"unite": "Unité",
+			"userDetails": "Détails utilisateur",
+			"uap":"UAP",
+			"atelier":"Atelier",
+			"ilot":"ILOT"
+		},
+		"settings": {
+			"application": "Paramètres de l'application",
+			"manageProfile": "Mon profil"
+		},
+		"role": {
+			"admin": "Administrateur",
+			"dock": "Quai",
+			"user": "Utilisateur"
+		},
+		"menu": {
+			"dashboard": "Dashboard",
+			"administration": "Administration",
+			"userManagement": "Gestion des utilisateurs",
+			"habilitationManagement": "Gestion des habilitations",
+			"unitManagement": "Gestion des unités",
+			"settings": "Paramètres",
+			"profile": "Profil",
+			"signout": "Se déconnecter",
+			"operatorManagement":"Gestion des opérateurs"
+			
+		}
+	}
+}

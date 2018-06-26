@@ -1,0 +1,64 @@
+@import '../../theme/sass/auth';
+
+
+
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    #8d8d8d;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    #8d8d8d;
+   opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    #8d8d8d;
+   opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    #8d8d8d;
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+   color:    #8d8d8d;
+}
+
+.ui-growl-item-container.ui-state-highlight.ui-growl-message-error {
+    background-color: #f44336;
+    border-color: #f44336;
+}
+
+.form-control-dialog {
+        background-color: #c1d8ec;
+        border: 1px solid #03a9f4;
+        height: 35px;
+        color: #0b5d80;
+  }
+  
+
+   .control-label-dialog{
+    color: #0b5d80;
+    line-height: 35px;
+}
+
+.box-shadow-border {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+      box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, 0.12);
+      width: calc(100% + 44px);
+      margin-left: -22px;
+    }
+
+    .help-block {
+        color:#e91e63;
+    }
+
+   div.form-group-dialog.row{
+     margin-bottom: 5px !important; 
+   }
+
+   div.form-group-dialog.row.footer{
+      margin-top: -5px;
+      margin-bottom: 5px !important;
+   }
+ 
+   .ui-grid-row{
+       padding: 2px;
+   }

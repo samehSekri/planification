@@ -1,0 +1,20 @@
+<div baCardBlur class="animated fadeIn card {{cardType}} {{baCardClass || ''}}" zoom-in style="margin-right:5px;">
+    <div class="box box-info">
+        <div *ngIf="title" class="box-header card-header clearfix">
+            <h3 class="card-title" translate>{{title}}</h3>
+            <div class="box-tools pull-right" *ngIf="toolbox">
+                <button type="button" (click)="changeStateClick()" *ngIf="! isCollapsed" class="btn btn-box-tool"
+                    data-toggle="tooltip" title="">
+                <i class="fa fa-minus"></i>
+                </button>
+                    <button type="button" (click)="changeStateClick()" *ngIf="isCollapsed" class="btn btn-box-tool"
+                        title="">
+                    <i class="fa fa-plus"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="card-body" *ngIf="! isCollapsed">
+        <ng-content></ng-content>
+    </div>
+</div>

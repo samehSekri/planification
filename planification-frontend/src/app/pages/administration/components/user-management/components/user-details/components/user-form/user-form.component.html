@@ -1,0 +1,49 @@
+<p-growl [(value)]="msgSuccess" [style]="{'top':'140px'}"></p-growl>
+<p-messages [(value)]="msgs"></p-messages>
+<form name="editForm" role="form" novalidate (ngSubmit)="saveUser()" #editForm="ngForm">
+  <div class="form-group">
+    <label for="input06" translate="general.userDetails.profil"></label>
+    <select class="form-control" name="roleName" required [(ngModel)]="currentUser.roleName" #role>
+      <option *ngFor="let role of roleEnum" [ngValue]="role.value">{{role.label}}</option>
+    </select>
+    <div [hidden]="!isEmptyRoleChecked()" class="alert alert-danger text-error" translate="message.role.isrequired">
+    </div>
+  </div>
+  <div class="form-group" *ngIf="!isEmptyRoleChecked()">
+    <label for="input01" translate="general.userDetails.lastname"></label>
+    <input type="text" class="form-control" id="input01" name="lastname" required minlength="2" maxlength="50" [(ngModel)]="currentUser.lastname"
+      #lastname="ngModel" placeholder="{{'general.userDetails.lastname' | translate }}">
+    <div [hidden]="!(lastname.dirty && lastname.invalid)" class="alert alert-danger text-error" translate="message.lastname.isrequired"></div>
+  </div>
+  <div class="form-group" *ngIf="!isEmptyRoleChecked()">
+    <label for="input02" translate="general.userDetails.firstname"></label>
+    <input type="text" class="form-control" id="input02" name="firstname" required minlength="2" maxlength="50" [(ngModel)]="currentUser.firstname"
+      #firstname="ngModel" placeholder="{{'general.userDetails.firstname' | translate }}">
+    <div [hidden]="!(firstname.dirty && firstname.invalid)" class="alert alert-danger text-error" translate="message.firstname.isrequired"></div>
+  </div>
+  <div class="form-group" *ngIf="!isEmptyRoleChecked()">
+    <label for="input03" translate="general.userDetails.username">Login</label>
+    <input type="text" class="form-control" id="input03" name="username" [disabled]="currentUser.id" required minlength="5" maxlength="50"
+      pattern="^[_'.@A-Za-z0-9-]*$" [(ngModel)]="currentUser.username" #username="ngModel" placeholder="{{'general.userDetails.username' | translate }}">
+    <div [hidden]="!(username.dirty && username.invalid)" class="alert alert-danger text-error" translate="message.username.isrequired"></div>
+  </div>
+  <div class="form-group" *ngIf="!isEmptyRoleChecked()">
+    <label for="input05" translate="general.userDetails.email"></label>
+    <input type="text" class="form-control" id="input05" name="email" required minlength="4" maxlength="100" [(ngModel)]="currentUser.email"
+      #email="ngModel" placeholder="{{'general.userDetails.email' | translate}}">
+    <div [hidden]="!(email.dirty && email.invalid)" class="alert alert-danger text-error" translate="message.email.isrequired"></div>
+  </div>
+  <div class="form-group">
+    <div class="box-shadow-border"></div>
+  </div>
+  <div class="form-group">
+    <div class="row pull-right" style="margin-right: 10px;">
+      <button type="submit" class="btn btn-success btn-with-icon" [disabled]="editForm.form.invalid || isSaving " data-toggle="tooltip"
+        title="{{'action.save' | translate}}">
+        <i class="ion-android-checkmark-circle"></i>{{'action.save' | translate }}</button>
+      <button type="button" style="margin-left:15px;" [routerLink]="['..']" class="btn btn-warning btn-with-icon" data-toggle="tooltip"
+        title="{{'action.cancel' | translate}}">
+        <i class="ion-android-cancel"></i>{{'action.cancel' | translate }}</button>
+    </div>
+  </div>
+</form>

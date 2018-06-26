@@ -1,0 +1,22 @@
+.box-tools {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+}
+
+  .box .overlay > .fa,
+  .overlay-wrapper .overlay > .fa {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -15px;
+    margin-top: -15px;
+    color: #000;
+    font-size: 30px;
+  }
+  .btn-box-tool {
+    padding: 5px;
+    font-size: 12px;
+    background: transparent;
+    color: #97a0b3;
+  }
