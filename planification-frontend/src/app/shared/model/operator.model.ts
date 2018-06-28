@@ -1,3 +1,4 @@
+import { Unit } from "app/shared/model/unit.model";
 
 
 export class Operator {
@@ -12,14 +13,11 @@ export class Operator {
    * @param permissions
    */
   constructor(
-  public matricule: number,
-  public username: string,
+  public matricule: Number,
   public firstname: string,
   public lastname: string,
   public email: string,
-  public uap: String,
-  public atelier: String,
-  public ilot: String,
+  public unite:Unit
   ) {
   }
 }

@@ -31,6 +31,25 @@
                 <div class="alert alert-danger text-error" translate="message.email.isrequired"></div>
               </div>
               <div class="form-group">
+                <label class="ui-grid-col-4 control-label-dialog">UAP</label>
+                <select class="form-control" name="uap" required [(ngModel)]="currentUap" #uap (change)="getByParent()">
+                  <option *ngFor="let uap of uaps" [ngValue]="uap.value">{{uap.name}}</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="ui-grid-col-4 control-label-dialog">Atelier</label>
+                <select class="form-control" name="atelier"  required [(ngModel)]="currentAtelier" #atelier>
+                  <option *ngFor="let atelier of unites" [ngValue]="atelier.value">{{atelier.name}}</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="ui-grid-col-4 control-label-dialog">ILOT</label>
+     
+                <select class="form-control" name="uap" required [(ngModel)]="currentUap" #uap>
+                  <option *ngFor="let uap of uaps" [ngValue]="uap.value">{{uap.name}}</option>
+                </select>
+              </div>
+              <div class="form-group">
                 <div class="box-shadow-border"></div>
               </div>
               <div class="form-group">
@@ -43,7 +62,7 @@
                   <i class="ion-android-cancel"></i>{{'action.cancel' | translate }}</button>
                 </div>
               </div>
-            </form>d
+            </form>
           </ba-card>
         </div>
       </div>
@@ -78,7 +97,7 @@
             filterMatchMode="contains" [sortable]="true"></p-column>
           <p-column field="lastname" [header]="'general.operatorManagement.lastname' | translate" [filter]="true" filterPlaceholder="{{'action.search' | translate}}"
             filterMatchMode="contains" [sortable]="true"></p-column>
-          <p-column field="unite" [header]="'general.operatorManagement.unite' | translate" [filter]="true" [style]="{'overflow':'visible'}"
+          <p-column field="unite.name" [header]="'general.operatorManagement.unite' | translate" [filter]="true" [style]="{'overflow':'visible'}"
             [filterPlaceholder]="'action.search' | translate" [sortable]="true" filterMatchMode="equals">
 
 
@@ -86,10 +105,10 @@
           <p-column styleClass="col-button" field="enabled" [header]="'general.userManagement.actions' | translate">
             <ng-template let-col let-item="rowData" pTemplate="body">
               <div class="align-middle text-center">
-                <button type="submit" class="btn btn-primary btn-icon" data-toggle="tooltip" [title]="'action.edit' | translate" [routerLink]="['../user-management', item.id]"><i class="ion-edit"></i></button>
-                <button type="button" class="btn btn-danger btn-icon" [disabled]="currentUser.id == item.id" *ngIf="item[col.field]" data-toggle="tooltip"
+                <button type="submit" class="btn btn-primary btn-icon" data-toggle="tooltip" [title]="'action.edit' | translate" [routerLink]="['../user-management', item.matricule]"><i class="ion-edit"></i></button>
+                <button type="button" class="btn btn-danger btn-icon"  *ngIf="item[col.field]" data-toggle="tooltip"
                   [title]="'action.disable' | translate" (click)="confirmDelete(item)"><i class="ion-trash-b"></i></button>
-                <button type="button" class="btn btn-success btn-icon" [disabled]="currentUser.id == item.id" *ngIf="! item[col.field]" data-toggle="tooltip"
+                <button type="button" class="btn btn-success btn-icon"  *ngIf="! item[col.field]" data-toggle="tooltip"
                   [title]="'action.enable' | translate" (click)="changeUserStatus(item)"><i class="ion-checkmark"></i></button>
               </div>
             </ng-template>
@@ -99,4 +118,3 @@
     </div>
   </div>
 </div>
-<p-organizationChart [value]="data"></p-organizationChart>

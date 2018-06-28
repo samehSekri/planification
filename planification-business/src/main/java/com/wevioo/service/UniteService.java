@@ -24,7 +24,13 @@ public interface UniteService {
 	 * @param name
 	 * @return
 	 */
-
+	
+	List<Unite> findUniteByParent(Unite parent);
+/**
+ * 
+ * @param name
+ * @return
+ */
 	Unite findUniteByName(String name);
 	/**
 	 * 

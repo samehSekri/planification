@@ -28,3 +28,33 @@ select.ng-invalid {
 .text-error {
   padding: 0 0 0 10px; margin-top: 2px;font-size:80%
 }
+label{
+  color: #282828
+}
+
+.box-shadow-border {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, 0.12);
+    width: calc(100% + 44px);
+    margin-left: -22px;
+  }
+
+input.ng-valid[required] {
+border-left: 5px solid #42A948; /* green */
+}
+
+input.ng-invalid {
+border-left: 5px solid #a94442; /* red */
+}
+
+select.ng-valid[required] {
+border-left: 5px solid #42A948; /* green */
+}
+
+select.ng-invalid {
+border-left: 5px solid #a94442; /* red */
+}
+
+.text-error {
+padding: 0 0 0 10px; margin-top: 2px;font-size:80%
+}

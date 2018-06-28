@@ -31,9 +31,6 @@ import { SplitButtonModule } from 'primeng/components/splitbutton/splitbutton';
 import { MenubarModule } from 'primeng/components/menubar/menubar';
 
 import { ListboxModule } from 'primeng/components/listbox/listbox';
-import { OperatorManagementComponentComponent } from './operator-management-component/operator-management-component.component';
-import { OperatorFormComponentComponent } from './components/operator-management/operator-form/operator-form-component/operator-form-component.component';
-import { OperatorDetailComponent } from './components/operator-management/operator-details/operator-detail/operator-detail.component';
 
 @NgModule({
   imports: [
@@ -74,9 +71,7 @@ import { OperatorDetailComponent } from './components/operator-management/operat
     UnitManagementComponent,
     OperatorManagementComponent,
     UnitFormComponent,
-    OperatorManagementComponentComponent,
-    OperatorFormComponentComponent,
-    OperatorDetailComponent
+   
   ],
   providers: [
     UserManagementService, AuthenticationService, ConfirmationService, TranslateService

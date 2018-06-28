@@ -55,6 +55,13 @@ public class UniteRestController {
 	public @ResponseBody Unite findUniteByName(@PathVariable String name) throws Exception {
 		return uniteService.findUniteByName(name);
 	}
+	@RequestMapping(value = "/parent/{parent}", method = RequestMethod.GET)
+	public @ResponseBody List<UniteDto> findUniteByParent(@PathVariable Unite parent) throws Exception {
+		List<Unite> unites = uniteService.findUniteByParent(parent);
+		Type listType = new TypeToken<List<UniteDto>>() {}.getType();
+		
+		return modelMapper.map(unites, listType);
+	}
 
 	
 

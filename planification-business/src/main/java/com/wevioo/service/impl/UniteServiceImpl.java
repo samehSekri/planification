@@ -94,6 +94,13 @@ public class UniteServiceImpl implements UniteService {
 			
 		
 	}
+
+	@Override
+	public List<Unite> findUniteByParent(Unite parent) {
+		List<Unite> unites = uniteRepository.findUniteByParent(parent);
+		
+		return unites;
+	}
 	
 
 	
