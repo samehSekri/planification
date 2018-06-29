@@ -23,5 +23,12 @@ public interface UniteRepository extends JpaRepository<Unite, String> {
 	 * @return
 	 */
 	List<Unite> findUniteByParent (Unite parent);
+
+	
+	//List<Unite> FindUniteByUap(Unite unite);
+	
+	
+	//Unite findUapByUnite(Unite unite) ;
+	
 	
 }

@@ -32,21 +32,21 @@
               </div>
               <div class="form-group">
                 <label class="ui-grid-col-4 control-label-dialog">UAP</label>
-                <select class="form-control" name="uap" required [(ngModel)]="currentUap" #uap (change)="getByParent()">
-                  <option *ngFor="let uap of uaps" [ngValue]="uap.value">{{uap.name}}</option>
+                <select class="form-control" name="uap"  required [(ngModel)]="currentUap" (click)="getCurrentUap();" (change)="getByParent();" #uap >
+                  <option *ngFor="let uap of uaps" [ngValue]="uap">{{uap.name}}</option>
                 </select>
               </div>
               <div class="form-group">
                 <label class="ui-grid-col-4 control-label-dialog">Atelier</label>
                 <select class="form-control" name="atelier"  required [(ngModel)]="currentAtelier" #atelier>
-                  <option *ngFor="let atelier of unites" [ngValue]="atelier.value">{{atelier.name}}</option>
+                  <option *ngFor="let atelier of unites" [ngValue]="atelier">{{atelier.name}}</option>
                 </select>
               </div>
               <div class="form-group">
                 <label class="ui-grid-col-4 control-label-dialog">ILOT</label>
      
-                <select class="form-control" name="uap" required [(ngModel)]="currentUap" #uap>
-                  <option *ngFor="let uap of uaps" [ngValue]="uap.value">{{uap.name}}</option>
+                <select class="form-control" name="ilot" required [(ngModel)]="currentIlot" #ilot>
+                  <option *ngFor="let ilot of ilots" [ngValue]="uap">{{ilot.name}}</option>
                 </select>
               </div>
               <div class="form-group">

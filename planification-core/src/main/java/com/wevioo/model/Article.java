@@ -15,6 +15,13 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.NotEmpty;
 
+
+
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 @Entity
 @Table(name = "article")
 public class Article implements Serializable {
@@ -26,13 +33,30 @@ public class Article implements Serializable {
 	@Column(length = 50, name = "reference")
 	@Size(min = 2, max = 50, message = "{error.article.reference.max}")
 	private String reference;
+	@Column(name = "reste_produire")
+	private Integer resteProduire;
+
+	@Column(name = "temps_standard")
+	private Double tempsStandard;
+	
+	private Integer quantiteRestante;
 
 	@NotNull(message = "{error.article.quantite.null}")
 	@NotEmpty(message = "{error.article.quantite.empty}")
-	@Column(length=50, name = "quantite")
-
+	@Column(length = 50, name = "quantite")
 	private Integer quantite;
-
+	
+	@Column(name="date_integration", unique=false, nullable = true)
+	private Date integrationDate;
+	
+	private Integer engagementSemaine;
+	
+	@Column(name="fichier_integration", unique=false, nullable = true)
+	private String integrationFileName;
+	
+	@ManyToOne
+	@JoinColumn(name = "user_integration")
+	private User integrationUser;
 	@NotNull(message = "{error.article.cadence.null}")
 	@NotEmpty(message = "{error.article.cadence.empty}")
 	@Column(name = "cadence")
@@ -49,84 +73,37 @@ public class Article implements Serializable {
 	private boolean etat;
 	@OneToMany(mappedBy = "operateur")
 	private List<Polyvalence> polyvalences;
-	
 
 	@ManyToOne
 	@JoinColumn(name = "name_unite", nullable = false)
 	private Unite unite;
 
-	public Article(String reference, Integer quantite, Integer cadence, Double efficience, boolean etat, Date horaire,
+
+	public Article() {
+		super();
+	}
+
+
+	public Article(String reference, Integer resteProduire, Double tempsStandard, Integer quantiteRestante,
+			Integer quantite, Date integrationDate, Integer engagementSemaine, String integrationFileName,
+			User integrationUser, Integer cadence, Double efficience, boolean etat, List<Polyvalence> polyvalences,
 			Unite unite) {
 		super();
 		this.reference = reference;
+		this.resteProduire = resteProduire;
+		this.tempsStandard = tempsStandard;
+		this.quantiteRestante = quantiteRestante;
 		this.quantite = quantite;
+		this.integrationDate = integrationDate;
+		this.engagementSemaine = engagementSemaine;
+		this.integrationFileName = integrationFileName;
+		this.integrationUser = integrationUser;
 		this.cadence = cadence;
 		this.efficience = efficience;
 		this.etat = etat;
-		this.unite = unite;
-	}
-
-	public Unite getUnite() {
-		return unite;
-	}
-
-	public void setUnite(Unite unite) {
-		this.unite = unite;
-	}
-
-	public Article(String reference) {
-		super();
-		this.reference = reference;
-	}
-
-	public String getReference() {
-		return reference;
-	}
-
-	public void setReference(String reference) {
-		this.reference = reference;
-	}
-
-	public Integer getQuantite() {
-		return quantite;
-	}
-
-	public void setQuantite(Integer quantite) {
-		this.quantite = quantite;
-	}
-
-	public Integer getCadence() {
-		return cadence;
-	}
-
-	public void setCadence(Integer cadence) {
-		this.cadence = cadence;
-	}
-
-	public Double getEfficience() {
-		return efficience;
-	}
-
-	public void setEfficience(Double efficience) {
-		this.efficience = efficience;
-	}
-
-	public boolean isEtat() {
-		return etat;
-	}
-
-	public void setEtat(boolean etat) {
-		this.etat = etat;
-	}
-	
-	public List<Polyvalence> getPolyvalences() {
-		return polyvalences;
-	}
-
-	public void setPolyvalences(List<Polyvalence> polyvalences) {
 		this.polyvalences = polyvalences;
+		this.unite = unite;
 	}
 
 	
-
 }

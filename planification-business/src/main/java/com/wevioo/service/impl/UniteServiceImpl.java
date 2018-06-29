@@ -101,6 +101,12 @@ public class UniteServiceImpl implements UniteService {
 		
 		return unites;
 	}
+
+//	@Override
+//public List<Unite> FindUniteByUap(Unite unite) {
+//List<Unite> unites = uniteRepository.FindUniteByUap(unite);
+//return unites;
+//}
 	
 
 	

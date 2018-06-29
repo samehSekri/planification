@@ -55,13 +55,23 @@ public class UniteRestController {
 	public @ResponseBody Unite findUniteByName(@PathVariable String name) throws Exception {
 		return uniteService.findUniteByName(name);
 	}
-	@RequestMapping(value = "/parent/{parent}", method = RequestMethod.GET)
-	public @ResponseBody List<UniteDto> findUniteByParent(@PathVariable Unite parent) throws Exception {
+	@RequestMapping(value = "/parents", method = RequestMethod.POST)
+	public @ResponseBody List<UniteDto> findUniteByParent(@RequestBody Unite parent) throws Exception {
+		if(parent.getType()==TypeUnite.ATELIER) {
 		List<Unite> unites = uniteService.findUniteByParent(parent);
+		
 		Type listType = new TypeToken<List<UniteDto>>() {}.getType();
 		
 		return modelMapper.map(unites, listType);
 	}
+		if(parent.getType()==TypeUnite.ILOT) {
+			List<Unite> unites = uniteService.findUniteByParent(parent);
+			
+			Type listType = new TypeToken<List<UniteDto>>() {}.getType();
+			
+			return modelMapper.map(unites, listType);
+		}
+		return null;}
 
 	
 
@@ -78,14 +88,7 @@ public class UniteRestController {
 	}
 		return unite;
 	}
-	/**
-	 * PUT /users : Updates an existing User.
-	 *
-	 * @param managedUserVM
-	 *            the user to update
-	 * @return the ResponseEntity with status 200 (OK) and with body the updated
-	 *         user,
-	 */
+
 	
 }
 

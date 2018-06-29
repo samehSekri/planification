@@ -32,7 +32,7 @@ export class UnitManagementService {
     /**
      * Define the Path of API Rest Controller For Unit service
      */
-    this.actionUrl = configuration.serverWithApiUrl + '/unites';
+    this.actionUrl = configuration.serverWithApiUrl + 'unites';
   }
 
   /**
@@ -56,7 +56,7 @@ export class UnitManagementService {
       .catch((response: Response) => this.errorHandler(response));
   }
   public getByParent = (parent: Unit): Observable<Unit[]> => {
-    return this.http.get(this.actionUrl +"/parent/" + parent, this.options())
+    return this.http.post(this.actionUrl +"/parents" , parent, this.options())
       .map((response: Response) => <Unit[]>response.json())
       .catch((response: Response) => this.errorHandler(response));
   }
@@ -98,12 +98,12 @@ export class UnitManagementService {
   }
 
   /**
-   * Delete a Unit by id
-   * @param id
-   *        the id of Unit to delete
+   * Delete a Unit by name
+   * @param name
+   *        the name of Unit to delete
    */
-  public delete = (id: number): Observable<Response> => {
-    return this.http.delete(this.actionUrl + id, this.options())
+  public delete = (name: String): Observable<Response> => {
+    return this.http.delete(this.actionUrl + name, this.options())
     .catch((response: Response) => this.errorHandler(response));
   }
 

@@ -22,6 +22,7 @@ export class OperatorManagementComponent implements OnInit {
   public isSaving: boolean = false;
   public currentUap:Unit;
   public currentAtelier:Unit;
+  public  name:String;
   public currentUnite: Unit;
   public msgSuccess: Message[] = [];
   public currentOperator: Operator;
@@ -46,22 +47,26 @@ export class OperatorManagementComponent implements OnInit {
       () => console.log('Get all Items complete'));
   }
   private getUap(): void {
+
     this.uniteService.getByType(UniteTypeEnum.UAP).subscribe((data: Unit[]) => { this.uaps = data; console.log(data); },
       error => console.log(error),
       () => console.log('Get all Items complete'));
   }
   private getByParent(): void {
-    this.uniteService.getByParent(this.currentUnite).subscribe((data: Unit[]) => { this.unites = data; console.log(data); },
+    this.uniteService.getByParent(this.currentUap).subscribe((data: Unit[]) => { this.unites = data; console.log(data); },
       error => console.log(error),
-      () => console.log('Get all Items complete'));
+            () => console.log('Get all parents complete'));
+  }
+  private getCurrentUap():void{
+    console.log(this.currentUap)
+
+
   }
 
   /**
    * function init
    */
- /**
-   * Save operator informations
-   */
+
   public saveUser() {
     this.isSaving = false;
     this.msgs = [];
