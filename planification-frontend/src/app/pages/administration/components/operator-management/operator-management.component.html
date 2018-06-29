@@ -15,6 +15,8 @@
                 <div class="alert alert-danger text-error" translate="message.matricule.isrequired"></div>
               </div>
               <div class="form-group">
+                  <div class="ui-g ui-fluid">
+                      <div class="ui-g-12 ui-md-6">
                 <label for="input01" translate="general.operatorManagement.lastname"></label>
                 <input type="text" class="form-control" id="input01" name="lastname" required minlength="2" maxlength="50">
                 <div class="alert alert-danger text-error" translate="message.lastname.isrequired"></div>
@@ -31,30 +33,34 @@
                 <div class="alert alert-danger text-error" translate="message.email.isrequired"></div>
               </div>
               <div class="form-group">
-                <label class="ui-grid-col-4 control-label-dialog">UAP</label>
-                <select class="form-control" name="uap"  required [(ngModel)]="currentUap" (click)="getCurrentUap();" (change)="getByParent();" #uap >
-                  <option *ngFor="let uap of uaps" [ngValue]="uap">{{uap.name}}</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label class="ui-grid-col-4 control-label-dialog">Atelier</label>
-                <select class="form-control" name="atelier"  required [(ngModel)]="currentAtelier" #atelier>
-                  <option *ngFor="let atelier of unites" [ngValue]="atelier">{{atelier.name}}</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label class="ui-grid-col-4 control-label-dialog">ILOT</label>
-     
-                <select class="form-control" name="ilot" required [(ngModel)]="currentIlot" #ilot>
-                  <option *ngFor="let ilot of ilots" [ngValue]="uap">{{ilot.name}}</option>
-                </select>
-              </div>
+                  <label class="ui-grid-col-4 control-label-dialog">UAP</label>
+                  <select class="form-control" name="uap"  required [(ngModel)]="currentUap" (click)="getCurrentUap();" (change)="getAtelierByParent();" #uap >
+                    <option *ngFor="let uap of uaps" [ngValue]="uap">{{uap.name}}</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                    <label class="ui-grid-col-4 control-label-dialog">Atelier</label>
+                    <select class="form-control" name="atelier"  required [(ngModel)]="currentAtelier" (change)="getIlotByParent();" #atelier>
+                      <option *ngFor="let atelier of ateliers" [ngValue]="atelier">{{atelier.name}}</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label class="ui-grid-col-4 control-label-dialog">ILOT</label>
+         
+                    <select class="form-control" name="unite" required [(ngModel)]="currentIlot" #ilot>
+                      <option *ngFor="let ilot of ilots" [ngValue]="uap">{{ilot.name}}</option>
+                    </select>
+                  </div>
+              </div></div>
+
+              
+             
               <div class="form-group">
                 <div class="box-shadow-border"></div>
               </div>
               <div class="form-group">
                 <div class="row pull-right" style="margin-right: 10px;">
-                  <button type="submit" class="btn btn-success btn-with-icon" [disabled]="editForm.form.invalid || isSaving " data-toggle="tooltip"
+                  <button type="submit" (click)="saveOperator(item);" class="btn btn-success btn-with-icon" [disabled]="editForm.form.invalid || isSaving " data-toggle="tooltip"
                     title="{{'action.save' | translate}}">
                   <i class="ion-android-checkmark-circle"></i>{{'action.save' | translate }}</button>
                   <button type="button" style="margin-left:15px;" [routerLink]="['..']" class="btn btn-warning btn-with-icon" data-toggle="tooltip"
@@ -109,7 +115,7 @@
                 <button type="button" class="btn btn-danger btn-icon"  *ngIf="item[col.field]" data-toggle="tooltip"
                   [title]="'action.disable' | translate" (click)="confirmDelete(item)"><i class="ion-trash-b"></i></button>
                 <button type="button" class="btn btn-success btn-icon"  *ngIf="! item[col.field]" data-toggle="tooltip"
-                  [title]="'action.enable' | translate" (click)="changeUserStatus(item)"><i class="ion-checkmark"></i></button>
+                  [title]="'action.enable' | translate" ><i class="ion-checkmark"></i></button>
               </div>
             </ng-template>
           </p-column>

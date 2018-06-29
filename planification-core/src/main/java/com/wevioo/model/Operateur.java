@@ -14,6 +14,10 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.NotEmpty;
 
+import lombok.Getter;
+import lombok.Setter;
+@Getter
+@Setter
 @Entity
 @Table(name = "operateur")
 public class Operateur implements Serializable {
@@ -37,7 +41,12 @@ public class Operateur implements Serializable {
 	@Column(length = 100)
 	@Size(min = 5, max = 100, message = "{error.operateur.lastname.max}")
 	private String lastname;
-
+	
+	@NotNull(message = "{error.operateur.email.null}")
+	@NotEmpty(message = "{error.operateur.email.empty}")
+	@Column(length = 50, name = "email")
+	@Size(min = 2, max = 50, message = "{error.operateur.firstname.max}")
+	private String email;
 	@ManyToOne
 	@JoinColumn(name = "name_unite", nullable = false)
 	private Unite unite;

@@ -30,6 +30,8 @@ export class OperatorManagementComponent implements OnInit {
   translate: any;
   unites: Unit[];
   uaps: Unit[];
+  ilots: Unit[];
+  ateliers: Unit[];
 
 
   constructor(private operatorService: OperatorManagementService,private uniteService: UnitManagementService, private router: Router,
@@ -52,8 +54,13 @@ export class OperatorManagementComponent implements OnInit {
       error => console.log(error),
       () => console.log('Get all Items complete'));
   }
-  private getByParent(): void {
-    this.uniteService.getByParent(this.currentUap).subscribe((data: Unit[]) => { this.unites = data; console.log(data); },
+  private getAtelierByParent(): void {
+    this.uniteService.getByParent(this.currentUap).subscribe((data: Unit[]) => { this.ateliers = data; console.log(data); },
+      error => console.log(error),
+            () => console.log('Get all parents complete'));
+  }
+  private getIlotByParent(): void {
+    this.uniteService.getByParent(this.currentAtelier).subscribe((data: Unit[]) => { this.ilots = data; console.log(data); },
       error => console.log(error),
             () => console.log('Get all parents complete'));
   }
@@ -67,12 +74,12 @@ export class OperatorManagementComponent implements OnInit {
    * function init
    */
 
-  public saveUser() {
+  public saveOperator(item) {
     this.isSaving = false;
     this.msgs = [];
     this.msgSuccess = [];
-
-    if (this.currentOperator.matricule != null) {
+this.currentOperator=item;
+  //  if (this.currentOperator.matricule != null) {
      
       this.operatorService.add(this.currentOperator).subscribe(response => {
         this.isSaving = true;
@@ -89,16 +96,22 @@ export class OperatorManagementComponent implements OnInit {
             this.msgs.push({ severity: 'error', summary: 'Error Message', detail: 'Validation failed' });
           }
         });
-    }
+        this.getAllOperators();
+        this.closeDialog();
+
+    //}
   }
 
   ngOnInit() {
     this.getAllOperators();       
     this.getUap();
-    this.getByParent
+   
   }
   
   public showDialog() {
     this.display = true;
+  }
+  public closeDialog() {
+    this.display = false;
   }
 }

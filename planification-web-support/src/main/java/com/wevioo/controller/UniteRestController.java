@@ -57,21 +57,15 @@ public class UniteRestController {
 	}
 	@RequestMapping(value = "/parents", method = RequestMethod.POST)
 	public @ResponseBody List<UniteDto> findUniteByParent(@RequestBody Unite parent) throws Exception {
-		if(parent.getType()==TypeUnite.ATELIER) {
+		//if(parent.getType()==TypeUnite.ATELIER) {
 		List<Unite> unites = uniteService.findUniteByParent(parent);
 		
 		Type listType = new TypeToken<List<UniteDto>>() {}.getType();
 		
-		return modelMapper.map(unites, listType);
-	}
-		if(parent.getType()==TypeUnite.ILOT) {
-			List<Unite> unites = uniteService.findUniteByParent(parent);
-			
-			Type listType = new TypeToken<List<UniteDto>>() {}.getType();
-			
+	
 			return modelMapper.map(unites, listType);
-		}
-		return null;}
+		
+			}
 
 	
 

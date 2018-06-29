@@ -29,7 +29,7 @@ export class OperatorManagementService {
     /**
      * Define the Path of API Rest Controller For Operator service
      */
-    this.actionUrl = configuration.serverWithApiUrl + '/operateurs';
+    this.actionUrl = configuration.serverWithApiUrl + 'operateurs';
   }
 
   /**
@@ -95,8 +95,8 @@ export class OperatorManagementService {
    * @param id
    *        the id of Operator to delete
    */
-  public delete = (id: number): Observable<Response> => {
-    return this.http.delete(this.actionUrl + id, this.options())
+  public delete = (matricule: String): Observable<Response> => {
+    return this.http.delete(this.actionUrl + matricule, this.options())
     .catch((response: Response) => this.errorHandler(response));
   }
 

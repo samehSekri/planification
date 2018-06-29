@@ -3,9 +3,12 @@ package com.wevioo.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -51,13 +54,17 @@ public class OperateurRestController {
 		Operateur operateur = operateurService.findOperateurByFirstname(firstname);
 		return operateur;
 	}
+	@RequestMapping(method = RequestMethod.POST)
+	public @ResponseBody Object createOperateur(@RequestBody Operateur operateurDto, HttpServletRequest request) throws Exception {	//if (operateur.getMatricule() != null) {
+			
+		
+			
+		
 
-	public MessageUtil getMessageUtil() {
-		return messageUtil;
-	}
-
-	public void setMessageUtil(MessageUtil messageUtil) {
-		this.messageUtil = messageUtil;
+			operateurDto = operateurService.createOperateur(operateurDto);
+		
+//	}
+		return operateurDto;
 	}
 
 }

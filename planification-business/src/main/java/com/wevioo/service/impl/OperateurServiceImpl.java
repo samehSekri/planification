@@ -77,9 +77,20 @@ public class OperateurServiceImpl implements OperateurService {
 
 	@Transactional
 	@Override
-	public Operateur createOperateur(Operateur Operateur) {
-		// TODO Auto-generated method stub
-		return null;
+	public Operateur createOperateur(Operateur operateur) {
+
+		if (operateur != null) {
+
+			operateur.setMatricule(operateur.getMatricule());
+			operateur.setFirstname(operateur.getFirstname());
+			operateur.setLastname(operateur.getLastname());
+			operateur.setEmail(operateur.getEmail());
+
+			operateur.setUnite(operateur.getUnite());
+
+			operateur = operateurRepository.saveAndFlush(operateur);
+		}
+		return operateur;
 	}
 
 }
