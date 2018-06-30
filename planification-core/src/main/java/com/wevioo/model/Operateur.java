@@ -39,7 +39,7 @@ public class Operateur implements Serializable {
 	@NotNull(message = "{error.operateur.lastname.null}")
 	@NotEmpty(message = "{error.operateur.lastname.empty}")
 	@Column(length = 100)
-	@Size(min = 5, max = 100, message = "{error.operateur.lastname.max}")
+	@Size(min = 2, max = 100, message = "{error.operateur.lastname.max}")
 	private String lastname;
 	
 	@NotNull(message = "{error.operateur.email.null}")
@@ -76,48 +76,12 @@ public class Operateur implements Serializable {
 		this.polyvalences = polyvalences;
 	}
 
-	public Unite getUnite() {
-		return unite;
-	}
-
-	public void setUnite(Unite unite) {
-		this.unite = unite;
-	}
+	
 
 	public Operateur() {
 		super();
 	}
 
-	public String getMatricule() {
-		return matricule;
-	}
-
-	public void setMatricule(String matricule) {
-		this.matricule = matricule;
-	}
-
-	public String getFirstname() {
-		return firstname;
-	}
-
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
-	}
-
-	public String getLastname() {
-		return lastname;
-	}
-
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
-	}
-
-	public List<Polyvalence> getPolyvalences() {
-		return polyvalences;
-	}
-
-	public void setPolyvalences(List<Polyvalence> polyvalences) {
-		this.polyvalences = polyvalences;
-	}
+	
 
 }

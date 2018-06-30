@@ -27,7 +27,7 @@ export class OperatorManagementComponent implements OnInit {
   public msgSuccess: Message[] = [];
   public currentOperator: Operator;
   msgs: any[];
-  translate: any;
+ 
   unites: Unit[];
   uaps: Unit[];
   ilots: Unit[];
@@ -35,7 +35,7 @@ export class OperatorManagementComponent implements OnInit {
 
 
   constructor(private operatorService: OperatorManagementService,private uniteService: UnitManagementService, private router: Router,
-    private confirmationService: ConfirmationService,
+    private confirmationService: ConfirmationService, private translate: TranslateService,
   ) { 
      
   }
@@ -74,11 +74,11 @@ export class OperatorManagementComponent implements OnInit {
    * function init
    */
 
-  public saveOperator(item) {
+  public saveOperator() {
     this.isSaving = false;
     this.msgs = [];
     this.msgSuccess = [];
-this.currentOperator=item;
+console.log(this.currentOperator);
   //  if (this.currentOperator.matricule != null) {
      
       this.operatorService.add(this.currentOperator).subscribe(response => {
@@ -101,10 +101,35 @@ this.currentOperator=item;
 
     //}
   }
+ /**
+   * Delete a operator
+   * @param item : the current operator to delete
+   * @type: Operator
+   */
+  public confirmDelete(item: Operator, dataTable: any) {
+    this.confirmationService.confirm({
+      message: this.translate.instant('message.confirmDeleteAction'),
+      header: this.translate.instant('message.confirmDeleteDialogTitle'),
+      icon: 'fa fa-trash',
+      accept: () => {
+       console.log(item.matricule);
+       
+        
+      this.operatorService.delete(item.matricule).subscribe(response => {
+        this.msgSuccess.push({ severity: 'success', summary: this.translate.instant('message.delete.successMsgTitle'), detail: this.translate.instant("message.save.successMsg") });
+      
+         this.getAllOperators();
+      },
+        );
+      
+      }
+    });
 
+  }
   ngOnInit() {
     this.getAllOperators();       
     this.getUap();
+    this.currentOperator = new Operator(null, "", "", "",null);
    
   }
   

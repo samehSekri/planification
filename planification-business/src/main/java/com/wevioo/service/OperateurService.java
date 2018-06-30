@@ -50,4 +50,13 @@ public interface OperateurService {
 	 * @return
 	 */
 	Operateur createOperateur(Operateur Operateur);
+	/**
+	 * 
+	 * @param operateur
+	 * @return
+	 */
+
+
+
+	void deleteOperateur(String matricule);
 }

@@ -69,6 +69,16 @@ public class OperateurServiceImpl implements OperateurService {
 		return operateurRepository.saveAndFlush(operateur);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	@Transactional
+	public void deleteOperateur(String matricule) {
+		 operateurRepository.delete(matricule);;
+		
+	}
+	
 	// @Override
 	// public Operateur updateOperateur(Operateur operateur) {
 	// // TODO Auto-generated method stub

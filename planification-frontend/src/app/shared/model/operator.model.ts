@@ -13,7 +13,7 @@ export class Operator {
    * @param permissions
    */
   constructor(
-  public matricule: Number,
+  public matricule: String,
   public firstname: string,
   public lastname: string,
   public email: string,

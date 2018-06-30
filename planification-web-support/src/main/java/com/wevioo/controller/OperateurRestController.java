@@ -17,13 +17,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.wevioo.dto.OperateurDto;
 import com.wevioo.model.Operateur;
 import com.wevioo.service.OperateurService;
-import com.wevioo.utility.MessageUtil;
 
 @RestController
 @RequestMapping("/api/operateurs")
 public class OperateurRestController {
-	@Autowired
-	private MessageUtil messageUtil;
+
 	@Autowired
 	private OperateurService operateurService;
 
@@ -54,17 +52,22 @@ public class OperateurRestController {
 		Operateur operateur = operateurService.findOperateurByFirstname(firstname);
 		return operateur;
 	}
-	@RequestMapping(method = RequestMethod.POST)
-	public @ResponseBody Object createOperateur(@RequestBody Operateur operateurDto, HttpServletRequest request) throws Exception {	//if (operateur.getMatricule() != null) {
-			
-		
-			
-		
 
-			operateurDto = operateurService.createOperateur(operateurDto);
-		
-//	}
-		return operateurDto;
+	@RequestMapping(method = RequestMethod.POST)
+	public @ResponseBody Object createOperateur(@RequestBody Operateur operateur, HttpServletRequest request)
+			throws Exception { // if (operateur.getMatricule() != null) {
+
+		operateur = operateurService.createOperateur(operateur);
+
+		// }
+		return operateur;
+	}
+
+	@RequestMapping(value = "{matricule}",method = RequestMethod.DELETE)
+	public @ResponseBody void deleteOperateur(@PathVariable String matricule, HttpServletRequest request)
+			throws Exception {
+		operateurService.deleteOperateur(matricule);
+
 	}
 
 }

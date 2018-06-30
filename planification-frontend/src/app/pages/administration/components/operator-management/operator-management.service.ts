@@ -96,7 +96,7 @@ export class OperatorManagementService {
    *        the id of Operator to delete
    */
   public delete = (matricule: String): Observable<Response> => {
-    return this.http.delete(this.actionUrl + matricule, this.options())
+    return this.http.delete(this.actionUrl+"/"+ matricule, this.options())
     .catch((response: Response) => this.errorHandler(response));
   }
 
