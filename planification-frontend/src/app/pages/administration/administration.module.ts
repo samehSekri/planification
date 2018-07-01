@@ -31,6 +31,7 @@ import { SplitButtonModule } from 'primeng/components/splitbutton/splitbutton';
 import { MenubarModule } from 'primeng/components/menubar/menubar';
 
 import { ListboxModule } from 'primeng/components/listbox/listbox';
+import { ArticleManagementComponentComponent } from './components/article-management-component/article-management-component.component';
 
 @NgModule({
   imports: [
@@ -71,6 +72,7 @@ import { ListboxModule } from 'primeng/components/listbox/listbox';
     UnitManagementComponent,
     OperatorManagementComponent,
     UnitFormComponent,
+    ArticleManagementComponentComponent,
    
   ],
   providers: [

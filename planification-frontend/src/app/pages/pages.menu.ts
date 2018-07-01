@@ -65,6 +65,16 @@ export const PAGES_MENU = [
               }
             }
             
+          },
+          {
+            path: 'article-management',
+            data: {
+              roles: ['ROLE_ADMIN'],
+              menu: {
+                title: 'general.menu.articleManagement',
+              }
+            }
+            
           }
         ]
       }

@@ -118,6 +118,18 @@
 			"atelier":"Atelier",
 			"ilot":"ILOT"
 		},
+		"articleManagement": {
+			"newoperator": "Nouvel article",
+			"reference": "Réference",
+			"lastname": "Nom",
+			"email": "Email",
+			"matricule": "Matricule",
+			"unite": "Unité",
+			"userDetails": "Détails utilisateur",
+			"uap":"UAP",
+			"atelier":"Atelier",
+			"ilot":"ILOT"
+		},
 		"settings": {
 			"application": "Paramètres de l'application",
 			"manageProfile": "Mon profil"

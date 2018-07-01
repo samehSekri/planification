@@ -64,12 +64,7 @@ export class OperatorManagementComponent implements OnInit {
       error => console.log(error),
             () => console.log('Get all parents complete'));
   }
-  private getCurrentUap():void{
-    console.log(this.currentUap)
-
-
-  }
-
+ 
   /**
    * function init
    */
@@ -100,6 +95,15 @@ console.log(this.currentOperator);
         this.closeDialog();
 
     //}
+  }
+  compareFn(c1: Unit, c2: Unit): boolean {
+    return c1 && c2 ? c1.name === c2.name : c1 === c2;
+   }
+  editOperator(item){
+console.log(item);
+
+    this.showDialog();
+    this.currentOperator=item;
   }
  /**
    * Delete a operator
@@ -135,6 +139,7 @@ console.log(this.currentOperator);
   
   public showDialog() {
     this.display = true;
+   
   }
   public closeDialog() {
     this.display = false;
