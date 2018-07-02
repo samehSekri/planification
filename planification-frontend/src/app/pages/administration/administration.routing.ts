@@ -49,8 +49,14 @@ const routes: Routes = [
         data: {
           pageTitle: 'general.menu.operatorManagement',
         }
+      },
+      {
+        path: 'article-management',
+        component: OperatorManagementComponent,
+        data: {
+          pageTitle: 'general.menu.articleManagement',
+        }
       }
-      
      
       
     ]

@@ -119,16 +119,25 @@
 			"ilot":"ILOT"
 		},
 		"articleManagement": {
-			"newoperator": "Nouvel article",
+			"newarticle": "Nouvel article",
 			"reference": "Réference",
-			"lastname": "Nom",
-			"email": "Email",
+			"quantite": "Quantité",
+			"resteAproduire": "reste à produire",
 			"matricule": "Matricule",
-			"unite": "Unité",
-			"userDetails": "Détails utilisateur",
-			"uap":"UAP",
-			"atelier":"Atelier",
-			"ilot":"ILOT"
+			"tempsStandard":"Temps Standard", 
+"quantiteRestante":"Quantite Restante",
+
+"integrationDate":"Date Integration",
+"engagementSemaine": "Engagement Semaine", 
+"integrationFileName":"Nom fichier d'integration",
+"cadence":"Cadence",
+"efficience":"Efficience",
+"etat":"Etat", 
+"unite": "Unité",
+"userDetails": "Détails utilisateur",
+"uap":"UAP",
+"atelier":"Atelier",
+"ilot":"ILOT"
 		},
 		"settings": {
 			"application": "Paramètres de l'application",
@@ -148,7 +157,8 @@
 			"settings": "Paramètres",
 			"profile": "Profil",
 			"signout": "Se déconnecter",
-			"operatorManagement":"Gestion des opérateurs"
+			"operatorManagement":"Gestion des opérateurs",
+			"articleManagement":"Gestion des articles"
 			
 		}
 	}
