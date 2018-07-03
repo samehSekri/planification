@@ -57,13 +57,6 @@ public class Operateur implements Serializable {
 	@OneToMany(mappedBy = "operateur")
 	private List<Polyvalence> polyvalences;
 
-	public List<Conge> getConges() {
-		return conges;
-	}
-
-	public void setConges(List<Conge> conges) {
-		this.conges = conges;
-	}
 
 	public Operateur(String matricule, String firstname, String lastname, Unite unite, List<Conge> conges,
 			List<Polyvalence> polyvalences) {

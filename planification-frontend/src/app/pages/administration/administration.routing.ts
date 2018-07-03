@@ -7,6 +7,7 @@ import { RoleGuard } from "app/authentication/guard";
 import { HabilitationManagementComponent } from 'app/pages/administration/components/habilitation-management/habilitation-management.component';
 import { UnitManagementComponent } from 'app/pages/administration/components/unit-management/unit-management.component';
 import { OperatorManagementComponent } from 'app/pages/administration/components/operator-management/operator-management.component';
+import { ArticleManagementComponent } from 'app/pages/administration/components/article-management/article-management.component';
 
 
 // noinspection TypeScriptValidateTypes
@@ -52,7 +53,7 @@ const routes: Routes = [
       },
       {
         path: 'article-management',
-        component: OperatorManagementComponent,
+        component: ArticleManagementComponent,
         data: {
           pageTitle: 'general.menu.articleManagement',
         }

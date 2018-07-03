@@ -26,24 +26,25 @@ import lombok.Setter;
 @Table(name = "article")
 public class Article implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5547091821298834739L;
 	@Id
 	@NotNull(message = "{error.article.reference.null}")
 	@NotEmpty(message = "{error.article.reference.empty}")
 	@Column(length = 50, name = "reference")
 	@Size(min = 2, max = 50, message = "{error.article.reference.max}")
 	private String reference;
+	
 	@Column(name = "reste_produire")
 	private Integer resteProduire;
 
 	@Column(name = "temps_standard")
 	private Double tempsStandard;
 	
-	private Integer quantiteRestante;
 
-	@NotNull(message = "{error.article.quantite.null}")
-	@NotEmpty(message = "{error.article.quantite.empty}")
-	@Column(length = 50, name = "quantite")
+	@Column(name = "quantite")
 	private Integer quantite;
 	
 	@Column(name="date_integration", unique=false, nullable = true)
@@ -57,21 +58,15 @@ public class Article implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "user_integration")
 	private User integrationUser;
-	@NotNull(message = "{error.article.cadence.null}")
-	@NotEmpty(message = "{error.article.cadence.empty}")
 	@Column(name = "cadence")
 	private Integer cadence;
 
-	@NotNull(message = "{error.article.efficience.null}")
-	@NotEmpty(message = "{error.article.efficience.empty}")
 	@Column(name = "efficience")
 	private Double efficience;
 
-	@NotNull(message = "{error.article.etat.null}")
-	@NotEmpty(message = "{error.article.etat.empty}")
 	@Column(name = "etat")
 	private boolean etat;
-	@OneToMany(mappedBy = "operateur")
+	@OneToMany(mappedBy = "article")
 	private List<Polyvalence> polyvalences;
 
 	@ManyToOne
@@ -84,7 +79,7 @@ public class Article implements Serializable {
 	}
 
 
-	public Article(String reference, Integer resteProduire, Double tempsStandard, Integer quantiteRestante,
+	public Article(String reference, Integer resteProduire, Double tempsStandard, 
 			Integer quantite, Date integrationDate, Integer engagementSemaine, String integrationFileName,
 			User integrationUser, Integer cadence, Double efficience, boolean etat, List<Polyvalence> polyvalences,
 			Unite unite) {
@@ -92,7 +87,6 @@ public class Article implements Serializable {
 		this.reference = reference;
 		this.resteProduire = resteProduire;
 		this.tempsStandard = tempsStandard;
-		this.quantiteRestante = quantiteRestante;
 		this.quantite = quantite;
 		this.integrationDate = integrationDate;
 		this.engagementSemaine = engagementSemaine;

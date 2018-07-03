@@ -41,7 +41,8 @@ public class Unite {
 	@JsonIgnore
 	@OneToMany(mappedBy = "unite", fetch = FetchType.LAZY)
 	private List<Operateur> operateurs;
-
+	
+	@JsonIgnore
 	@OneToMany(mappedBy = "unite", fetch = FetchType.LAZY)
 	private List<Article> articles;
 
@@ -50,7 +51,6 @@ public class Unite {
 			@JoinColumn(name = "name", referencedColumnName = "name") }, inverseJoinColumns = {
 					@JoinColumn(name = "idHoraire", referencedColumnName = "idHoraire") })
 	private List<Horaire> horaires;
-
 	
 
 	@OneToMany(mappedBy = "unite", fetch = FetchType.LAZY)
