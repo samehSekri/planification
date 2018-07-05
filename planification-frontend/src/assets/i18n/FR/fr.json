@@ -27,6 +27,48 @@
 		"lastname": {
 			"isrequired": "Le nom utilisateur doit contenir au moins 2 caractères."
 		},
+		"reference": {
+			"isrequired": "La reference doit contenir au moins 5 caractères",
+			"isinvalid": "La reference  est invalide."
+	},
+		"quantite": {
+			"isrequired": "veuillez saisir la quantite",
+			"isinvalid": "La quantite est invalide."
+
+		},
+		"resteProduire": {
+			"isrequired": "veuillez saisir le reste à produire",
+			"isinvalid": "La valeur saisie est invalide."
+
+		},
+		
+		"tempsStandard": {
+			"isrequired": "veuillez saisir le temps satandard",
+			"isinvalid": "La valeur saisie est invalide."
+
+		},
+		"integrationDate": {
+			"isrequired": "veuillez saisir la date d'intégration",
+			"isinvalid": "La date saisie est invalide."
+
+		},
+		"integrationFileName": {
+			"isrequired": "veuillez saisir le nom du fichier d'intégration",
+			"isinvalid": "Le nom saisi est invalide."
+
+		},
+
+		"cadence": {
+			"isrequired": "veuillez saisir la cadence",
+			"isinvalid": "La cadence saisie est invalide."
+
+		},
+		
+		"efficience": {
+			"isrequired": "veuillez saisir l'efficience",
+			"isinvalid": "L'efficience saisie est invalide."
+
+		},
 		"email": {
 			"isrequired": "L'adresse email doit contenir au moins 4 caractères",
 			"isinvalid": "L'adresse email est invalide.",

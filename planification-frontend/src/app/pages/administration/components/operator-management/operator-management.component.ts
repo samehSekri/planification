@@ -26,8 +26,7 @@ export class OperatorManagementComponent implements OnInit {
   public currentUnite: Unit;
   public msgSuccess: Message[] = [];
   public currentOperator: Operator;
-  msgs: any[];
- 
+  public msgs: Message[] = []; 
   unites: Unit[];
   uaps: Unit[];
   ilots: Unit[];

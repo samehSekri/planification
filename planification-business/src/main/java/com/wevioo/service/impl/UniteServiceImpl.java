@@ -65,7 +65,15 @@ public class UniteServiceImpl implements UniteService {
 	@Transactional
 	@Override
 	public Unite createUnite(Unite unite) {
-		return uniteRepository.saveAndFlush(unite);
+		
+		if (unite != null) {
+
+			unite.setName(unite.getName());
+			unite.setType(unite.getType());
+			unite.setParent(unite.getParent());
+			unite = uniteRepository.saveAndFlush(unite);
+		}
+		return unite;
 		
 	}
 
