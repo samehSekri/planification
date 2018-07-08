@@ -25,7 +25,7 @@ import { Unit } from '../../../../shared/model/unit.model';
 export class UnitManagementComponent implements OnInit {
    
     currentUap: Unit;
-
+public type:UniteTypeEnum;
     types: SelectItem[];
     modes: SelectItem[];
     public displayMenu: boolean = false;

@@ -2,51 +2,75 @@
 
 <p-dialog header="Ajout | translate" [(visible)]="display" [resizable]="false" [responsive]="true" [modal]="true" width="600">
   <div class="ui-grid ui-grid-responsive ui-fluid">
-      <form name="searchForm" role="form" novalidate   #editForm="ngForm">
+    <form name="searchForm" role="form" novalidate #editForm="ngForm">
 
       <div class="modal-body">
         <div class="ui-grid-ro">
-         <label class="ui-grid-col-4 control-label-dialog">Type</label>
+          <label class="ui-grid-col-4 control-label-dialog">Type</label>
           <div class="ui-grid-col-8">
-              <select  id="type" class="form-control form-control-dialog">
-                                          <option value="uap"> UAP</option>
-                                          <option value="atelier"> Atelier</option>
-                                          <option value="ilot"> Ilot</option>
-                                        </select></div>
+            <select id="type" name="type" class="form-control form-control-dialog" [(ngModel)]="type">
+              <option value="uap"> UAP</option>
+              <option value="atelier" (change)="getUap();"> Atelier</option>
+              <option value="ilot"> Ilot</option>
+            </select>
+          </div>
         </div>
-        <div class="ui-grid-ro">
-            <label class="ui-grid-col-4 control-label-dialog">UAP</label>
-            <select class="form-control" name="uap"  required [(ngModel)]="currentUap" *ngIf="type==atelier||type==ilot" (click)="getUap();
-            " (change)="getAtelierByParent();" #uap >
+
+
+        <div class="ui-grid-row" *ngIf="type=='atelier'||type=='ilot'">
+          <label class="ui-grid-col-4 control-label-dialog">UAP</label>
+          <div class="ui-grid-col-8">
+            <select id="uap" class="form-control form-control-dialog" [(ngModel)]="currentUap" [ngModelOptions]="{standalone: true}"
+              (click)="getUap();" (change)="getAtelierByParent();" #uap>
               <option *ngFor="let uap of uaps" [ngValue]="uap">{{uap.name}}</option>
             </select>
           </div>
-          <div class="ui-grid-ro">
-              <label class="ui-grid-col-4 control-label-dialog">UAP</label>
-          <input type="text" class="form-control" id="input03" name="uap" [(ngModel)]="currentUap" #uap="ngModel" placeholder="{{'general.articleManagement.uap' | translate }}" pInputText>
         </div>
-        <div class="ui-grid-row">
+        <div class="ui-grid-row" *ngIf="type=='uap'">
+            <label class="ui-grid-col-4 control-label-dialog">UAP</label>
+            <div class="ui-grid-col-8">
+                <input type="text" class="form-control" id="inputUap" name="uap" [(ngModel)]="currentUap" #uap="ngModel" required >
+            </div>
+          </div>
+        <div class="ui-grid-row" *ngIf="type=='ilot'">
           <label class="ui-grid-col-4 control-label-dialog">Atelier</label>
           <div class="ui-grid-col-8">
-            <select id="atelier" class="form-control form-control-dialog">
-                      <option > Atelier</option>
-                    </select></div>
+            <select id="atelier" class="form-control form-control-dialog" [(ngModel)]="currentAtelier" [ngModelOptions]="{standalone: true}"
+              (click)="getIlotByParent();" (change)="getIlotByParent();" #atelier>
+              <option *ngFor="let atelier of ateliers" [ngValue]="atelier">{{atelier.name}}</option>
+            </select>
+          </div>
         </div>
-        <div class="ui-grid-row">
-          <label class="ui-grid-col-4 control-label-dialog">Ilot</label>
-          <div class="ui-grid-col-8">
-            <select id="ilot" class="form-control form-control-dialog">
-                              <option > Ilot</option>
-                            </select></div>
-        </div>
-
+        <div class="ui-grid-row" *ngIf="type=='ilot'">
+            <label class="ui-grid-col-4 control-label-dialog">Atelier</label>
+            <div class="ui-grid-col-8">
+                <input type="text" class="form-control" id="inputAtelier" name="atelier" [(ngModel)]="currentelierAt" #atelier="ngModel" required >
+            </div>
+          </div>
+       
+        <div class="ui-grid-row" *ngIf="type=='atelier'">
+            <label class="ui-grid-col-4 control-label-dialog">Atelier</label>
+            <div class="ui-grid-col-8">
+                <input type="text" class="form-control" id="inputAtelier" name="atelier" [(ngModel)]="currentAtelier" #atelier="ngModel" required >
+            </div>
+          </div>
+        
+        <div class="ui-grid-row" *ngIf="type=='ilot'">
+            <label class="ui-grid-col-4 control-label-dialog">Ilot</label>
+            <div class="ui-grid-col-8">
+                <input type="text" class="form-control" id="inputIlot" name="ilot" [(ngModel)]="currentIlot" #ilot="ngModel" required >
+            </div>
+          </div>
+        
       </div>
       <p-footer>
         <div class="ui-grid-row">
           <div class="ui-grid-col-4">
-            <button type="submit" class="btn btn-success">Ajouter une unité</button></div>
+            <button type="submit" class="btn btn-success">Ajouter une unité</button>
+          </div>
           <div class="ui-grid-col-5">
-            <button type="submit" class="btn btn-primary">Rechercher</button></div>
+            <button type="submit" class="btn btn-primary">Rechercher</button>
+          </div>
         </div>
       </p-footer>
     </form>
@@ -57,8 +81,8 @@
     <div class="ui-helper-clearfix">
       <button type="button" class="btn btn-success btn-with-icon" style="float:left" data-toggle="tooltip" title="{{'action.new' | translate}}"
         (click)="showDialog()">
-      <i class="ion-person-add"></i>{{'action.new' | translate}}
-    </button>
+        <i class="ion-person-add"></i>{{'action.new' | translate}}
+      </button>
     </div>
   </p-header>
 
