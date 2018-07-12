@@ -3,7 +3,7 @@
 <form name="editForm" role="form" novalidate (ngSubmit)="saveUser()" #editForm="ngForm">
   <div class="form-group">
     <label for="input06" translate="general.userDetails.profil"></label>
-    <select class="form-control" name="roleName" required [(ngModel)]="currentUser.roleName" #role>
+    <select class="form-control user-form-select" name="roleName" required [(ngModel)]="currentUser.roleName" #role>
       <option *ngFor="let role of roleEnum" [ngValue]="role.value">{{role.label}}</option>
     </select>
     <div [hidden]="!isEmptyRoleChecked()" class="alert alert-danger text-error" translate="message.role.isrequired">

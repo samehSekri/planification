@@ -23,9 +23,9 @@ import { Unit } from '../../../../shared/model/unit.model';
 })
 
 export class UnitManagementComponent implements OnInit {
-   
+
     currentUap: Unit;
-public type:UniteTypeEnum;
+    public type: UniteTypeEnum;
     types: SelectItem[];
     modes: SelectItem[];
     public displayMenu: boolean = false;
@@ -48,60 +48,81 @@ public type:UniteTypeEnum;
     ateliers: Unit[];
     currentUnit: Unit;
     ilots: Unit[];
+    item: Unit;
+    displayHoraire: boolean=false;
     constructor(private uniteService: UnitManagementService, private router: Router,
         private confirmationService: ConfirmationService, private translate: TranslateService,
-      ) {
-     
-    }
-    private getUap(): void {
+    ) {
 
-        this.uniteService.getByType(UniteTypeEnum.UAP).subscribe((data: Unit[]) => { this.uaps = data; console.log(data); },
-          error => console.log(error),
-          () => console.log('Get all Items complete'));
-      }
-      private getAtelierByParent(): void {
+    }
+    public getUap(): void {
+
+        this.uniteService.getByType(UniteTypeEnum.UAP).subscribe((data: Unit[]) => {
+            this.uaps = data;
+            this.currentUap = data[0];
+            this.getAtelierByParent(this.currentUap);
+            console.log(data);
+        },
+            error => console.log(error),
+            () => console.log('Get all Items complete'));
+    }
+
+    public getAtelierByParent(uap: Unit): void {
+        this.currentUap = uap;
+
         this.uniteService.getByParent(this.currentUap).subscribe((data: Unit[]) => { this.ateliers = data; console.log(data); },
-          error => console.log(error),
-                () => console.log('Get all parents complete'));
-      }
-      private getIlotByParent(): void {
+            error => console.log(error),
+            () => console.log('Get all parents complete'));
+    }
+
+    public getIlotByParent(): void {
         this.uniteService.getByParent(this.currentAtelier).subscribe((data: Unit[]) => { this.ilots = data; console.log(data); },
-          error => console.log(error),
-                () => console.log('Get all parents complete'));
-      }
-     
-      /**
-       * function init
-       */
-    
-      public saveUnit() {
+            error => console.log(error),
+            () => console.log('Get all parents complete'));
+    }
+
+    /**
+     * function init
+     */
+
+    public saveUnit() {
         this.isSaving = false;
         this.msgs = [];
         this.msgSuccess = [];
-    console.log(this.currentUnit);
-         
-          this.uniteService.add(this.currentUnit).subscribe(response => {
+
+        if (this.currentUnit) {
+            if (this.currentUnit.type === UniteTypeEnum.ATELIER) {
+                this.currentUnit.parent = this.currentUap;
+            } else if (this.currentUnit.type === UniteTypeEnum.ILOT) {
+                this.currentUnit.parent = this.currentAtelier;
+            } else {
+
+                this.currentUnit = this.currentUap;
+            }
+        }
+
+        this.uniteService.add(this.currentUnit).subscribe(response => {
             this.isSaving = true;
             this.msgSuccess.push({ severity: 'success', summary: this.translate.instant('message.save.successMsgTitle'), detail: this.translate.instant("message.save.successMsg") });
-          
-            //go to the next Operator
-          this.currentUnit = new Unit("",null ,null);
-          },
+
+            this.display = false;
+        },
             error => {
-              var bodyMsg = JSON.parse(error._body);
-              if (error._body && bodyMsg) {
-                this.msgs.push({ severity: 'error', summary: '', detail: bodyMsg.errors[0] });
-              } else {
-                this.msgs.push({ severity: 'error', summary: 'Error Message', detail: 'Validation failed' });
-              }
+                var bodyMsg = JSON.parse(error._body);
+                if (error._body && bodyMsg) {
+                    this.msgs.push({ severity: 'error', summary: '', detail: bodyMsg.errors[0] });
+                } else {
+                    this.msgs.push({ severity: 'error', summary: 'Error Message', detail: 'Validation failed' });
+                }
             });
-            
-    
+
+
         //}
-      }
+    }
 
     ngOnInit() {
 
+        this.currentUnit = new Unit("", null, null);
         this.data1 = [{
             label: 'Zodiac',
             type: 'person',
@@ -192,10 +213,11 @@ public type:UniteTypeEnum;
                     this.isEditMode = false;
                 }
             }
-          
+
         ];
 
     }
+
     onEdit(event) {
 
         console.log(event);
@@ -211,7 +233,7 @@ public type:UniteTypeEnum;
         //this.displayMenu = true;
         //console.log(event.node.type);
         this.setMenuItems(event.node);
-      
+
 
 
 
@@ -220,12 +242,20 @@ public type:UniteTypeEnum;
     }
     showDialog() {
         this.display = true;
+        this.getUap();
+
+
+    }
+    showDialogHorraire() {
+        this.displayHoraire = true;
+        
+
 
     }
 
     onNodeUnSelect(event) {
         this.currentNode = event.node;
-       // this.displayMenu = true;
+        // this.displayMenu = true;
         //this.selectedNode = event.node;
         //console.log(event.node.type);
         //this.setMenuItems(event.node);
@@ -238,7 +268,11 @@ public type:UniteTypeEnum;
         var strLabelNew: string;
         var strLabelEdit: string;
 
+    }
 
+    public changeAtelier(atelier: Unit) {
+        console.log(atelier);
 
+        this.currentAtelier = atelier;
     }
 }

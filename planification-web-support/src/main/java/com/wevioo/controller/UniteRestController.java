@@ -37,52 +37,50 @@ public class UniteRestController {
 	@RequestMapping(method = RequestMethod.GET)
 	public @ResponseBody List<UniteDto> findAllUnite() throws Exception {
 		List<Unite> unites = uniteService.findAllUnite();
-		
-		//Cast List<Unite> to List<UniteDto> without need to use for loop  
-		Type listType = new TypeToken<List<UniteDto>>() {}.getType();
-				
+
+		// Cast List<Unite> to List<UniteDto> without need to use for loop
+		Type listType = new TypeToken<List<UniteDto>>() {
+		}.getType();
+
 		return modelMapper.map(unites, listType);
 	}
 
 	@RequestMapping(value = "{type}", method = RequestMethod.GET)
 	public @ResponseBody List<UniteDto> findUniteByType(@PathVariable TypeUnite type) throws Exception {
 		List<Unite> unites = uniteService.findUniteByType(type);
-		Type listType = new TypeToken<List<UniteDto>>() {}.getType();
-		
+		Type listType = new TypeToken<List<UniteDto>>() {
+		}.getType();
+
 		return modelMapper.map(unites, listType);
 	}
+
 	@RequestMapping(value = "/unite/{name}", method = RequestMethod.GET)
 	public @ResponseBody Unite findUniteByName(@PathVariable String name) throws Exception {
 		return uniteService.findUniteByName(name);
 	}
+
 	@RequestMapping(value = "/parents", method = RequestMethod.POST)
 	public @ResponseBody List<UniteDto> findUniteByParent(@RequestBody Unite parent) throws Exception {
-		//if(parent.getType()==TypeUnite.ATELIER) {
+		// if(parent.getType()==TypeUnite.ATELIER) {
 		List<Unite> unites = uniteService.findUniteByParent(parent);
-		
-		Type listType = new TypeToken<List<UniteDto>>() {}.getType();
-		
-	
-			return modelMapper.map(unites, listType);
-		
-			}
 
-	
+		Type listType = new TypeToken<List<UniteDto>>() {
+		}.getType();
+
+		return modelMapper.map(unites, listType);
+
+	}
 
 	@RequestMapping(method = RequestMethod.POST)
 	public @ResponseBody Object createUnite(@RequestBody Unite unite, HttpServletRequest request) throws Exception {
-		if (unite.getName() != null) {
-			
-		} else if (uniteService.findUniteByName(unite.getName().toLowerCase()) != null) {
-			
-		
+		Unite uniteExist = uniteService.findUniteByName(unite.getName().toLowerCase());
 
-		 unite = uniteService.createUnite(unite);
-		
-	}
-		return unite;
+		if (uniteExist != null) {
+			// Nom unite existe déjà renvoyer erreur
+			return null;
+		} else {
+			return uniteService.createUnite(unite);
+		}
 	}
 
-	
 }
-

@@ -19,6 +19,10 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+import lombok.Getter;
+import lombok.Setter;
+@Getter
+@Setter
 @Entity
 @Table(name = "pause")
 public class Pause implements Serializable {
@@ -37,12 +41,12 @@ public class Pause implements Serializable {
 
 	@NotNull(message = "{error.pause.heure_debut.null}")
 	@NotEmpty(message = "{error.pause.heure_debut.empty}")
-	@Column(length = 50, name = "heure_debut")
+	
 	private Time heureDebut;
 
 	@NotNull(message = "{error.pause.heure_fin.null}")
 	@NotEmpty(message = "{error.pause.heure_fin.empty}")
-	@Column(length = 50, name = "heure_fin")
+	
 
 	private Time heureFin;
 	@ManyToMany(fetch = FetchType.EAGER)
@@ -51,46 +55,7 @@ public class Pause implements Serializable {
 					@JoinColumn(name = "id_horaire", referencedColumnName = "idHoraire") })
 	private List<Horaire> horaires;
 
-	public List<Horaire> getHoraires() {
-		return horaires;
-	}
-
-	public void setHoraires(List<Horaire> horaires) {
-		this.horaires = horaires;
-	}
-
-	public Long getId_pause() {
-		return idPause;
-	}
-
-	public void setId_pause(Long id_pause) {
-		this.idPause = id_pause;
-	}
-
-	public String getLabel() {
-		return label;
-	}
-
-	public void setLabel(String label) {
-		this.label = label;
-	}
-
-	public Time getHeure_debut() {
-		return heureDebut;
-	}
-
-	public void setHeure_debut(Time heure_debut) {
-		this.heureDebut = heure_debut;
-	}
-
-	public Time getHeure_fin() {
-		return heureFin;
-	}
-
-	public void setHeure_fin(Time heure_fin) {
-		this.heureFin = heure_fin;
-	}
-
+	
 	public Pause(Long id_pause, String label, Time heure_debut, Time heure_fin, List<Horaire> horaires) {
 		super();
 		this.idPause = id_pause;
@@ -100,9 +65,9 @@ public class Pause implements Serializable {
 		this.horaires = horaires;
 	}
 
-	public Pause(Long id_pause) {
+	public Pause() {
 		super();
-		this.idPause = id_pause;
+		
 	}
 
 }
