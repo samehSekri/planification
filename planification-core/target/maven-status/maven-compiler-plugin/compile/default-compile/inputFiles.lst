@@ -2,10 +2,12 @@ D:\pfe\planification\planification-core\src\main\java\com\wevioo\dto\OperateurDt
 D:\pfe\planification\planification-core\src\main\java\com\wevioo\model\Role.java
 D:\pfe\planification\planification-core\src\main\java\com\wevioo\model\enumeration\PermissionEnum.java
 D:\pfe\planification\planification-core\src\main\java\com\wevioo\model\Unite.java
+D:\pfe\planification\planification-core\src\main\java\com\wevioo\dto\PauseDto.java
 D:\pfe\planification\planification-core\src\main\java\com\wevioo\model\enumeration\DegrePolyvalenceEnum.java
 D:\pfe\planification\planification-core\src\main\java\com\wevioo\dto\UserDto.java
 D:\pfe\planification\planification-core\src\main\java\com\wevioo\model\Polyvalence.java
 D:\pfe\planification\planification-core\src\main\java\com\wevioo\config\AppConfig.java
+D:\pfe\planification\planification-core\src\main\java\com\wevioo\dto\HoraireDto.java
 D:\pfe\planification\planification-core\src\main\java\com\wevioo\model\PolyvalenceOperateurArticle.java
 D:\pfe\planification\planification-core\src\main\java\com\wevioo\aspect\ApplicationAspect.java
 D:\pfe\planification\planification-core\src\main\java\com\wevioo\model\enumeration\RoleNameEnum.java
@@ -13,6 +15,7 @@ D:\pfe\planification\planification-core\src\main\java\com\wevioo\model\Operateur
 D:\pfe\planification\planification-core\src\main\java\com\wevioo\utility\LoggerUtility.java
 D:\pfe\planification\planification-core\src\main\java\com\wevioo\model\Pause.java
 D:\pfe\planification\planification-core\src\main\java\com\wevioo\dto\UniteDto.java
+D:\pfe\planification\planification-core\src\main\java\com\wevioo\model\enumeration\DayOfWeekEnum.java
 D:\pfe\planification\planification-core\src\main\java\com\wevioo\model\Scenario.java
 D:\pfe\planification\planification-core\src\main\java\com\wevioo\model\Permission.java
 D:\pfe\planification\planification-core\src\main\java\com\wevioo\model\enumeration\TypeUnite.java

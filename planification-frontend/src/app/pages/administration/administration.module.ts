@@ -29,7 +29,7 @@ import { UnitFormComponent } from './components/unit-management/unit-form/unit-f
 import { TieredMenuModule } from 'primeng/components/tieredmenu/tieredmenu';
 import { SplitButtonModule } from 'primeng/components/splitbutton/splitbutton';
 import { MenubarModule } from 'primeng/components/menubar/menubar';
-
+import { arrayToTree } from 'performant-array-to-tree'
 import { ListboxModule } from 'primeng/components/listbox/listbox';
 import { ArticleManagementComponent } from './components/article-management/article-management.component';
 
@@ -59,7 +59,6 @@ import { ArticleManagementComponent } from './components/article-management/arti
     TieredMenuModule,
     SplitButtonModule,
     MenubarModule,
-  
     ListboxModule
 
   ],
@@ -72,9 +71,9 @@ import { ArticleManagementComponent } from './components/article-management/arti
     UnitManagementComponent,
     OperatorManagementComponent,
     UnitFormComponent,
-   
+
     ArticleManagementComponent,
-   
+
   ],
   providers: [
     UserManagementService, AuthenticationService, ConfirmationService, TranslateService

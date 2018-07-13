@@ -5,10 +5,12 @@ com\wevioo\model\PolyvalenceOperateurArticle.class
 com\wevioo\model\Role.class
 com\wevioo\utility\LoggerUtility.class
 com\wevioo\dto\ArticleDto.class
+com\wevioo\model\enumeration\DayOfWeekEnum.class
 com\wevioo\dto\UniteDto.class
 com\wevioo\model\Conge.class
 com\wevioo\model\enumeration\DegrePolyvalenceEnum.class
 com\wevioo\model\enumeration\TypeUnite.class
+com\wevioo\dto\HoraireDto.class
 com\wevioo\model\Polyvalence.class
 com\wevioo\config\AppConfig.class
 com\wevioo\model\Article.class
@@ -18,6 +20,7 @@ com\wevioo\model\Horaire.class
 com\wevioo\model\User.class
 com\wevioo\model\Operateur.class
 com\wevioo\model\Unite.class
+com\wevioo\dto\PauseDto.class
 com\wevioo\annotation\AspectLogging.class
 com\wevioo\model\JourFerie.class
 com\wevioo\model\Pause.class

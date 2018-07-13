@@ -9,6 +9,7 @@ import { TranslateService } from '@ngx-translate/core/src/translate.service';
 import { Router } from '@angular/router';
 import { UniteTypeEnum } from 'app/shared/model/enumeration/unitetype.enum';
 import { Unit } from '../../../../shared/model/unit.model';
+import { arrayToTree } from 'performant-array-to-tree'
 
 
 
@@ -24,32 +25,29 @@ import { Unit } from '../../../../shared/model/unit.model';
 
 export class UnitManagementComponent implements OnInit {
 
-    currentUap: Unit;
-    public type: UniteTypeEnum;
-    types: SelectItem[];
-    modes: SelectItem[];
+    public currentUap: Unit;
     public displayMenu: boolean = false;
-    items: MenuItem[];
-    data1: TreeNode[];
-    display: boolean = false;
+    public data1: TreeNode[];
+    public display: boolean = false;
     public isEditMode = false;
-
-    data2: TreeNode[];
-
-    selectedNode: TreeNode;
-    currentNode: TreeNode;
-
-    messages: Message[];
-    currentAtelier: Unit;
-    isSaving: boolean;
+    public selectedNode: TreeNode;
+    public currentNode: TreeNode;
+    public messages: Message[];
+    public currentAtelier: Unit;
+    public isSaving: boolean;
     public msgs: Message[] = [];
     public msgSuccess: Message[] = [];
-    uaps: Unit[];
-    ateliers: Unit[];
-    currentUnit: Unit;
-    ilots: Unit[];
-    item: Unit;
-    displayHoraire: boolean=false;
+    public uaps: Unit[];
+    public units:TreeNode[];
+    public ateliers: Unit[];
+    public currentUnit: Unit;
+    public ilots: Unit[];
+    public children: TreeNode[];
+
+
+    public item: Unit;
+    public displayHoraire: boolean = false;
+    items: any;
     constructor(private uniteService: UnitManagementService, private router: Router,
         private confirmationService: ConfirmationService, private translate: TranslateService,
     ) {
@@ -81,9 +79,6 @@ export class UnitManagementComponent implements OnInit {
             () => console.log('Get all parents complete'));
     }
 
-    /**
-     * function init
-     */
 
     public saveUnit() {
         this.isSaving = false;
@@ -118,11 +113,17 @@ export class UnitManagementComponent implements OnInit {
 
 
         //}
+      
     }
 
     ngOnInit() {
 
         this.currentUnit = new Unit("", null, null);
+
+        this.uniteService.getAll().subscribe(data => {
+            let response = data;
+        });
+
         this.data1 = [{
             label: 'Zodiac',
             type: 'person',
@@ -201,20 +202,6 @@ export class UnitManagementComponent implements OnInit {
             ]
         }];
 
-        this.items = [
-            {
-                label: 'Nouveau',
-                icon: 'fa-plus',
-                command: (event) => {
-                    //event.originalEvent: Browser event
-                    //event.item: menuitem metadata
-                    console.log('Nouveau click');
-                    this.display = true;
-                    this.isEditMode = false;
-                }
-            }
-
-        ];
 
     }
 
@@ -230,10 +217,8 @@ export class UnitManagementComponent implements OnInit {
 
         this.currentNode = event.node;
         this.selectedNode = event.node;
-        //this.displayMenu = true;
-        //console.log(event.node.type);
         this.setMenuItems(event.node);
-
+        this.showDialog();
 
 
 
@@ -245,10 +230,11 @@ export class UnitManagementComponent implements OnInit {
         this.getUap();
 
 
+
     }
     showDialogHorraire() {
         this.displayHoraire = true;
-        
+
 
 
     }
