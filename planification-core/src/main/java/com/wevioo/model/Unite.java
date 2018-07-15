@@ -16,6 +16,7 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.wevioo.model.enumeration.TypeUnite;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -33,15 +34,14 @@ public class Unite {
 	@Enumerated(EnumType.STRING)
 	private TypeUnite type;
 
-	@ManyToOne
+	@ManyToOne(cascade = javax.persistence.CascadeType.PERSIST)
 	@JoinColumn(name = "parent_id")
 	private Unite parent;
-
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "unite", fetch = FetchType.LAZY)
 	private List<Operateur> operateurs;
-	
+
 	@JsonIgnore
 	@OneToMany(mappedBy = "unite", fetch = FetchType.LAZY)
 	private List<Article> articles;
@@ -51,12 +51,9 @@ public class Unite {
 			@JoinColumn(name = "name", referencedColumnName = "name") }, inverseJoinColumns = {
 					@JoinColumn(name = "idHoraire", referencedColumnName = "idHoraire") })
 	private List<Horaire> horaires;
-	
 
 	@OneToMany(mappedBy = "unite", fetch = FetchType.LAZY)
 	private List<Scenario> scenarios;
-
-
 
 	public Unite(String name, TypeUnite type, Unite parent, List<Operateur> operateurs, List<Article> articles,
 			List<Horaire> horaires, List<Scenario> scenarios) {
@@ -73,6 +70,5 @@ public class Unite {
 	public Unite() {
 		super();
 	}
-
 
 }

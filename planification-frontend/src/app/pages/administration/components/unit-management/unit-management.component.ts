@@ -38,12 +38,14 @@ export class UnitManagementComponent implements OnInit {
     public msgs: Message[] = [];
     public msgSuccess: Message[] = [];
     public uaps: Unit[];
-    public units:TreeNode[];
+    public units: TreeNode[];
     public ateliers: Unit[];
     public currentUnit: Unit;
     public ilots: Unit[];
     public children: TreeNode[];
 
+    public currentAtelierName: string;
+    public currentUapName: string;
 
     public item: Unit;
     public displayHoraire: boolean = false;
@@ -57,8 +59,10 @@ export class UnitManagementComponent implements OnInit {
 
         this.uniteService.getByType(UniteTypeEnum.UAP).subscribe((data: Unit[]) => {
             this.uaps = data;
-            this.currentUap = data[0];
-            this.getAtelierByParent(this.currentUap);
+            if (this.uaps.length > 0) {
+                this.currentUap = data[0];
+                this.getAtelierByParent(this.currentUap);
+            }
             console.log(data);
         },
             error => console.log(error),
@@ -68,7 +72,10 @@ export class UnitManagementComponent implements OnInit {
     public getAtelierByParent(uap: Unit): void {
         this.currentUap = uap;
 
-        this.uniteService.getByParent(this.currentUap).subscribe((data: Unit[]) => { this.ateliers = data; console.log(data); },
+        this.uniteService.getByParent(this.currentUap).subscribe((data: Unit[]) => {
+            this.ateliers = data;
+            console.log(data);
+        },
             error => console.log(error),
             () => console.log('Get all parents complete'));
     }
@@ -84,23 +91,33 @@ export class UnitManagementComponent implements OnInit {
         this.isSaving = false;
         this.msgs = [];
         this.msgSuccess = [];
-
+        let type = this.currentUnit.type.toString();
         if (this.currentUnit) {
             if (this.currentUnit.type === UniteTypeEnum.ATELIER) {
-                this.currentUnit.parent = this.currentUap;
+
+                let atelier = new Unit(this.currentAtelierName, UniteTypeEnum.ATELIER, this.currentUap);
+                this.currentUnit.type = UniteTypeEnum.ILOT;
+
+                this.currentUnit.parent = atelier;
+
+
             } else if (this.currentUnit.type === UniteTypeEnum.ILOT) {
                 this.currentUnit.parent = this.currentAtelier;
             } else {
+                let uap = new Unit(this.currentUapName, UniteTypeEnum.UAP, null);
+                let atelier = new Unit(this.currentAtelierName, UniteTypeEnum.ATELIER, uap);
+                this.currentUnit.type = UniteTypeEnum.ILOT;
+                this.currentUnit.parent = atelier;
+                // this.currentUnit = this.currentUap;
 
-                this.currentUnit = this.currentUap;
+
             }
         }
 
-        this.uniteService.add(this.currentUnit).subscribe(response => {
+        this.uniteService.add(this.currentUnit, type).subscribe(response => {
             this.isSaving = true;
             this.msgSuccess.push({ severity: 'success', summary: this.translate.instant('message.save.successMsgTitle'), detail: this.translate.instant("message.save.successMsg") });
 
-            this.display = false;
         },
             error => {
                 var bodyMsg = JSON.parse(error._body);
@@ -111,18 +128,26 @@ export class UnitManagementComponent implements OnInit {
                 }
             });
 
+        this.getUap();
+        //this.getAtelierByParent(this.currentUap);
+
+
 
         //}
-      
+
     }
 
     ngOnInit() {
 
         this.currentUnit = new Unit("", null, null);
+        this.currentUap = new Unit("", null, null);
+        this.ateliers = [];
+        this.uaps = [];
 
-        this.uniteService.getAll().subscribe(data => {
-            let response = data;
-        });
+      this.uniteService.getAll().subscribe(data => {
+       let response = data;
+     console.log(data);
+    });
 
         this.data1 = [{
             label: 'Zodiac',

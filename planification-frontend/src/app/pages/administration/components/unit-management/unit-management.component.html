@@ -2,7 +2,7 @@
 
 <p-dialog header="Ajout | translate" [(visible)]="display" [resizable]="false" [responsive]="true" [modal]="true" width="600" >
   <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="currentUnit!=null">
-    <form name="searchForm" role="form" novalidate #editForm="ngForm"  novalidate (ngSubmit)="getAllUnit()" >
+    <form name="searchForm" role="form" novalidate #editForm="ngForm"  novalidate  >
 
       <div class="modal-body">
         <div class="ui-grid-ro">
@@ -28,9 +28,18 @@
         <div class="ui-grid-row" *ngIf="currentUnit.type=='UAP'">
             <label class="ui-grid-col-4 control-label-dialog">UAP</label>
             <div class="ui-grid-col-8">
-                <input type="text" class="form-control" id="inputUap" name="uap" [(ngModel)]="currentUnit.name" #uap="ngModel" required >
+                <input type="text" class="form-control" id="inputUap" name="inputUap" [(ngModel)]="currentUapName" #uapName="ngModel" required >
             </div>
           </div>
+          <div class="ui-grid-row" *ngIf="currentUnit.type=='ATELIER'||currentUnit.type=='UAP'">
+              <label class="ui-grid-col-4 control-label-dialog">Atelier</label>
+              <div class="ui-grid-col-8">
+                  <input type="text" class="form-control" id="inputAtelier" name="inputAtelier" [(ngModel)]="currentAtelierName" #atelierName="ngModel" required >
+              </div>
+            </div>
+
+
+
         <div class="ui-grid-row" *ngIf="currentUnit.type=='ILOT'">
           <label class="ui-grid-col-4 control-label-dialog">Atelier</label>
           <div class="ui-grid-col-8">
@@ -42,14 +51,7 @@
         </div>
        
        
-        <div class="ui-grid-row" *ngIf="currentUnit.type=='ATELIER'">
-            <label class="ui-grid-col-4 control-label-dialog">Atelier</label>
-            <div class="ui-grid-col-8">
-                <input type="text" class="form-control" id="inputAtelier" name="atelier" [(ngModel)]="currentUnit.name" #atelier="ngModel" required >
-            </div>
-          </div>
-        
-        <div class="ui-grid-row" *ngIf="currentUnit.type=='ILOT'">
+        <div class="ui-grid-row" *ngIf="currentUnit.type=='ILOT'||currentUnit.type=='UAP'||currentUnit.type=='ATELIER'">
             <label class="ui-grid-col-4 control-label-dialog">Ilot</label>
             <div class="ui-grid-col-8">
                 <input type="text" class="form-control" id="inputIlot" name="ilot" [(ngModel)]="currentUnit.name" #ilot="ngModel" required >

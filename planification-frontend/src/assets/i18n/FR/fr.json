@@ -30,44 +30,34 @@
 		"reference": {
 			"isrequired": "La reference doit contenir au moins 5 caractères",
 			"isinvalid": "La reference  est invalide."
-	},
+		},
 		"quantite": {
 			"isrequired": "veuillez saisir la quantite",
 			"isinvalid": "La quantite est invalide."
-
 		},
 		"resteProduire": {
 			"isrequired": "veuillez saisir le reste à produire",
 			"isinvalid": "La valeur saisie est invalide."
-
 		},
-		
 		"tempsStandard": {
 			"isrequired": "veuillez saisir le temps satandard",
 			"isinvalid": "La valeur saisie est invalide."
-
 		},
 		"integrationDate": {
 			"isrequired": "veuillez saisir la date d'intégration",
 			"isinvalid": "La date saisie est invalide."
-
 		},
 		"integrationFileName": {
 			"isrequired": "veuillez saisir le nom du fichier d'intégration",
 			"isinvalid": "Le nom saisi est invalide."
-
 		},
-
 		"cadence": {
 			"isrequired": "veuillez saisir la cadence",
 			"isinvalid": "La cadence saisie est invalide."
-
 		},
-		
 		"efficience": {
 			"isrequired": "veuillez saisir l'efficience",
 			"isinvalid": "L'efficience saisie est invalide."
-
 		},
 		"email": {
 			"isrequired": "L'adresse email doit contenir au moins 4 caractères",
@@ -147,7 +137,6 @@
 			"email": "Email",
 			"profil": "Role"
 		},
-		
 		"operatorManagement": {
 			"newoperator": "Nouvel opérateur",
 			"firstname": "Prénom",
@@ -156,28 +145,27 @@
 			"matricule": "Matricule",
 			"unite": "Unité",
 			"userDetails": "Détails utilisateur",
-			"uap":"UAP",
-			"atelier":"Atelier",
-			"ilot":"ILOT"
+			"uap": "UAP",
+			"atelier": "Atelier",
+			"ilot": "ILOT"
 		},
 		"articleManagement": {
 			"newarticle": "Nouvel article",
 			"reference": "Réference",
 			"quantite": "Quantité",
 			"resteProduire": "reste à produire",
-			"tempsStandard":"Temps Standard", 
-
-"integrationDate":"Date Integration",
-"engagementSemaine": "Engagement Semaine", 
-"integrationFileName":"Nom fichier d'intégration",
-"cadence":"Cadence",
-"efficience":"Efficience",
-"etat":"Etat", 
-"unite": "Unité",
-"userDetails": "Détails utilisateur",
-"uap":"UAP",
-"atelier":"Atelier",
-"ilot":"ILOT"
+			"tempsStandard": "Temps Standard",
+			"integrationDate": "Date Integration",
+			"engagementSemaine": "Engagement Semaine",
+			"integrationFileName": "Nom fichier d'intégration",
+			"cadence": "Cadence",
+			"efficience": "Efficience",
+			"etat": "Etat",
+			"unite": "Unité",
+			"userDetails": "Détails utilisateur",
+			"uap": "UAP",
+			"atelier": "Atelier",
+			"ilot": "ILOT"
 		},
 		"settings": {
 			"application": "Paramètres de l'application",
@@ -197,9 +185,8 @@
 			"settings": "Paramètres",
 			"profile": "Profil",
 			"signout": "Se déconnecter",
-			"operatorManagement":"Gestion des opérateurs",
-			"articleManagement":"Gestion des articles"
-			
+			"operatorManagement": "Gestion des opérateurs",
+			"articleManagement": "Gestion des articles"
 		}
 	}
 }

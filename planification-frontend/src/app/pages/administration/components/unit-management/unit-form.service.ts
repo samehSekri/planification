@@ -79,8 +79,8 @@ export class UnitManagementService {
    *              the Unit to add
    * @returns the new Unit
    */
-  public add = (itemToAdd: Unit): Observable<Unit> => {
-    return this.http.post(this.actionUrl, itemToAdd, this.options())
+  public add = (itemToAdd: Unit,type:String): Observable<Unit> => {
+    return this.http.post(this.actionUrl+"/"+type, itemToAdd, this.options())
       .map((response: Response) => <Unit>response.json())
       .catch((response: Response) => this.errorHandler(response));
   }
