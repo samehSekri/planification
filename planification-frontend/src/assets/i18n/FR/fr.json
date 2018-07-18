@@ -93,7 +93,8 @@
 		"refresh": "Actualiser",
 		"home": "ACCUEIL",
 		"collapse": "Réduire",
-		"expand": "Agrandir"
+		"expand": "Agrandir",
+		"select":"selectionner"
 	},
 	"general": {
 		"application": {
@@ -116,6 +117,12 @@
 			"purchases": "Purchases",
 			"activeUsers": "Active Users",
 			"returned": "Returned"
+		},
+		"cadence": {
+			
+			"newfile": "Nouveau fichier cadence client",
+			"selectionFile": "selectionner un fichier cadence client"
+
 		},
 		"userManagement": {
 			"usersList": "Liste des utilisateurs",
@@ -186,7 +193,10 @@
 			"profile": "Profil",
 			"signout": "Se déconnecter",
 			"operatorManagement": "Gestion des opérateurs",
-			"articleManagement": "Gestion des articles"
+			"articleManagement": "Gestion des articles",
+			"gestionFichiers": "Gestion des fichiers",
+			"fichierPolyvalence": "Grille polyvalence",
+			"cadenceClient":"Cadence client"
 		}
 	}
 }

@@ -58,10 +58,10 @@ const routes: Routes = [
           pageTitle: 'general.menu.articleManagement',
         }
       }
-     
-      
-    ]
-  }
+
+
+    ]}
+  
 ];
 
 export const routing = RouterModule.forChild(routes);

@@ -54,7 +54,7 @@ export const PAGES_MENU = [
                 title: 'general.menu.unitManagement',
               }
             }
-            
+
           },
           {
             path: 'operator-management',
@@ -64,7 +64,7 @@ export const PAGES_MENU = [
                 title: 'general.menu.operatorManagement',
               }
             }
-            
+
           },
           {
             path: 'article-management',
@@ -74,11 +74,47 @@ export const PAGES_MENU = [
                 title: 'general.menu.articleManagement',
               }
             }
-            
+
           }
         ]
-      }
 
+      }
+      ,
+      {
+        path: 'gestion-fichiers',
+        data: {
+          menu: {
+            title: 'general.menu.gestionFichiers',
+            icon: 'ion-gear-a',
+            selected: false,
+            expanded: false,
+            order: 0
+          }
+        },
+        children: [
+          {
+            path: 'fichier-polyvalence',
+            data: {
+              roles: ['ROLE_ADMIN'],
+              menu: {
+                title: 'general.menu.fichierPolyvalence',
+              }
+            }
+          },
+          {
+            path: 'cadence-client',
+            data: {
+              roles: ['ROLE_ADMIN'],
+              menu: {
+                title: 'general.menu.cadenceClient',
+              }
+            }
+          }
+        
+        ]
+
+      }
     ]
+
   }
 ];

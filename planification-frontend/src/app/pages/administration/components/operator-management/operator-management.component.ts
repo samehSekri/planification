@@ -103,6 +103,13 @@ console.log(item);
 
     this.showDialog();
     this.currentOperator=item;
+    if(this.currentOperator.unite){
+    this.currentUnite = this.currentOperator.unite
+    this.currentOperator.unite=this.currentUnite;
+    this.currentAtelier=this.currentUnite.parent;
+    this.currentUap=this.currentAtelier.parent;
+    
+}
   }
  /**
    * Delete a operator

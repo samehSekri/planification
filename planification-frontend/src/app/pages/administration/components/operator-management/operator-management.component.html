@@ -53,8 +53,7 @@
                 <div class="col-sm-4">
                   <div class="form-group">
                     <label class="ui-grid-col-4 control-label-dialog">UAP</label>
-                    <select class="form-control" name="uap" required [(ngModel)]="currentUap" [compareWith]="compareFn" (change)="getAtelierByParent();"
-                      #uap>
+                    <select class="form-control" name="uap" required [(ngModel)]="currentUap"  (change)="getAtelierByParent($event.target.value);"    #uap>
                       <option *ngFor="let uap of uaps" [ngValue]="uap">{{uap.name}}</option>
                     </select>
                   </div>
@@ -62,7 +61,7 @@
                 <div class="col-sm-4">
                   <div class="form-group">
                     <label class="ui-grid-col-4 control-label-dialog">Atelier</label>
-                    <select class="form-control" name="atelier" required [(ngModel)]="currentAtelier" (change)="getIlotByParent();" #atelier>
+                    <select class="form-control" name="atelier" required [(ngModel)]="currentAtelier"  (change)="getIlotByParent();" #atelier>
                       <option *ngFor="let atelier of ateliers" [ngValue]="atelier">{{atelier.name}}</option>
                     </select>
                   </div>

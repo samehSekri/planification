@@ -16,6 +16,7 @@ import { Router } from "@angular/router";
 
 import { Unit } from 'app/shared/model/unit.model';
 import { UniteTypeEnum } from '../../../../shared/model/enumeration/unitetype.enum';
+import { TreeNode } from 'primeng/primeng';
 
 
 @Injectable()
@@ -39,9 +40,9 @@ export class UnitManagementService {
    * Get all Unit
    * @returns Unit[]
    */
-  public getAll = (): Observable<Unit[]> => {
+  public getAll = (): Observable<TreeNode[]> => {
     return this.http.get(this.actionUrl, this.options())
-      .map((response: Response) => <Unit[]>response.json())
+      .map((response: Response) => <TreeNode[]>response.json())
       .catch((response: Response) => this.errorHandler(response));
   }
 

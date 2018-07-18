@@ -43,17 +43,16 @@ public class UniteRestController {
 	@Autowired
 	private MessageUtil messageUtil;
 
-
 	/**
 	 * 
 	 * @return
 	 * @throws Exception
 	 */
 	@RequestMapping(method = RequestMethod.GET)
-	public @ResponseBody List<UniteDto> findAllUnite() throws Exception {
+	public @ResponseBody ArrayList<UniteDto> findAllUnite() throws Exception {
 		List<Unite> unites = uniteService.findAllUnite();
 
-		convertToTreeNode(unites);
+	 convertToTreeNode(unites);
 		// Cast List<Unite> to List<UniteDto> without need to use for loop
 		Type listType = new TypeToken<List<UniteDto>>() {
 		}.getType();

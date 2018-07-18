@@ -50,6 +50,8 @@ export class UnitManagementComponent implements OnInit {
     public item: Unit;
     public displayHoraire: boolean = false;
     items: any;
+    response: TreeNode[];
+    unites: TreeNode[];
     constructor(private uniteService: UnitManagementService, private router: Router,
         private confirmationService: ConfirmationService, private translate: TranslateService,
     ) {
@@ -144,10 +146,9 @@ export class UnitManagementComponent implements OnInit {
         this.ateliers = [];
         this.uaps = [];
 
-      this.uniteService.getAll().subscribe(data => {
-       let response = data;
-     console.log(data);
-    });
+        //  this.uniteService.getAll().subscribe((data: TreeNode[]) => { this.unites = data; console.log(data); },
+        //  error => console.log(error),
+        // () => console.log('Get all parents complete'));
 
         this.data1 = [{
             label: 'Zodiac',
@@ -244,7 +245,6 @@ export class UnitManagementComponent implements OnInit {
         this.selectedNode = event.node;
         this.setMenuItems(event.node);
         this.showDialog();
-
 
 
         this.messages = [{ severity: 'success', summary: 'Node Selected', detail: event.node.label }];

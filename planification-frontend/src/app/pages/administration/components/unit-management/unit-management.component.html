@@ -84,7 +84,7 @@
 
   <div style="margin-top:50px">
     <form>
-      <p-organizationChart [value]="data1" selectionMode="single" [(selection)]="selectedNode" (onNodeSelect)="onNodeSelect($event)"
+      <p-organizationChart [value]="unites" selectionMode="single" [(selection)]="selectedNode" (onNodeSelect)="onNodeSelect($event)"
         styleClass="company" (onNodeUnselect)="onNodeUnSelect($event)">
         <ng-template let-node pTemplate="person">
           <div class="node-header ui-corner-top">{{node.label}}</div>
