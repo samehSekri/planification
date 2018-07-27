@@ -2,6 +2,7 @@ com\wevioo\exception\BatchActivityNotExistException.class
 com\wevioo\utility\mail\EmailSender.class
 com\wevioo\mapper\UserMap.class
 com\wevioo\service\UniteService.class
+com\wevioo\service\impl\PolyvalenceServiceImpl.class
 com\wevioo\exception\BatchException.class
 com\wevioo\utility\mail\EmailHtmlSender.class
 com\wevioo\service\UserService.class
@@ -13,6 +14,7 @@ com\wevioo\service\impl\HoraireServiceImpl.class
 com\wevioo\config\EmailConfig.class
 com\wevioo\service\HoraireService.class
 com\wevioo\service\impl\UniteServiceImpl.class
+com\wevioo\service\PolyvalenceService.class
 com\wevioo\service\ArticleService.class
 com\wevioo\utility\RandomUtil.class
 com\wevioo\exception\BatchOperationSaveException.class

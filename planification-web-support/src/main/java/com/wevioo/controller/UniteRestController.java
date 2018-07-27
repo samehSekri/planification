@@ -24,6 +24,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.wevioo.dto.NodeUniteDto;
 import com.wevioo.dto.UniteDto;
 import com.wevioo.exception.ApiException;
 import com.wevioo.model.Unite;
@@ -49,31 +50,39 @@ public class UniteRestController {
 	 * @throws Exception
 	 */
 	@RequestMapping(method = RequestMethod.GET)
-	public @ResponseBody ArrayList<UniteDto> findAllUnite() throws Exception {
+	public @ResponseBody List<NodeUniteDto> findAllUnite() throws Exception {
 		List<Unite> unites = uniteService.findAllUnite();
 
-	 convertToTreeNode(unites);
-		// Cast List<Unite> to List<UniteDto> without need to use for loop
-		Type listType = new TypeToken<List<UniteDto>>() {
-		}.getType();
+		String jsonString = convertToTreeNode(unites);
+		
+		
+		ObjectMapper objectMapper = new ObjectMapper();
 
-		return modelMapper.map(unites, listType);
+	    List<NodeUniteDto> navigation = objectMapper.readValue(
+	            jsonString,
+	            objectMapper.getTypeFactory().constructCollectionType(
+	                    List.class, NodeUniteDto.class));
+		
+		return navigation;
+		// Cast List<Unite> to List<UniteDto> without need to use for loop
+		//Type listType = new TypeToken<List<UniteDto>>() {
+		//}.getType();
+
+		
+		
+		
+		//return modelMapper.map(unites, listType);
 	}
 
-	private void convertToTreeNode(List<Unite> unites) {
-		
-
+	private String convertToTreeNode(List<Unite> unites) {
 		ObjectMapper mapper = new ObjectMapper();
 		ArrayNode arrayNode = mapper.createArrayNode();
 		ObjectNode node = null; // mapper.createObjectNode();
 
 		List<Unite> ilots = uniteService.findUniteByType(TypeUnite.ILOT);
 
-		ArrayNode children = mapper.createArrayNode();
 		List<Unite> ateliersList = new ArrayList<Unite>();
 		List<Unite> uapsList = new ArrayList<Unite>();
-
-		ArrayNode atelierNode = mapper.createArrayNode();
 
 		int index = 0;
 		for (Unite ilot : ilots) {
@@ -118,7 +127,7 @@ public class UniteRestController {
 							nodeIlot.put("label", ilotChild.getName());
 							nodeIlot.put("type", ilotChild.getType().name().toLowerCase());
 							nodeIlot.put("styleClass", "department-cfo");
-
+							nodeIlot.put("expanded", true);
 							listIlotsNode.add(nodeIlot);
 							// Children des ateliers
 							nodeAtelier.put("children", listIlotsNode);
@@ -130,6 +139,8 @@ public class UniteRestController {
 							nodeIlot.put("label", ilotChild.getName());
 							nodeIlot.put("type", ilotChild.getType().name().toLowerCase());
 							nodeIlot.put("styleClass", "department-cfo");
+							nodeIlot.put("expanded", true);
+							
 
 							listIlotsNode.add(nodeIlot);
 							// Children des ateliers
@@ -143,50 +154,17 @@ public class UniteRestController {
 				arrayNode.add(node);
 			}
 		}
-
-		//
-		// if(unite.getType() == TypeUnite.UAP){
-		// node = mapper.createObjectNode();
-		//
-		// node.put("label", unite.getName());
-		// node.put("type", "person");
-		// node.put("styleClass", "ui-person");
-		// node.put("expanded", true);
-		// //Consutruct data attribute
-		// ObjectNode data = mapper.createObjectNode();
-		// data.put("name", unite.getName());
-		// data.put("avatar", "saul.jpg");
-		// node.put("data", data);
-		// node.put("children", mapper.createArrayNode() );
-		//
-		// arrayNode.add(node);
-		//
-		// }else if(unite.getType() == TypeUnite.ATELIER) {
-		// arrayNode.forEach(flowJson -> {
-		// ObjectNode nodeJson = (ObjectNode) flowJson;
-		//
-		// if(flowJson.findPath("name").equals(unite.getParent().getName())){
-		// ArrayNode array = (ArrayNode)nodeJson.get("children");
-		// ObjectNode nodeAtelier = mapper.createObjectNode();
-		// nodeAtelier.put("label", unite.getName());
-		// nodeAtelier.put("styleClass", "department-cfo");
-		// array.add(nodeAtelier);
-		// nodeJson.put("children", array);
-		// }
-		// });
-		//
-		// }else if(unite.getType() == TypeUnite.ILOT) {
-		//
-		// }
-		//
+		
 
 		try {
 			String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(arrayNode);
 			System.out.println(json);
+			return json;
 		} catch (JsonProcessingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return null;
 	}
 
 	@RequestMapping(value = "{type}", method = RequestMethod.GET)

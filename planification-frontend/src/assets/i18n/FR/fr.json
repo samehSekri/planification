@@ -94,7 +94,7 @@
 		"home": "ACCUEIL",
 		"collapse": "Réduire",
 		"expand": "Agrandir",
-		"select":"selectionner"
+		"select":"Choisir un fichier"
 	},
 	"general": {
 		"application": {
@@ -118,6 +118,14 @@
 			"activeUsers": "Active Users",
 			"returned": "Returned"
 		},
+		
+		"polyvalence": {
+			
+			"newfile": "Nouvelle grille de polyvalence",
+			"selectionFile": "selectionner une grille de polyvalence"
+
+		},
+		
 		"cadence": {
 			
 			"newfile": "Nouveau fichier cadence client",

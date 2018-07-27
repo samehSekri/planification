@@ -146,9 +146,8 @@ export class UnitManagementComponent implements OnInit {
         this.ateliers = [];
         this.uaps = [];
 
-        //  this.uniteService.getAll().subscribe((data: TreeNode[]) => { this.unites = data; console.log(data); },
-        //  error => console.log(error),
-        // () => console.log('Get all parents complete'));
+
+
 
         this.data1 = [{
             label: 'Zodiac',

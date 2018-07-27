@@ -8,6 +8,7 @@ D:\pfe\planification\planification-business\src\main\java\com\wevioo\service\imp
 D:\pfe\planification\planification-business\src\main\java\com\wevioo\utility\mail\EmailStatus.java
 D:\pfe\planification\planification-business\src\main\java\com\wevioo\aspect\ServiceAspect.java
 D:\pfe\planification\planification-business\src\main\java\com\wevioo\utility\RandomUtil.java
+D:\pfe\planification\planification-business\src\main\java\com\wevioo\service\CadenceService.java
 D:\pfe\planification\planification-business\src\main\java\com\wevioo\exception\BatchException.java
 D:\pfe\planification\planification-business\src\main\java\com\wevioo\config\EmailConfig.java
 D:\pfe\planification\planification-business\src\main\java\com\wevioo\service\UserService.java
@@ -17,8 +18,10 @@ D:\pfe\planification\planification-business\src\main\java\com\wevioo\utility\mai
 D:\pfe\planification\planification-business\src\main\java\com\wevioo\service\impl\UserServiceImpl.java
 D:\pfe\planification\planification-business\src\main\java\com\wevioo\service\OperateurService.java
 D:\pfe\planification\planification-business\src\main\java\com\wevioo\mapper\UserMap.java
+D:\pfe\planification\planification-business\src\main\java\com\wevioo\service\impl\PolyvalenceServiceImpl.java
 D:\pfe\planification\planification-business\src\main\java\com\wevioo\service\impl\UniteServiceImpl.java
 D:\pfe\planification\planification-business\src\main\java\com\wevioo\exception\BatchDockNotExistException.java
+D:\pfe\planification\planification-business\src\main\java\com\wevioo\service\PolyvalenceService.java
 D:\pfe\planification\planification-business\src\main\java\com\wevioo\mapper\OperateurMap.java
 D:\pfe\planification\planification-business\src\main\java\com\wevioo\exception\BatchOperationSaveException.java
 D:\pfe\planification\planification-business\src\main\java\com\wevioo\service\impl\HoraireServiceImpl.java

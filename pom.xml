@@ -154,6 +154,10 @@
 				</exclusions>
 			</dependency>
 			<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-web</artifactId>
+</dependency>
+			<dependency>
 				<groupId>com.wevioo</groupId>
 				<artifactId>planification-security-support</artifactId>
 				<version>${project.global.version}</version>
@@ -175,6 +179,18 @@
 					</exclusion>
 				</exclusions>
 			</dependency>
+			
+			<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+
+        <!-- hot swapping, disable cache for template, enable live reload -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
+        </dependency>
 			<dependency>
 				<groupId>com.wevioo</groupId>
 				<artifactId>planification-integration</artifactId>
@@ -238,6 +254,16 @@
 			<artifactId>junit</artifactId>
 			<version>${junit.version}</version>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.10-FINAL</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>3.10-FINAL</version>
 		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>

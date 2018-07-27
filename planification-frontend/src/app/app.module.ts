@@ -1,11 +1,10 @@
 import { NgModule, ApplicationRef } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+//import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateService } from '@ngx-translate/core';
-
 /*
  * Platform and Environment providers/directives/pipes
  */
@@ -24,6 +23,7 @@ import { PagesModule } from './pages/pages.module';
 import { Configuration } from "app/app.constants";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Ng2CompleterModule } from "ng2-completer";
+import { version } from 'punycode';
 
 
 // Application wide providers
@@ -48,7 +48,6 @@ export type StoreType = {
     App
   ],
   imports: [ // import Angular's modules
-    BrowserModule,
     BrowserAnimationsModule,
     HttpModule,
     RouterModule,
@@ -61,11 +60,9 @@ export type StoreType = {
     LoginModule,
     AuthenticationModule,
     routing,
-    
-
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
-    APP_PROVIDERS
+    APP_PROVIDERS,
   ]
 })
 
