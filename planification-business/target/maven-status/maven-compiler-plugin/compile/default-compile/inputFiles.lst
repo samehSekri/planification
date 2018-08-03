@@ -17,6 +17,7 @@ D:\pfe\planification\planification-business\src\main\java\com\wevioo\service\Art
 D:\pfe\planification\planification-business\src\main\java\com\wevioo\utility\mail\EmailSender.java
 D:\pfe\planification\planification-business\src\main\java\com\wevioo\service\impl\UserServiceImpl.java
 D:\pfe\planification\planification-business\src\main\java\com\wevioo\service\OperateurService.java
+D:\pfe\planification\planification-business\src\main\java\com\wevioo\service\FileStorage.java
 D:\pfe\planification\planification-business\src\main\java\com\wevioo\mapper\UserMap.java
 D:\pfe\planification\planification-business\src\main\java\com\wevioo\service\impl\PolyvalenceServiceImpl.java
 D:\pfe\planification\planification-business\src\main\java\com\wevioo\service\impl\UniteServiceImpl.java

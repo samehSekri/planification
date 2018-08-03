@@ -6,6 +6,7 @@ com\wevioo\service\impl\PolyvalenceServiceImpl.class
 com\wevioo\exception\BatchException.class
 com\wevioo\utility\mail\EmailHtmlSender.class
 com\wevioo\service\UserService.class
+com\wevioo\service\FileStorage.class
 com\wevioo\service\PauseService.class
 com\wevioo\exception\BatchOperationApiConnectionException.class
 com\wevioo\service\impl\OperateurServiceImpl.class

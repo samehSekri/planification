@@ -357,23 +357,7 @@ public abstract class CommonUtil {
 	 * @param params
 	 * @return
 	 */
-	public static String getMessageResourceString(final HttpServletRequest request, final String key, final Object params[]) {
-
-		String text;
-		final Locale locale = getLocale(request);
-		try {
-			text = BUNDLE.getString(key);
-		} catch (final MissingResourceException e) {
-			text = key;
-		}
-
-		if (params != null) {
-			final MessageFormat formatter = new MessageFormat(text, locale);
-			return formatter.format(params);
-		}
-
-		return text;
-	}
+	
 	
 	/**
 	 * Get message with parameter

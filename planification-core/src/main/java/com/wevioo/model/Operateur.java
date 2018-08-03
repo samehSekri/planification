@@ -67,6 +67,7 @@ public class Operateur implements Serializable {
 		this.unite = unite;
 		this.conges = conges;
 		this.polyvalences = polyvalences;
+		
 	}
 
 	
@@ -74,6 +75,9 @@ public class Operateur implements Serializable {
 	public Operateur() {
 		super();
 	}
+
+
+
 
 	
 
