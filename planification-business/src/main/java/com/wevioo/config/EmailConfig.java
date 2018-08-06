@@ -17,7 +17,7 @@ import org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver;
 
 @Configuration
 @EnableAsync
-@ComponentScan(basePackages = { "com.wevioo.utility.mail" })
+@ComponentScan(basePackages = { "com.wevioo.utility.mail",  "com.wevioo.utility.excel"})
 public class EmailConfig {
 
 	@Autowired

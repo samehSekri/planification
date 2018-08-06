@@ -10,8 +10,11 @@ import javax.persistence.Table;
 
 import com.wevioo.model.enumeration.DegrePolyvalenceEnum;
 
+import lombok.ToString;
+
 @Entity
 @Table(name = "polyvalence")
+@ToString
 public class Polyvalence implements Serializable {
 
 	/**
@@ -21,7 +24,7 @@ public class Polyvalence implements Serializable {
 	private PolyvalenceOperateurArticle polyvalenceOperateurArticle;
 
 	private Operateur operateur;
-	Article article;
+	private Article article;
 	private DegrePolyvalenceEnum degre;
 
 	public DegrePolyvalenceEnum getDegre() {

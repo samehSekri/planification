@@ -16,10 +16,12 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 @Getter
 @Setter
 @Entity
 @Table(name = "operateur")
+@ToString
 public class Operateur implements Serializable {
 
 	private static final long serialVersionUID = 886569903829221913L;

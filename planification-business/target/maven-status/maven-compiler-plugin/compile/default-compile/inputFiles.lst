@@ -2,6 +2,7 @@ D:\pfe\planification\planification-business\src\main\java\com\wevioo\service\imp
 D:\pfe\planification\planification-business\src\main\java\com\wevioo\config\ServiceConfig.java
 D:\pfe\planification\planification-business\src\main\java\com\wevioo\exception\BatchActivityNotExistException.java
 D:\pfe\planification\planification-business\src\main\java\com\wevioo\utility\mail\EmailHtmlSender.java
+D:\pfe\planification\planification-business\src\main\java\com\wevioo\utility\ExcelFileUtil.java
 D:\pfe\planification\planification-business\src\main\java\com\wevioo\service\impl\PauseServiceImpl.java
 D:\pfe\planification\planification-business\src\main\java\com\wevioo\exception\BatchOperationApiConnectionException.java
 D:\pfe\planification\planification-business\src\main\java\com\wevioo\service\impl\ArticleServiceImpl.java
@@ -17,7 +18,6 @@ D:\pfe\planification\planification-business\src\main\java\com\wevioo\service\Art
 D:\pfe\planification\planification-business\src\main\java\com\wevioo\utility\mail\EmailSender.java
 D:\pfe\planification\planification-business\src\main\java\com\wevioo\service\impl\UserServiceImpl.java
 D:\pfe\planification\planification-business\src\main\java\com\wevioo\service\OperateurService.java
-D:\pfe\planification\planification-business\src\main\java\com\wevioo\service\FileStorage.java
 D:\pfe\planification\planification-business\src\main\java\com\wevioo\mapper\UserMap.java
 D:\pfe\planification\planification-business\src\main\java\com\wevioo\service\impl\PolyvalenceServiceImpl.java
 D:\pfe\planification\planification-business\src\main\java\com\wevioo\service\impl\UniteServiceImpl.java

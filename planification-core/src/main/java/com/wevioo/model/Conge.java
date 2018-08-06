@@ -16,8 +16,11 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import lombok.ToString;
+
 @Entity
 @Table(name = "conge")
+@ToString
 public class Conge implements Serializable {
 
 	private static final long serialVersionUID = -8120088004511804740L;
