@@ -25,7 +25,6 @@ import lombok.ToString;
 @Setter
 @Entity
 @Table(name = "unite")
-@ToString
 public class Unite {
 
 	@Column(name = "name")
