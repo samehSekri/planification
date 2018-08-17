@@ -10,6 +10,9 @@
 		"confirmDeleteAction": "Est ce que vous êtes sûr de vouloir continuer ?",
 		"confirmDeleteDialogTitle": "Confirmation de suppression",
 		"errConnectionRefused": "Erreur, Le serveur a refusé la connexion",
+		"succesUplod": "Successfully uploaded",
+		"errWrongFile":"Le format du fichier est erroné",
+
 		"errPageNotFound": "… Oops! Page non trouvée.",
 		"username": {
 			"isrequired": "Le login est obligatoire (minimum 5 caractères)."
@@ -204,7 +207,14 @@
 			"articleManagement": "Gestion des articles",
 			"gestionFichiers": "Gestion des fichiers",
 			"fichierPolyvalence": "Grille polyvalence",
-			"cadenceClient":"Cadence client"
+			"cadenceClient":"Cadence client",
+			"polyvalenceForm":"Grille polyvalence",
+			"gestionScenario":"Gestion des scénarios",
+			"algorithmeScenario":"Générer un scénario"
+
+
+
+			
 		}
 	}
 }

@@ -24,6 +24,7 @@ import { Configuration } from "app/app.constants";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Ng2CompleterModule } from "ng2-completer";
 import { version } from 'punycode';
+import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
 
 
 // Application wide providers
@@ -60,6 +61,7 @@ export type StoreType = {
     LoginModule,
     AuthenticationModule,
     routing,
+    SlimLoadingBarModule.forRoot(),
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     APP_PROVIDERS,

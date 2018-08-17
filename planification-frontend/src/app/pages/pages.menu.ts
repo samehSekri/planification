@@ -113,6 +113,32 @@ export const PAGES_MENU = [
         
         ]
 
+      },
+      {
+        path: 'gestion-scenario',
+        data: {
+          menu: {
+            title: 'general.menu.gestionScenario',
+            icon: 'ion-gear-a',
+            selected: false,
+            expanded: false,
+            order: 0
+          }
+        },
+        children: [
+          {
+            path: 'algorithme-senario',
+            data: {
+              roles: ['ROLE_ADMIN'],
+              menu: {
+                title: 'general.menu.algorithmeScenario',
+              }
+            }
+          },
+         
+        
+        ]
+
       }
     ]
 

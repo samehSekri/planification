@@ -31,6 +31,12 @@ export const routes: Routes = [
         canActivate: [RoleGuard],
         data: { roles: ['ROLE_ADMIN'] },
         loadChildren: './gestion-fichiers/gestion-fichiers.module#GestionFichiersModule'
+      },
+      {
+        path: 'gestion-scenario',
+        canActivate: [RoleGuard],
+        data: { roles: ['ROLE_ADMIN'] },
+        loadChildren: './gestion-scenario/gestion-scenario.module#GestionScenarioModule'
       }
     ]
   }
