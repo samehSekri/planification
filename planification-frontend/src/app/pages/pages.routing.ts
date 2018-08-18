@@ -2,7 +2,7 @@ import { AuthenticationGuard } from '../authentication/guard/authentication.guar
 import { Routes, RouterModule } from '@angular/router';
 import { Pages } from './pages.component';
 import { ModuleWithProviders } from '@angular/core';
-import { RoleGuard } from "app/authentication/guard";
+import { RoleGuard } from "../authentication/guard";
 
 export const routes: Routes = [
   {
@@ -36,7 +36,7 @@ export const routes: Routes = [
         path: 'gestion-scenario',
         canActivate: [RoleGuard],
         data: { roles: ['ROLE_ADMIN'] },
-        loadChildren: './gestion-scenario/gestion-scenario.module#GestionScenarioModule'
+        loadChildren: './gestion-scenarios/gestion-scenarios.module#GestionScenariosModule'
       }
     ]
   }

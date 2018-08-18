@@ -25,6 +25,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Ng2CompleterModule } from "ng2-completer";
 import { version } from 'punycode';
 import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
+import { CalendarModule } from 'primeng/primeng';
 
 
 // Application wide providers
@@ -59,6 +60,8 @@ export type StoreType = {
     Ng2CompleterModule,
     PagesModule,
     LoginModule,
+    CalendarModule,
+
     AuthenticationModule,
     routing,
     SlimLoadingBarModule.forRoot(),

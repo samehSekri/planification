@@ -125,19 +125,7 @@ export const PAGES_MENU = [
             order: 0
           }
         },
-        children: [
-          {
-            path: 'algorithme-senario',
-            data: {
-              roles: ['ROLE_ADMIN'],
-              menu: {
-                title: 'general.menu.algorithmeScenario',
-              }
-            }
-          },
-         
         
-        ]
 
       }
     ]

@@ -10,9 +10,6 @@
 		"confirmDeleteAction": "Est ce que vous êtes sûr de vouloir continuer ?",
 		"confirmDeleteDialogTitle": "Confirmation de suppression",
 		"errConnectionRefused": "Erreur, Le serveur a refusé la connexion",
-		"succesUplod": "Successfully uploaded",
-		"errWrongFile":"Le format du fichier est erroné",
-
 		"errPageNotFound": "… Oops! Page non trouvée.",
 		"username": {
 			"isrequired": "Le login est obligatoire (minimum 5 caractères)."
@@ -78,6 +75,11 @@
 		},
 		"emptyList": "Aucun enregistrement trouvé"
 	},
+	"error": {
+		"succesUplod": "Successfully uploaded",
+		"errWrongFile": "Le format du fichier est erroné",
+		"operator_not_found": "l'opérateur est introuvable"
+	},
 	"action": {
 		"delete": "Supprimer",
 		"cancel": "Annuler",
@@ -97,7 +99,7 @@
 		"home": "ACCUEIL",
 		"collapse": "Réduire",
 		"expand": "Agrandir",
-		"select":"Choisir un fichier"
+		"select": "Choisir un fichier"
 	},
 	"general": {
 		"application": {
@@ -121,19 +123,13 @@
 			"activeUsers": "Active Users",
 			"returned": "Returned"
 		},
-		
 		"polyvalence": {
-			
 			"newfile": "Nouvelle grille de polyvalence",
 			"selectionFile": "selectionner une grille de polyvalence"
-
 		},
-		
 		"cadence": {
-			
 			"newfile": "Nouveau fichier cadence client",
 			"selectionFile": "selectionner un fichier cadence client"
-
 		},
 		"userManagement": {
 			"usersList": "Liste des utilisateurs",
@@ -185,6 +181,20 @@
 			"atelier": "Atelier",
 			"ilot": "ILOT"
 		},
+		"scenario": {
+			"newScenario": "Nouveau scénario",
+			"dateDebut": "Date début",
+			"dateCreation": "Date création",
+			"tauxSatisfaction": "Taux de satisfaction",
+			"tauxOccupation": "Temps d'occupation",
+			"satut": "Statut",
+			"etat": "Etat",
+			"unite": "Unité",
+			"userDetails": "Détails utilisateur",
+			"uap": "UAP",
+			"atelier": "Atelier",
+			"ilot": "ILOT"
+		},
 		"settings": {
 			"application": "Paramètres de l'application",
 			"manageProfile": "Mon profil"
@@ -207,14 +217,11 @@
 			"articleManagement": "Gestion des articles",
 			"gestionFichiers": "Gestion des fichiers",
 			"fichierPolyvalence": "Grille polyvalence",
-			"cadenceClient":"Cadence client",
-			"polyvalenceForm":"Grille polyvalence",
-			"gestionScenario":"Gestion des scénarios",
-			"algorithmeScenario":"Générer un scénario"
-
-
-
-			
+			"cadenceClient": "Cadence client",
+			"polyvalenceForm": "Grille polyvalence",
+			"gestionScenario": "Gestion des scénarios",
+			"algorithmeScenario": "Générer un scénario",
+			"FiltreRecherche": "Filtre de recherche"
 		}
 	}
 }
