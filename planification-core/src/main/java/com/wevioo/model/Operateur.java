@@ -14,9 +14,11 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.NotEmpty;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
+
 @Getter
 @Setter
 @Entity
@@ -55,6 +57,7 @@ public class Operateur implements Serializable {
 	@OneToMany(mappedBy = "operateur")
 	private List<Conge> conges;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "operateur")
 	private List<Polyvalence> polyvalences;
 

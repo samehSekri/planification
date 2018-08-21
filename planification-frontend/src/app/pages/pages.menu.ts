@@ -114,6 +114,7 @@ export const PAGES_MENU = [
         ]
 
       },
+      
       {
         path: 'gestion-scenario',
         data: {
@@ -125,9 +126,22 @@ export const PAGES_MENU = [
             order: 0
           }
         },
+        children: [
+          {
+            path: 'consultation-scenario',
+            data: {
+              roles: ['ROLE_ADMIN'],
+              menu: {
+                title: 'general.menu.consultationScenario',
+              }
+            }
+          },
         
+        
+        ]
 
-      }
+      },
+      
     ]
 
   }

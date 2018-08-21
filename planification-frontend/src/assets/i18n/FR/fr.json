@@ -99,7 +99,10 @@
 		"home": "ACCUEIL",
 		"collapse": "Réduire",
 		"expand": "Agrandir",
-		"select": "Choisir un fichier"
+		"select": "Choisir un fichier",
+		"newScenario":"Nouveau scénario",
+		"viderFiltre":"Vider les filtres",
+		"lancerAlgorithme":"Lancer l'algorithme"
 	},
 	"general": {
 		"application": {
@@ -161,7 +164,8 @@
 			"userDetails": "Détails utilisateur",
 			"uap": "UAP",
 			"atelier": "Atelier",
-			"ilot": "ILOT"
+			"ilot": "ILOT",
+			"operators":"Opérateurs"
 		},
 		"articleManagement": {
 			"newarticle": "Nouvel article",
@@ -179,7 +183,8 @@
 			"userDetails": "Détails utilisateur",
 			"uap": "UAP",
 			"atelier": "Atelier",
-			"ilot": "ILOT"
+			"ilot": "ILOT",
+			"articles":"Articles"
 		},
 		"scenario": {
 			"newScenario": "Nouveau scénario",
@@ -187,13 +192,14 @@
 			"dateCreation": "Date création",
 			"tauxSatisfaction": "Taux de satisfaction",
 			"tauxOccupation": "Temps d'occupation",
-			"satut": "Statut",
+			"statut": "Statut",
 			"etat": "Etat",
 			"unite": "Unité",
-			"userDetails": "Détails utilisateur",
 			"uap": "UAP",
 			"atelier": "Atelier",
-			"ilot": "ILOT"
+			"ilot": "ILOT",
+			"responsable":"Responsable",
+			"name":"Nom"
 		},
 		"settings": {
 			"application": "Paramètres de l'application",
@@ -219,9 +225,11 @@
 			"fichierPolyvalence": "Grille polyvalence",
 			"cadenceClient": "Cadence client",
 			"polyvalenceForm": "Grille polyvalence",
-			"gestionScenario": "Gestion des scénarios",
+			"gestionScenario": "Planification",
 			"algorithmeScenario": "Générer un scénario",
-			"FiltreRecherche": "Filtre de recherche"
+			"FiltreRecherche": "Filtre de recherche",
+			"creationScenario":"Creation d'un nouveau scénario",
+			"consultationScenario":"Gestion des scénarios"
 		}
 	}
 }

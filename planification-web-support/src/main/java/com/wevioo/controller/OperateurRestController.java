@@ -1,11 +1,13 @@
 package com.wevioo.controller;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,13 +17,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.wevioo.dto.OperateurDto;
+import com.wevioo.dto.UniteDto;
 import com.wevioo.model.Operateur;
+import com.wevioo.model.Unite;
+import com.wevioo.model.enumeration.TypeUnite;
 import com.wevioo.service.OperateurService;
 
 @RestController
 @RequestMapping("/api/operateurs")
 public class OperateurRestController {
 
+	@Autowired
+	private ModelMapper modelMapper;
 	@Autowired
 	private OperateurService operateurService;
 
@@ -52,6 +59,15 @@ public class OperateurRestController {
 		Operateur operateur = operateurService.findOperateurByFirstname(firstname);
 		return operateur;
 	}
+	@RequestMapping(value = "/operators", method = RequestMethod.POST)
+	public @ResponseBody List<OperateurDto> findOperateurByUnite(@RequestBody Unite unite) throws Exception {
+	List<Operateur> operateurs = operateurService.findOperateurByUnite(unite);
+		Type listType = new TypeToken<List<OperateurDto>>() {
+		}.getType();
+
+		return modelMapper.map(operateurs, listType);
+	}
+	
 
 	@RequestMapping(method = RequestMethod.POST)
 	public @ResponseBody Object createOperateur(@RequestBody Operateur operateur, HttpServletRequest request)

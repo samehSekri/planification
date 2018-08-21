@@ -20,7 +20,7 @@ import { GlobalState } from './global.state';
 import { LoginModule } from './pages/login/login.module';
 import { NgaModule } from './theme/nga.module';
 import { PagesModule } from './pages/pages.module';
-import { Configuration } from "app/app.constants";
+import { Configuration } from "./app.constants";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Ng2CompleterModule } from "ng2-completer";
 import { version } from 'punycode';
@@ -56,7 +56,6 @@ export type StoreType = {
     FormsModule,
     ReactiveFormsModule,
     NgaModule.forRoot(),
-    NgbModule.forRoot(),
     Ng2CompleterModule,
     PagesModule,
     LoginModule,

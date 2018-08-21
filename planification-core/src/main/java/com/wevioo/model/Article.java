@@ -15,7 +15,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.NotEmpty;
 
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -25,7 +25,6 @@ import lombok.ToString;
 @Setter
 @Entity
 @Table(name = "article")
-@ToString
 public class Article implements Serializable {
 
 	/**
@@ -68,6 +67,8 @@ public class Article implements Serializable {
 
 	@Column(name = "etat")
 	private boolean etat;
+	
+	@JsonIgnore
 	@OneToMany(mappedBy = "article")
 	private List<Polyvalence> polyvalences;
 

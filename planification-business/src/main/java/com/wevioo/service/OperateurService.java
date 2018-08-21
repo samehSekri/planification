@@ -3,6 +3,7 @@ package com.wevioo.service;
 import java.util.List;
 
 import com.wevioo.model.Operateur;
+import com.wevioo.model.Unite;
 
 public interface OperateurService {
 
@@ -19,6 +20,12 @@ public interface OperateurService {
 	 * @return
 	 */
 	Operateur findOperateurByFirstname(String firstname);
+	/**
+	 * 
+	 * @param unite
+	 * @return
+	 */
+	List<Operateur> findOperateurByUnite(Unite unite);
 
 	/**
 	 * 

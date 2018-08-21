@@ -37,7 +37,8 @@ export const routes: Routes = [
         canActivate: [RoleGuard],
         data: { roles: ['ROLE_ADMIN'] },
         loadChildren: './gestion-scenarios/gestion-scenarios.module#GestionScenariosModule'
-      }
+      } 
+     
     ]
   }
 ];

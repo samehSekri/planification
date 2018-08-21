@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.wevioo.dao.OperateurRepository;
 import com.wevioo.model.Operateur;
+import com.wevioo.model.Unite;
 import com.wevioo.service.OperateurService;
 
 @Service
@@ -101,6 +102,17 @@ public class OperateurServiceImpl implements OperateurService {
 			operateur = operateurRepository.saveAndFlush(operateur);
 		}
 		return operateur;
+	}
+
+	@Override
+	public List<Operateur> findOperateurByUnite(Unite unite) {
+			if (unite != null && !unite.equals(null)) {
+				List<Operateur> operateurs = operateurRepository.findOperateurByUnite(unite);
+				if (operateurs != null) {
+					return operateurs;
+				}
+			}
+			return null;
 	}
 
 }

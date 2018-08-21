@@ -14,7 +14,6 @@ import lombok.ToString;
 
 @Entity
 @Table(name = "polyvalence")
-@ToString
 public class Polyvalence implements Serializable {
 
 	/**

@@ -17,6 +17,7 @@ import { Router } from "@angular/router";
 import { Unit } from 'app/shared/model/unit.model';
 import { UniteTypeEnum } from '../../../../shared/model/enumeration/unitetype.enum';
 import { TreeNode } from 'primeng/primeng';
+import { Operator } from '../../../../shared/model/operator.model';
 
 
 @Injectable()
@@ -56,11 +57,15 @@ export class UnitManagementService {
       .map((response: Response) => <Unit[]>response.json())
       .catch((response: Response) => this.errorHandler(response));
   }
+  /**
+   * 
+   */
   public getByParent = (parent: Unit): Observable<Unit[]> => {
     return this.http.post(this.actionUrl +"/parents" , parent, this.options())
       .map((response: Response) => <Unit[]>response.json())
       .catch((response: Response) => this.errorHandler(response));
   }
+ 
 
   /**
    * Get Unit By name

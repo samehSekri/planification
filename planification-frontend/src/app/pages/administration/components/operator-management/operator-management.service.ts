@@ -14,6 +14,7 @@ import { Configuration } from "app/app.constants";
 
 import { Router } from "@angular/router";
 import { Operator } from 'app/shared/model/operator.model';
+import { Unit } from '../../../../shared/model/unit.model';
 
 @Injectable()
 export class OperatorManagementService {
@@ -65,7 +66,11 @@ export class OperatorManagementService {
       .map((response: Response) => <Operator>response.json())
       .catch((response: Response) => this.errorHandler(response));
   }
-
+  public getByUnite = (unite: Unit): Observable<Operator[]> => {
+    return this.http.post(this.actionUrl  +"/operators" ,unite, this.options())
+      .map((response: Response) => <Operator[]>response.json())
+      .catch((response: Response) => this.errorHandler(response));
+  }
   /**
    * Add new Operator
    * @param itemToAdd

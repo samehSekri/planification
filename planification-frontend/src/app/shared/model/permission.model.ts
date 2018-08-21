@@ -1,4 +1,4 @@
-import { PermissionEnum } from "app/shared/model/enumeration/permission.enum";
+import { PermissionEnum } from "./enumeration/permission.enum";
 
 export class Permission {
     /**
