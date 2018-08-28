@@ -14,8 +14,10 @@ com\wevioo\model\enumeration\DegrePolyvalenceEnum.class
 com\wevioo\model\enumeration\TypeUnite.class
 com\wevioo\dto\HoraireDto.class
 com\wevioo\model\Polyvalence.class
+com\wevioo\model\enumeration\PeriodeEnum.class
 com\wevioo\config\AppConfig.class
 com\wevioo\model\Article.class
+com\wevioo\dto\ScenarioDto.class
 com\wevioo\model\Permission.class
 com\wevioo\model\enumeration\FileTypeEnum.class
 com\wevioo\utility\DateUtils.class
@@ -29,9 +31,11 @@ com\wevioo\dto\NodeUniteDto.class
 com\wevioo\dto\PolyvalenceDto.class
 com\wevioo\dto\NodeDataDto.class
 com\wevioo\dto\PauseDto.class
+com\wevioo\model\enumeration\StatutScenarioEnum.class
 com\wevioo\annotation\AspectLogging.class
 com\wevioo\model\json\HttpResponseBodyJson.class
 com\wevioo\model\JourFerie.class
 com\wevioo\model\Pause.class
+com\wevioo\model\enumeration\StatutOperateurEnum.class
 com\wevioo\dto\UserDto.class
 com\wevioo\model\enumeration\RoleNameEnum.class

@@ -3,8 +3,8 @@ import { CommonModule }  from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgaModule } from '../../theme/nga.module';
 
-import { AppTranslationModule } from 'app/app.translation.module';
-import { ErrorComponent } from 'app/pages/error/error.component';
+import { AppTranslationModule } from '../../app.translation.module';
+import { ErrorComponent } from './error.component';
 import { routing } from '../../app.routing';
 
 

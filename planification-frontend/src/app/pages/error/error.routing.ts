@@ -1,5 +1,5 @@
 import { Routes, RouterModule }  from '@angular/router';
-import { ErrorComponent } from "app/pages/error";
+import { ErrorComponent } from ".";
 
 
 

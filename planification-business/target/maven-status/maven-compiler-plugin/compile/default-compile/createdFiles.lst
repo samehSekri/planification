@@ -1,12 +1,19 @@
 com\wevioo\exception\BatchActivityNotExistException.class
+com\wevioo\service\ScenarioService.class
 com\wevioo\utility\mail\EmailSender.class
 com\wevioo\mapper\UserMap.class
 com\wevioo\service\UniteService.class
 com\wevioo\service\impl\PolyvalenceServiceImpl.class
 com\wevioo\exception\BatchException.class
 com\wevioo\utility\mail\EmailHtmlSender.class
+com\wevioo\utility\excel\ExcelFileUtil.class
 com\wevioo\service\UserService.class
+com\wevioo\exception\AlreadyExistsException.class
+com\wevioo\exception\DataNotFoundException.class
+com\wevioo\service\impl\ScenarioServiceImpl.class
 com\wevioo\service\PauseService.class
+com\wevioo\exception\ForbiddenException.class
+com\wevioo\exception\UnauthorizedException.class
 com\wevioo\exception\BatchOperationApiConnectionException.class
 com\wevioo\service\impl\OperateurServiceImpl.class
 com\wevioo\service\impl\PauseServiceImpl.class
@@ -15,6 +22,8 @@ com\wevioo\config\EmailConfig.class
 com\wevioo\service\HoraireService.class
 com\wevioo\service\impl\UniteServiceImpl.class
 com\wevioo\service\PolyvalenceService.class
+com\wevioo\exception\RestException.class
+com\wevioo\utility\ApplicationConstants.class
 com\wevioo\service\ArticleService.class
 com\wevioo\utility\RandomUtil.class
 com\wevioo\exception\BatchOperationSaveException.class
@@ -25,5 +34,5 @@ com\wevioo\utility\mail\EmailStatus.class
 com\wevioo\config\ServiceConfig.class
 com\wevioo\mapper\OperateurMap.class
 com\wevioo\exception\BatchDockNotExistException.class
-com\wevioo\utility\ExcelFileUtil.class
+com\wevioo\exception\BadRequestException.class
 com\wevioo\service\impl\ArticleServiceImpl.class
