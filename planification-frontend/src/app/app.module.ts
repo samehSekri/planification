@@ -60,7 +60,7 @@ export type StoreType = {
     PagesModule,
     LoginModule,
     CalendarModule,
-
+   
     AuthenticationModule,
     routing,
     SlimLoadingBarModule.forRoot(),

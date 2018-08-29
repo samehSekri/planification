@@ -17,13 +17,13 @@ public interface ScenarioRepository extends JpaRepository<Scenario, Long>{
 	 * @param statut
 	 * @return
 	 */
-	List<Scenario> findScenarioByStatutAndUnite(StatutScenarioEnum statut,Unite unite);
+	List<Scenario> findScenarioByStatut(StatutScenarioEnum statut);
 /**
  * 
  * @param dateCreation
  * @return
  */
-	List<Scenario> findScenarioByDateCreationAndUnite(Date dateCreation,Unite unite);
+	List<Scenario> findScenarioByDateCreation(Date dateCreation);
 	
 	// double calculateTauxSatisfactionClient(List<Article> articles);
 	
