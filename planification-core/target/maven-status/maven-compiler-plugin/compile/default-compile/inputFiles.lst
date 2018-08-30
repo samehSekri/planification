@@ -27,7 +27,9 @@ D:\pfe\planification\planification-core\src\main\java\com\wevioo\dto\NodeDataDto
 D:\pfe\planification\planification-core\src\main\java\com\wevioo\model\enumeration\DayOfWeekEnum.java
 D:\pfe\planification\planification-core\src\main\java\com\wevioo\model\Scenario.java
 D:\pfe\planification\planification-core\src\main\java\com\wevioo\model\Permission.java
+D:\pfe\planification\planification-core\src\main\java\com\wevioo\dto\FilterScenarioDto.java
 D:\pfe\planification\planification-core\src\main\java\com\wevioo\model\enumeration\TypeUnite.java
+D:\pfe\planification\planification-core\src\main\java\com\wevioo\model\JourOuvre.java
 D:\pfe\planification\planification-core\src\main\java\com\wevioo\model\JourFerie.java
 D:\pfe\planification\planification-core\src\main\java\com\wevioo\model\enumeration\StatutScenarioEnum.java
 D:\pfe\planification\planification-core\src\main\java\com\wevioo\model\Article.java

@@ -6,6 +6,8 @@ com\wevioo\model\Role.class
 com\wevioo\utility\LoggerUtility.class
 com\wevioo\dto\ArticleDto.class
 com\wevioo\model\enumeration\DayOfWeekEnum.class
+com\wevioo\model\JourOuvre.class
+com\wevioo\dto\FilterScenarioDto.class
 com\wevioo\utility\Constants.class
 com\wevioo\dto\UniteDto.class
 com\wevioo\model\Conge.class

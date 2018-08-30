@@ -71,6 +71,8 @@ export class OperatorManagementService {
       .map((response: Response) => <Operator[]>response.json())
       .catch((response: Response) => this.errorHandler(response));
   }
+  
+ 
   /**
    * Add new Operator
    * @param itemToAdd

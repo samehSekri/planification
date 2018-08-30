@@ -165,11 +165,15 @@
 			"uap": "UAP",
 			"atelier": "Atelier",
 			"ilot": "ILOT",
-			"operators":"Opérateurs"
+			"operators":"Opérateurs",
+			"qualification":"Qualification",
+			"seuilTolerance":"Seuil de tolérance",
+			"tauxOccupation":"Taux d'occupation"
+
 		},
 		"articleManagement": {
 			"newarticle": "Nouvel article",
-			"reference": "Réference",
+			"reference": "Réference article",
 			"quantite": "Quantité",
 			"resteProduire": "reste à produire",
 			"tempsStandard": "Temps Standard",
