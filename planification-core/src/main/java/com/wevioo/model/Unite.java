@@ -19,7 +19,6 @@ import com.wevioo.model.enumeration.TypeUnite;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 @Getter
 @Setter
@@ -50,7 +49,7 @@ public class Unite {
 	@OneToMany
 	@JoinTable(name = "unite_horaire", joinColumns = {
 			@JoinColumn(name = "name", referencedColumnName = "name") }, inverseJoinColumns = {
-					@JoinColumn(name = "idHoraire", referencedColumnName = "idHoraire") })
+					@JoinColumn(name = "id_horaire", referencedColumnName = "id_horaire") })
 	private List<Horaire> horaires;
 
 	@OneToMany(mappedBy = "unite", fetch = FetchType.LAZY)

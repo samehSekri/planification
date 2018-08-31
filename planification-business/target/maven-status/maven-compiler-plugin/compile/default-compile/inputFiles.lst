@@ -1,8 +1,6 @@
 D:\pfe\planification\planification-business\src\main\java\com\wevioo\service\impl\OperateurServiceImpl.java
 D:\pfe\planification\planification-business\src\main\java\com\wevioo\exception\ForbiddenException.java
 D:\pfe\planification\planification-business\src\main\java\com\wevioo\config\ServiceConfig.java
-D:\pfe\planification\planification-business\src\main\java\com\wevioo\service\impl\ParamHoraireServiceImpl.java
-D:\pfe\planification\planification-business\src\main\java\com\wevioo\service\impl\ParamPauseServiceImpl.java
 D:\pfe\planification\planification-business\src\main\java\com\wevioo\exception\BatchActivityNotExistException.java
 D:\pfe\planification\planification-business\src\main\java\com\wevioo\utility\mail\EmailHtmlSender.java
 D:\pfe\planification\planification-business\src\main\java\com\wevioo\utility\excel\ExcelFileUtil.java
@@ -16,7 +14,6 @@ D:\pfe\planification\planification-business\src\main\java\com\wevioo\utility\Ran
 D:\pfe\planification\planification-business\src\main\java\com\wevioo\exception\UnauthorizedException.java
 D:\pfe\planification\planification-business\src\main\java\com\wevioo\service\CadenceService.java
 D:\pfe\planification\planification-business\src\main\java\com\wevioo\exception\BatchException.java
-D:\pfe\planification\planification-business\src\main\java\com\wevioo\service\ParamPauseService.java
 D:\pfe\planification\planification-business\src\main\java\com\wevioo\config\EmailConfig.java
 D:\pfe\planification\planification-business\src\main\java\com\wevioo\service\UserService.java
 D:\pfe\planification\planification-business\src\main\java\com\wevioo\service\impl\ScenarioServiceImpl.java
@@ -41,5 +38,4 @@ D:\pfe\planification\planification-business\src\main\java\com\wevioo\exception\B
 D:\pfe\planification\planification-business\src\main\java\com\wevioo\service\impl\HoraireServiceImpl.java
 D:\pfe\planification\planification-business\src\main\java\com\wevioo\exception\AlreadyExistsException.java
 D:\pfe\planification\planification-business\src\main\java\com\wevioo\service\HoraireService.java
-D:\pfe\planification\planification-business\src\main\java\com\wevioo\service\ParamHoraireService.java
 D:\pfe\planification\planification-business\src\main\java\com\wevioo\service\PauseService.java

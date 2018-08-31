@@ -102,7 +102,8 @@
 		"select": "Choisir un fichier",
 		"newScenario":"Nouveau scénario",
 		"viderFiltre":"Vider les filtres",
-		"lancerAlgorithme":"Lancer l'algorithme"
+		"lancerAlgorithme":"Lancer l'algorithme",
+		"calendrier":"calendrier"
 	},
 	"general": {
 		"application": {
@@ -233,7 +234,8 @@
 			"algorithmeScenario": "Générer un scénario",
 			"FiltreRecherche": "Filtre de recherche",
 			"creationScenario":"Creation d'un nouveau scénario",
-			"consultationScenario":"Gestion des scénarios"
+			"consultationScenario":"Gestion des scénarios",
+			"calendrier":"calendrier"
 		}
 	}
 }
