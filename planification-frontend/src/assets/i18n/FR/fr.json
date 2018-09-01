@@ -100,10 +100,11 @@
 		"collapse": "Réduire",
 		"expand": "Agrandir",
 		"select": "Choisir un fichier",
-		"newScenario":"Nouveau scénario",
-		"viderFiltre":"Vider les filtres",
-		"lancerAlgorithme":"Lancer l'algorithme",
-		"calendrier":"calendrier"
+		"newScenario": "Nouveau scénario",
+		"viderFiltre": "Vider les filtres",
+		"lancerAlgorithme": "Lancer l'algorithme",
+		"calendrier": "calendrier",
+		"voir": "voir"
 	},
 	"general": {
 		"application": {
@@ -166,11 +167,10 @@
 			"uap": "UAP",
 			"atelier": "Atelier",
 			"ilot": "ILOT",
-			"operators":"Opérateurs",
-			"qualification":"Qualification",
-			"seuilTolerance":"Seuil de tolérance",
-			"tauxOccupation":"Taux d'occupation"
-
+			"operators": "Opérateurs",
+			"qualification": "Qualification",
+			"seuilTolerance": "Seuil de tolérance",
+			"tauxOccupation": "Taux d'occupation"
 		},
 		"articleManagement": {
 			"newarticle": "Nouvel article",
@@ -189,13 +189,15 @@
 			"uap": "UAP",
 			"atelier": "Atelier",
 			"ilot": "ILOT",
-			"articles":"Articles"
+			"articles": "Articles"
 		},
 		"scenario": {
 			"newScenario": "Nouveau scénario",
 			"dateDebut": "Date début",
 			"dateCreation": "Date création",
 			"tauxSatisfaction": "Taux de satisfaction",
+			"tauxSatisfactionClient": "Taux de satisfaction Client",
+			"tauxSatisfactionProduction": "Taux de satisfaction Production",
 			"tauxOccupation": "Temps d'occupation",
 			"statut": "Statut",
 			"etat": "Etat",
@@ -203,8 +205,8 @@
 			"uap": "UAP",
 			"atelier": "Atelier",
 			"ilot": "ILOT",
-			"responsable":"Responsable",
-			"name":"Nom"
+			"responsable": "Responsable",
+			"name": "Nom"
 		},
 		"settings": {
 			"application": "Paramètres de l'application",
@@ -233,9 +235,9 @@
 			"gestionScenario": "Planification",
 			"algorithmeScenario": "Générer un scénario",
 			"FiltreRecherche": "Filtre de recherche",
-			"creationScenario":"Creation d'un nouveau scénario",
-			"consultationScenario":"Gestion des scénarios",
-			"calendrier":"calendrier"
+			"creationScenario": "Creation d'un nouveau scénario",
+			"consultationScenario": "Gestion des scénarios",
+			"calendrier": "calendrier"
 		}
 	}
 }

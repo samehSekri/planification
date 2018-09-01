@@ -17,11 +17,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.wevioo.dto.OperateurDto;
-import com.wevioo.dto.UniteDto;
 import com.wevioo.model.Operateur;
+import com.wevioo.model.Polyvalence;
 import com.wevioo.model.Unite;
-import com.wevioo.model.enumeration.TypeUnite;
 import com.wevioo.service.OperateurService;
+import com.wevioo.service.PolyvalenceService;
 
 @RestController
 @RequestMapping("/api/operateurs")
@@ -31,7 +31,8 @@ public class OperateurRestController {
 	private ModelMapper modelMapper;
 	@Autowired
 	private OperateurService operateurService;
-
+	@Autowired
+	private PolyvalenceService polyvalenceService;
 	@Autowired
 	private ModelMapper operateurMapper;
 
@@ -67,7 +68,14 @@ public class OperateurRestController {
 
 		return modelMapper.map(operateurs, listType);
 	}
-	
+	@RequestMapping(value = "/qualification", method = RequestMethod.POST)
+	public @ResponseBody List<Polyvalence> findPolyvalenceByOperateur(@RequestBody Operateur op) throws Exception {
+	List<Polyvalence> polyvalences = polyvalenceService.findPolyvalenceByOperateur(op);
+//		Type listType = new TypeToken<List<OperateurDto>>() {
+//		}.getType();
+
+		return polyvalences;
+	}
 
 	@RequestMapping(method = RequestMethod.POST)
 	public @ResponseBody Object createOperateur(@RequestBody Operateur operateur, HttpServletRequest request)

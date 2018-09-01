@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.wevioo.model.Article;
+import com.wevioo.model.Operateur;
 import com.wevioo.model.Unite;
 
 @Repository
@@ -18,6 +19,7 @@ public interface ArticleRepository extends JpaRepository<Article, String> {
 	 */
 	List<Article>findArticleByUnite(Unite unite);
 	
+
 	//Article changeArticleStatus(String reference);
 	
 }

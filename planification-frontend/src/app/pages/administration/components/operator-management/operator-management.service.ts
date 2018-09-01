@@ -15,6 +15,7 @@ import { Configuration } from "app/app.constants";
 import { Router } from "@angular/router";
 import { Operator } from 'app/shared/model/operator.model';
 import { Unit } from '../../../../shared/model/unit.model';
+import { Polyvalence } from '../../../../shared/model/polyvalence.model';
 
 @Injectable()
 export class OperatorManagementService {
@@ -69,6 +70,11 @@ export class OperatorManagementService {
   public getByUnite = (unite: Unit): Observable<Operator[]> => {
     return this.http.post(this.actionUrl  +"/operators" ,unite, this.options())
       .map((response: Response) => <Operator[]>response.json())
+      .catch((response: Response) => this.errorHandler(response));
+  }
+  public getQualificationByOperator = (operator: Operator): Observable<Polyvalence[]> => {
+    return this.http.post(this.actionUrl  +"/qualification" ,operator, this.options())
+      .map((response: Response) => <Polyvalence[]>response.json())
       .catch((response: Response) => this.errorHandler(response));
   }
   

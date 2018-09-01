@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -76,16 +77,17 @@ public class Article implements Serializable {
 	@JoinColumn(name = "name_unite", nullable = false)
 	private Unite unite;
 
+	@Transient
+	private boolean checked;
 
 	public Article() {
 		super();
 	}
 
-
-	public Article(String reference, Integer resteProduire, Double tempsStandard, 
-			Integer quantite, Date integrationDate, Integer engagementSemaine, String integrationFileName,
-			User integrationUser, Integer cadence, Double efficience, boolean etat, List<Polyvalence> polyvalences,
-			Unite unite) {
+	public Article(String reference, Integer resteProduire, Double tempsStandard, Integer quantite,
+			Date integrationDate, Integer engagementSemaine, String integrationFileName, User integrationUser,
+			Integer cadence, Double efficience, boolean etat, List<Polyvalence> polyvalences, Unite unite,
+			boolean checked) {
 		super();
 		this.reference = reference;
 		this.resteProduire = resteProduire;
@@ -100,7 +102,12 @@ public class Article implements Serializable {
 		this.etat = etat;
 		this.polyvalences = polyvalences;
 		this.unite = unite;
+		this.checked = checked;
 	}
+
+
+	
+	
 
 	
 }

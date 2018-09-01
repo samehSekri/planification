@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -44,7 +45,7 @@ public class Operateur implements Serializable {
 	@Column(length = 100)
 	@Size(min = 2, max = 100, message = "{error.operateur.lastname.max}")
 	private String lastname;
-	
+
 	@NotNull(message = "{error.operateur.email.null}")
 	@NotEmpty(message = "{error.operateur.email.empty}")
 	@Column(length = 50, name = "email")
@@ -61,28 +62,24 @@ public class Operateur implements Serializable {
 	@OneToMany(mappedBy = "operateur")
 	private List<Polyvalence> polyvalences;
 
-
-	public Operateur(String matricule, String firstname, String lastname, Unite unite, List<Conge> conges,
-			List<Polyvalence> polyvalences) {
-		super();
-		this.matricule = matricule;
-		this.firstname = firstname;
-		this.lastname = lastname;
-		this.unite = unite;
-		this.conges = conges;
-		this.polyvalences = polyvalences;
-		
-	}
-
-	
+	@Transient
+	private boolean checked;
 
 	public Operateur() {
 		super();
 	}
 
-
-
-
-	
+	public Operateur(String matricule, String firstname, String lastname, String email, Unite unite, List<Conge> conges,
+			List<Polyvalence> polyvalences, boolean checked) {
+		super();
+		this.matricule = matricule;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.email = email;
+		this.unite = unite;
+		this.conges = conges;
+		this.polyvalences = polyvalences;
+		this.checked = checked;
+	}
 
 }
