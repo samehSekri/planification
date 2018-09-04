@@ -41,9 +41,9 @@ export class UnitManagementService {
    * Get all Unit
    * @returns Unit[]
    */
-  public getAll = (): Observable<any[]> => {
+  public getAll = (): Observable<TreeNode[]> => {
     return this.http.get(this.actionUrl, this.options())
-      .map((response: Response) => <any[]>response.json())
+      .map((response: Response) => <TreeNode[]>response.json())
       .catch((response: Response) => this.errorHandler(response));
   }
 

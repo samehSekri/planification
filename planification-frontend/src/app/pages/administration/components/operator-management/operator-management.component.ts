@@ -80,7 +80,7 @@ console.log(this.currentOperator);
         this.msgSuccess.push({ severity: 'success', summary: this.translate.instant('message.save.successMsgTitle'), detail: this.translate.instant("message.save.successMsg") });
       
         //go to the next Operator
-      this.currentOperator = new Operator(null, "", "", "",null);
+      this.currentOperator = new Operator(null, "", "", "",null,true);
       },
         error => {
           var bodyMsg = JSON.parse(error._body);
@@ -139,7 +139,7 @@ console.log(item);
   ngOnInit() {
     this.getAllOperators();       
     this.getUap();
-    this.currentOperator = new Operator(null, "", "", "",null);
+    this.currentOperator = new Operator(null, "", "", "",null,true);
    
   }
   

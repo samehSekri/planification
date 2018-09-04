@@ -1,9 +1,13 @@
 package com.wevioo.service;
 
 import java.util.List;
+import java.util.Map;
 
+import com.wevioo.model.Article;
 import com.wevioo.model.Operateur;
+import com.wevioo.model.Polyvalence;
 import com.wevioo.model.Unite;
+import com.wevioo.model.enumeration.StatutOperateurEnum;
 
 public interface OperateurService {
 
@@ -66,4 +70,27 @@ public interface OperateurService {
 
 
 	void deleteOperateur(String matricule);
+	/**$
+	 * 
+	 * @param operateurs
+	 * @param articles
+	 * @param mapArtPoly
+	 * @return
+	 */
+	List<Operateur>findOperatuersByCriteria(String matricule,StatutOperateurEnum statut, String unite,
+			Integer firstRow, Integer numRows);
+
+	List<Operateur> calculateNbrePolyvalencesForOperateurs(List<Operateur> operateurs, List<Article> articles,
+			Map<String, List<Polyvalence>> mapArtPoly);
+	/**
+	 * 
+	 * @param object
+	 * @param actif
+	 * @param object2
+	 * @param i
+	 * @param j
+	 * @return
+	 */
+
+	List<Operateur> findOperatuersByCriteria(Object object, StatutOperateurEnum actif, Object object2, int i, int j);
 }

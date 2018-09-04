@@ -2,15 +2,20 @@ package com.wevioo.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -38,60 +43,70 @@ public class Scenario implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID", unique = true)
 	private Long id;
-	
+
 	private String name;
-	
+
 	private Date dateCreation;
-	
+
 	private Date dateValidation;
-	
+
 	private Date dateRejet;
-	
+
 	private Date dateDebut;
-	
+
 	private Date dateModification;
-	
+
 	private double tauxSatisfactionClient;
-	
+
 	@Transient
 	private double tauxSatisfactionProduction;
-	
+
 	private double tauxOccupation;
 	@JsonIgnore
 	@ManyToOne
 	private Unite unite;
-	
 
-	
-//	@JsonIgnore
-//	@OneToMany(mappedBy = "scenario", fetch = FetchType.LAZY)
-//	private List<JourOuvre> jourOuvre;
-//	
+	@JsonIgnore
+	@OneToMany(mappedBy = "scenario", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Affectation> affectation;
+
+	@JsonIgnore
+	@OneToMany(mappedBy = "scenario", fetch = FetchType.LAZY)
+	private List<JourOuvre> jourOuvre;
+
 	@ManyToOne
 	@JoinColumn(name = "cree_par")
 	private User creePar;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "modifie_par", nullable = true)
 	private User modifiePar;
-	
+
 	private String commentaire;
-	
+
 	@Transient
 	private int numero;
-	
+
 	@Column(name = "periode", nullable = true)
 	@Enumerated(EnumType.STRING)
 	private PeriodeEnum periode;
-	
+
 	@Column(name = "statut", nullable = false)
 	@Enumerated(EnumType.STRING)
 	private StatutScenarioEnum statut;
 
+	
+
+	public Scenario() {
+		super();
+	}
+
+
+
 	public Scenario(Long id, String name, Date dateCreation, Date dateValidation, Date dateRejet, Date dateDebut,
 			Date dateModification, double tauxSatisfactionClient, double tauxSatisfactionProduction,
-			double tauxOccupation, Unite unite, User creePar, User modifiePar, String commentaire, int numero,
-			PeriodeEnum periode, StatutScenarioEnum statut) {
+			double tauxOccupation, Unite unite, List<Affectation> affectation, List<JourOuvre> jourOuvre, User creePar,
+			User modifiePar, String commentaire, int numero, PeriodeEnum periode, StatutScenarioEnum statut) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -104,6 +119,8 @@ public class Scenario implements Serializable {
 		this.tauxSatisfactionProduction = tauxSatisfactionProduction;
 		this.tauxOccupation = tauxOccupation;
 		this.unite = unite;
+		this.affectation = affectation;
+		this.jourOuvre = jourOuvre;
 		this.creePar = creePar;
 		this.modifiePar = modifiePar;
 		this.commentaire = commentaire;
@@ -111,10 +128,5 @@ public class Scenario implements Serializable {
 		this.periode = periode;
 		this.statut = statut;
 	}
-
-	public Scenario() {
-		super();
-	}
-	
 
 }

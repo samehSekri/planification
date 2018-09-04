@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.wevioo.dto.OperateurDto;
+import com.wevioo.model.Article;
 import com.wevioo.model.Operateur;
 import com.wevioo.model.Polyvalence;
 import com.wevioo.model.Unite;
@@ -63,6 +64,9 @@ public class OperateurRestController {
 	@RequestMapping(value = "/operators", method = RequestMethod.POST)
 	public @ResponseBody List<OperateurDto> findOperateurByUnite(@RequestBody Unite unite) throws Exception {
 	List<Operateur> operateurs = operateurService.findOperateurByUnite(unite);
+	for (Operateur op : operateurs) {
+		op.setChecked(true);
+		}		
 		Type listType = new TypeToken<List<OperateurDto>>() {
 		}.getType();
 

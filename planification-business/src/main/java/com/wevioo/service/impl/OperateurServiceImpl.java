@@ -1,14 +1,20 @@
 package com.wevioo.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
+import org.hibernate.boot.jaxb.hbm.internal.ExecuteUpdateResultCheckStyleConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.wevioo.dao.OperateurRepository;
+import com.wevioo.model.Article;
 import com.wevioo.model.Operateur;
+import com.wevioo.model.Polyvalence;
 import com.wevioo.model.Unite;
+import com.wevioo.model.enumeration.StatutOperateurEnum;
 import com.wevioo.service.OperateurService;
 
 @Service
@@ -17,6 +23,7 @@ public class OperateurServiceImpl implements OperateurService {
 
 	@Autowired
 	private OperateurRepository operateurRepository;
+	private String entityName ="Operateur";
 
 	// @Autowired
 	// private CongeRepository congeRepository;
@@ -113,6 +120,54 @@ public class OperateurServiceImpl implements OperateurService {
 				}
 			}
 			return null;
+	}
+
+	@Override
+	public List<Operateur> calculateNbrePolyvalencesForOperateurs(List<Operateur> operateurs, List<Article> articles,
+			Map<String, List<Polyvalence>> mapArtPoly) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Operateur> findOperatuersByCriteria(String matricule,StatutOperateurEnum statut, String unite,
+			Integer firstRow, Integer numRows) {
+		
+		List<Object> param = new ArrayList<Object>();
+
+	StringBuffer queryStr = new StringBuffer("SELECT u FROM "+this.entityName +" u");
+queryStr.append(" WHERE 1=1");
+
+		if (matricule != null && !matricule.isEmpty()) {
+			queryStr.append(" AND u.matricule = ?");
+			param.add(matricule);
+		}
+
+		if (statut != null && !statut.name().isEmpty()) {
+			queryStr.append(" AND u.statut = ?");
+			param.add(statut);
+		}
+		
+		if (unite != null && !unite.isEmpty()) {
+			queryStr.append(" AND (u.unite.parent.parent.name = ?");
+			queryStr.append(" OR u.unite.parent.name = ?");
+			queryStr.append(" OR u.unite.name = ?)");
+			param.add(unite);
+			param.add(unite);
+			param.add(unite);
+		}
+
+
+		//List<Operateur> list =  executeResultListIgnoreNullValuesByRang(queryStr.toString(), firstRow, numRows, param.toArray());
+		//return list;
+		return null;
+	}
+
+	@Override
+	public List<Operateur> findOperatuersByCriteria(Object object, StatutOperateurEnum actif, Object object2, int i,
+			int j) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

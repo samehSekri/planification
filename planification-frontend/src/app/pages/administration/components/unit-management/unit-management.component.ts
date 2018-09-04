@@ -147,81 +147,84 @@ export class UnitManagementComponent implements OnInit {
         this.uaps = [];
 
 
-
+        this.uniteService.getAll().subscribe((data: TreeNode[]) => {
+                this.unites = data;
+                console.log(data);
+        });
 
         this.data1 = [{
-            label: 'Zodiac',
-            type: 'person',
-            styleClass: 'ui-person',
-            expanded: true,
-            data: { name: 'zodiac aerospace', 'avatar': 'walter.jpg' },
-            children: [
+            'label': 'Zodiac',
+            'type': 'person',
+            'styleClass': 'ui-person',
+            'expanded': true,
+            'data': { 'name': 'zodiac aerospace', 'avatar': 'walter.jpg' },
+            'children': [
                 {
-                    label: 'UAP1',
-                    type: 'person',
-                    styleClass: 'ui-person',
-                    expanded: true,
-                    data: { name: 'Saul Goodman', 'avatar': 'saul.jpg' },
-                    children: [{
-                        label: 'Atelier1',
+                    'label': 'UAP1',
+                    'type': 'person',
+                    'styleClass': 'ui-person',
+                    'expanded': true,
+                    'data': { 'name': 'Saul Goodman', 'avatar': 'saul.jpg' },
+                    'children': [{
+                        'label': 'Atelier1',
 
-                        styleClass: 'department-cfo'
+                        'styleClass': 'department-cfo'
                     },
                     {
-                        label: 'Atelier2',
+                        'label': 'Atelier2',
 
-                        styleClass: 'department-cfo'
+                        'styleClass': 'department-cfo'
 
                     }],
                 },
                 {
-                    label: 'UAP2',
-                    type: 'person',
-                    styleClass: 'ui-person',
-                    expanded: true,
-                    data: { name: 'Mike E.', 'avatar': 'mike.jpg' },
-                    children: [{
-                        label: 'Atelier3',
+                    'label': 'UAP2',
+                    'type': 'person',
+                    'styleClass': 'ui-person',
+                    'expanded': true,
+                    'data': { 'name': 'Mike E.', 'avatar': 'mike.jpg' },
+                    'children': [{
+                        'label': 'Atelier3',
 
-                        styleClass: 'department-coo'
+                        'styleClass': 'department-coo'
                     }]
                 },
                 {
-                    label: 'UAP3',
-                    type: 'person',
-                    styleClass: 'ui-person',
-                    expanded: true,
-                    data: { name: 'Jesse Pinkman', 'avatar': 'jesse.jpg' },
-                    children: [{
-                        label: 'Atelier4',
-                        type: 'atelier',
-                        styleClass: 'department-cto',
-                        expanded: true,
-                        children: [{
-                            label: 'Ilot1',
-                            type: 'ilot',
-                            styleClass: 'department-cto'
+                    'label': 'UAP3',
+                    'type': 'person',
+                    'styleClass': 'ui-person',
+                    'expanded': true,
+                    'data': { 'name': 'Jesse Pinkman', 'avatar': 'jesse.jpg' },
+                    'children': [{
+                        'label': 'Atelier4',
+                        'type': 'atelier',
+                        'styleClass': 'department-cto',
+                        'expanded': true,
+                        'children': [{
+                            'label': 'Ilot1',
+                            'type': 'ilot',
+                            'styleClass': 'department-cto'
                         },
                         {
-                            label: 'Ilot2',
+                            'label': 'Ilot2',
 
-                            styleClass: 'department-cto'
+                            'styleClass': 'department-cto'
                         },
                         {
-                            label: 'Ilot3',
+                            'label': 'Ilot3',
 
-                            styleClass: 'department-cto'
+                            'styleClass': 'department-cto'
                         }]
                     },
                     {
-                        label: 'Atelier5',
+                        'label': 'Atelier5',
 
-                        styleClass: 'department-cto'
+                        'styleClass': 'department-cto'
                     },
                     {
-                        label: 'Atelier6',
+                        'label': 'Atelier6',
 
-                        styleClass: 'department-cto'
+                        'styleClass': 'department-cto'
                     }]
                 }
             ]
