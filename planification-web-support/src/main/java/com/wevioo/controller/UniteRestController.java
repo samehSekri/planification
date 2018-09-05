@@ -24,6 +24,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.wevioo.dto.NodeDataDto;
 import com.wevioo.dto.NodeUniteDto;
 import com.wevioo.dto.UniteDto;
 import com.wevioo.exception.ApiException;
@@ -31,7 +32,6 @@ import com.wevioo.model.Unite;
 import com.wevioo.model.enumeration.TypeUnite;
 import com.wevioo.service.UniteService;
 import com.wevioo.utility.MessageUtil;
-
 
 @RestController
 @RequestMapping("/api/unites")
@@ -51,27 +51,121 @@ public class UniteRestController {
 	 */
 	@RequestMapping(method = RequestMethod.GET)
 	public @ResponseBody List<NodeUniteDto> findAllUnite() throws Exception {
-		List<Unite> unites = uniteService.findAllUnite();
+		// List<Unite> unites = uniteService.findAllUnite();
 
-		String jsonString = convertToTreeNode(unites);
-		
-		
-		ObjectMapper objectMapper = new ObjectMapper();
+		// 'label': 'Zodiac',
+		// 'type': 'person',
+		// 'styleClass': 'ui-person',
+		// 'expanded': true,
+		// 'data': { 'name': 'zodiac aerospace', 'avatar': 'walter.jpg' },
+		NodeUniteDto nodeUniteDto = new NodeUniteDto();
 
-	    List<NodeUniteDto> navigation = objectMapper.readValue(
-	            jsonString,
-	            objectMapper.getTypeFactory().constructCollectionType(
-	                    List.class, NodeUniteDto.class));
+		NodeDataDto data = new NodeDataDto();
+		NodeUniteDto treeNode = new NodeUniteDto();
+		treeNode.setLabel("Zodiac");
+		treeNode.setType("person");
+		treeNode.setStyleClass("ui-person");
+		treeNode.setExpanded(true);
+		data.setName("Zodiac Aerospace");
+		data.setAvatar("walter.jpg");
+		treeNode.setData(data);
 		
+		List<NodeUniteDto> uapNodes = new ArrayList<NodeUniteDto>();
+
+		List<Unite> unites = uniteService.findUniteByType(TypeUnite.UAP);
+		if (unites != null && unites.size() > 0) {
+			for (Unite unite : unites) {
+		
+				NodeUniteDto uap = new NodeUniteDto();
+				uap.setLabel(unite.getName());
+				uap.setType("person");
+				uap.setStyleClass("ui-person");
+				uap.setExpanded(true);
+				data = new NodeDataDto();
+				data.setName(unite.getType().name());
+				data.setAvatar("saul.jpg");
+				uap.setData(data);
+
+				List<NodeUniteDto> childrenUap = new ArrayList<NodeUniteDto>();
+				
+
+				// Get list atelier
+				List<Unite> uniteAteliers = uniteService.findUniteByParent(unite);
+				if (uniteAteliers != null && uniteAteliers.size() > 0) {
+					for (Unite a : uniteAteliers) {
+						NodeUniteDto atelier = new NodeUniteDto();
+						atelier.setLabel(a.getName());
+						atelier.setType("atelier");
+						atelier.setStyleClass("department-cfo");
+						atelier.setExpanded(true);
+						data = new NodeDataDto();
+						data.setName(a.getType().name());
+						data.setAvatar("jesse.jpg");
+						atelier.setData(data);
+
+						List<NodeUniteDto> childrenAtelier = new ArrayList<NodeUniteDto>();
+						// Get list Ilot
+						List<Unite> uniteIlots = uniteService.findUniteByParent(a);
+						if (uniteIlots != null && uniteIlots.size() > 0) {
+							for (Unite i : uniteIlots) {
+								NodeUniteDto ilot = new NodeUniteDto();
+								ilot.setLabel(i.getName());
+								ilot.setType("ilot");
+								ilot.setStyleClass("department-cto");
+								data = new NodeDataDto();
+								data.setName(i.getType().name());
+								data.setAvatar("jesse.jpg");
+								ilot.setData(data);
+
+								childrenAtelier.add(ilot);
+							}
+						}
+						//Convert children atelier ArrayList to array 
+						NodeUniteDto[] children = new NodeUniteDto[childrenAtelier.size()];
+						children = childrenAtelier.toArray(children);
+						atelier.setChildren(children);
+						childrenUap.add(atelier);
+						
+					}
+				}
+				NodeUniteDto[] childrenUapNode = new NodeUniteDto[childrenUap.size()];
+				childrenUapNode = childrenUap.toArray(childrenUapNode);
+				uap.setChildren(childrenUapNode);
+				uapNodes.add(uap);
+				
+			}
+		}
+		NodeUniteDto[] childrenUapNode = new NodeUniteDto[uapNodes.size()];
+		childrenUapNode = uapNodes.toArray(childrenUapNode);
+
+		treeNode.setChildren(childrenUapNode);
+
+		// for (Unite ilot : ilots) {
+		// Unite uap = ilot.getParent().getParent();
+		//
+		// ObjectNode data = null;
+		// ArrayNode listAtelierNode = null;
+		//
+		// if (!uapsList.contains(uap)) {
+		//
+		// }
+		// }
+		//
+		// String jsonString = convertToTreeNode(unites);
+		//
+		// ObjectMapper objectMapper = new ObjectMapper();
+		//
+		// List<NodeUniteDto> navigation = objectMapper.readValue(jsonString,
+		// objectMapper.getTypeFactory().constructCollectionType(List.class,
+		// NodeUniteDto.class));
+		List<NodeUniteDto> navigation = new ArrayList<NodeUniteDto>();
+		navigation.add(treeNode);
 		return navigation;
 		// Cast List<Unite> to List<UniteDto> without need to use for loop
-		//Type listType = new TypeToken<List<UniteDto>>() {
-		//}.getType();
+		// Type listType = new TypeToken<List<UniteDto>>() {
+		// }.getType();
 
-		
-		
-		
-		//return modelMapper.map(unites, listType);
+		// return modelMapper.map(unites, listType);
 	}
 
 	private String convertToTreeNode(List<Unite> unites) {
@@ -84,12 +178,15 @@ public class UniteRestController {
 		List<Unite> ateliersList = new ArrayList<Unite>();
 		List<Unite> uapsList = new ArrayList<Unite>();
 
+		List<Unite> selectedIlots = new ArrayList<Unite>();
+
 		int index = 0;
 		for (Unite ilot : ilots) {
 			Unite uap = ilot.getParent().getParent();
 
 			ObjectNode data = null;
 			ArrayNode listAtelierNode = null;
+
 			if (!uapsList.contains(uap)) {
 				uapsList.add(uap);
 				index++;
@@ -110,10 +207,14 @@ public class UniteRestController {
 				listAtelierNode = mapper.createArrayNode();
 				ArrayNode listIlotsNode = null;
 				ObjectNode nodeAtelier = null;
+
 				for (Unite ilotChild : ilots) {
 					Unite atelier = ilotChild.getParent();
 					if (atelier.getParent().getName().equals(uap.getName())) {
+
 						if (!ateliersList.contains(atelier)) {
+							System.out.println("----------> " + atelier.getName() + " not found.");
+
 							ateliersList.add(atelier);
 							nodeAtelier = mapper.createObjectNode();
 							nodeAtelier.put("label", atelier.getName());
@@ -133,14 +234,14 @@ public class UniteRestController {
 							nodeAtelier.put("children", listIlotsNode);
 
 							listAtelierNode.add(nodeAtelier);
-						} else {
+						} else if (!selectedIlots.contains(ilotChild)) {
+							selectedIlots.add(ilotChild);
 							// Liste des children de l'atelier atelier
 							ObjectNode nodeIlot = mapper.createObjectNode();
 							nodeIlot.put("label", ilotChild.getName());
 							nodeIlot.put("type", ilotChild.getType().name().toLowerCase());
 							nodeIlot.put("styleClass", "department-cfo");
 							nodeIlot.put("expanded", true);
-							
 
 							listIlotsNode.add(nodeIlot);
 							// Children des ateliers
@@ -154,7 +255,6 @@ public class UniteRestController {
 				arrayNode.add(node);
 			}
 		}
-		
 
 		try {
 			String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(arrayNode);
