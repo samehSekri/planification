@@ -6,15 +6,19 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.wevioo.model.Horaire;
+import com.wevioo.model.Pause;
 import com.wevioo.model.Unite;
 import com.wevioo.model.enumeration.DayOfWeekEnum;
+import com.wevioo.model.enumeration.PeriodeEnum;
+
 
 @Repository
 public interface HoraireRepository extends JpaRepository<Horaire, Long>{
 	
-List<Horaire> findHoraireByUnite(Unite uap,DayOfWeekEnum jour) ;
+List<Horaire> findHoraireByUnite(Unite uap) ;
 
-//	Number getTempsTravail(Unite uap) ;
-	
-	//String buildParamHoraireId(DayOfWeekEnum jour, PeriodeEnum periode, String uniteName);
+List<Pause> findPauseByIdHoraire(Long horaire)  ;
+
+
+//String buildParamHoraireId(DayOfWeekEnum jour, PeriodeEnum periode, String uniteName);
 }

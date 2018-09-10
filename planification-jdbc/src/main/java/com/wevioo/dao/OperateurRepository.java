@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.wevioo.model.Operateur;
 import com.wevioo.model.Unite;
+import com.wevioo.model.enumeration.StatutOperateurEnum;
 
 @Repository
 public interface OperateurRepository extends JpaRepository<Operateur, String> {
@@ -18,7 +19,26 @@ public interface OperateurRepository extends JpaRepository<Operateur, String> {
 	 * @return
 	 */
 	Operateur findByFirstname(String firstname);
+	/**
+	 * 
+	 * @param unite
+	 * @return
+	 */
 	List<Operateur> findOperateurByUnite(Unite unite);
-
+	/**
+	 * 
+	 * @param unite
+	 * @return
+	 */
+	List<Operateur> findOperateurByUnite(String unite);
+	/**
+	 * 
+	 * @param matricule
+	 * @param statut
+	 * @param unite
+	 * @return
+	 */
+	List<Operateur> findOperateurByMatriculeAndStatutAndUnite(String matricule,StatutOperateurEnum statut, String unite);
+		
 
 }

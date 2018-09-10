@@ -30,6 +30,12 @@ public interface OperateurService {
 	 * @return
 	 */
 	List<Operateur> findOperateurByUnite(Unite unite);
+	/**
+	 * 
+	 * @param unite
+	 * @return
+	 */
+	List<Operateur> findOperateurByUnite(String unite);
 
 	/**
 	 * 
@@ -77,8 +83,7 @@ public interface OperateurService {
 	 * @param mapArtPoly
 	 * @return
 	 */
-	List<Operateur>findOperatuersByCriteria(String matricule,StatutOperateurEnum statut, String unite,
-			Integer firstRow, Integer numRows);
+	List<Operateur>findOperateurByMatriculeAndStatutAndUnite(String matricule,StatutOperateurEnum statut, String unite);
 
 	List<Operateur> calculateNbrePolyvalencesForOperateurs(List<Operateur> operateurs, List<Article> articles,
 			Map<String, List<Polyvalence>> mapArtPoly);

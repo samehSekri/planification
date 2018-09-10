@@ -19,6 +19,7 @@ public interface ArticleRepository extends JpaRepository<Article, String> {
 	 */
 	List<Article>findArticleByUnite(Unite unite);
 	
+    List<Article> findArticlesByReferenceAndUnite(String reference,String unite) ;
 
 	//Article changeArticleStatus(String reference);
 	

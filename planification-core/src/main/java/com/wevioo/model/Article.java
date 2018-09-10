@@ -38,25 +38,24 @@ public class Article implements Serializable {
 	@Column(length = 50, name = "reference")
 	@Size(min = 2, max = 50, message = "{error.article.reference.max}")
 	private String reference;
-	
+
 	@Column(name = "reste_produire")
 	private Integer resteProduire;
 
 	@Column(name = "temps_standard")
 	private Double tempsStandard;
-	
 
 	@Column(name = "quantite")
 	private Integer quantite;
-	
-	@Column(name="date_integration", unique=false, nullable = true)
+
+	@Column(name = "date_integration", unique = false, nullable = true)
 	private Date integrationDate;
-	
+
 	private Integer engagementSemaine;
-	
-	@Column(name="fichier_integration", unique=false, nullable = true)
+
+	@Column(name = "fichier_integration", unique = false, nullable = true)
 	private String integrationFileName;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "user_integration")
 	private User integrationUser;
@@ -68,7 +67,8 @@ public class Article implements Serializable {
 
 	@Column(name = "etat")
 	private boolean etat;
-	
+	@Column(name = "besoin_polyvalence")
+	private Double besoinPolyvalence;
 	@JsonIgnore
 	@OneToMany(mappedBy = "article")
 	private List<Polyvalence> polyvalences;
@@ -105,9 +105,4 @@ public class Article implements Serializable {
 		this.checked = checked;
 	}
 
-
-	
-	
-
-	
 }

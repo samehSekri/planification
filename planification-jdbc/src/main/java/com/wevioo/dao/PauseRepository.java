@@ -14,12 +14,9 @@ import com.wevioo.model.Pause;
 public interface PauseRepository extends JpaRepository<Pause, Long> {
 
 
-
-	//List<Pause> findPauseByIdHoraire(Long idhoraire)  ;
-
-	//void deletePausesByIdHoraire(String idParamHoraire) ;
-	
-	//List<Pause> getAll();
+List<Pause> findPauseByHorairesIdHoraire(Long idparamhoraire);
+//	void deletePausesByIdHoraire(String idParamHoraire) ;
+//	
 
 	//void deletePausesByUnite(Unite unite) ;
 

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import org.hibernate.boot.jaxb.hbm.internal.ExecuteUpdateResultCheckStyleConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -121,6 +120,16 @@ public class OperateurServiceImpl implements OperateurService {
 			}
 			return null;
 	}
+	@Override
+	public List<Operateur> findOperateurByUnite(String unite) {
+			if (unite != null ) {
+				List<Operateur> operateurs = operateurRepository.findOperateurByUnite(unite);
+				if (operateurs != null) {
+					return operateurs;
+				}
+			}
+			return null;
+	}
 
 	@Override
 	public List<Operateur> calculateNbrePolyvalencesForOperateurs(List<Operateur> operateurs, List<Article> articles,
@@ -130,8 +139,8 @@ public class OperateurServiceImpl implements OperateurService {
 	}
 
 	@Override
-	public List<Operateur> findOperatuersByCriteria(String matricule,StatutOperateurEnum statut, String unite,
-			Integer firstRow, Integer numRows) {
+	public List<Operateur> findOperateurByMatriculeAndStatutAndUnite(String matricule,StatutOperateurEnum statut, String unite)
+			 {
 		
 		List<Object> param = new ArrayList<Object>();
 

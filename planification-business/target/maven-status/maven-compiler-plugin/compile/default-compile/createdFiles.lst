@@ -19,6 +19,7 @@ com\wevioo\service\impl\OperateurServiceImpl.class
 com\wevioo\service\impl\PauseServiceImpl.class
 com\wevioo\service\impl\HoraireServiceImpl.class
 com\wevioo\config\EmailConfig.class
+com\wevioo\service\AffectationService.class
 com\wevioo\service\HoraireService.class
 com\wevioo\service\impl\UniteServiceImpl.class
 com\wevioo\service\PolyvalenceService.class
@@ -27,12 +28,14 @@ com\wevioo\utility\ApplicationConstants.class
 com\wevioo\service\ArticleService.class
 com\wevioo\utility\RandomUtil.class
 com\wevioo\exception\BatchOperationSaveException.class
+com\wevioo\service\impl\AffectationServiceImpl.class
 com\wevioo\service\impl\UserServiceImpl.class
 com\wevioo\aspect\ServiceAspect.class
 com\wevioo\service\OperateurService.class
 com\wevioo\service\impl\JourOuvreServiceImpl.class
 com\wevioo\utility\mail\EmailStatus.class
 com\wevioo\config\ServiceConfig.class
+com\wevioo\service\ArticleScenarioService.class
 com\wevioo\mapper\OperateurMap.class
 com\wevioo\exception\BatchDockNotExistException.class
 com\wevioo\service\JourOuvreService.class

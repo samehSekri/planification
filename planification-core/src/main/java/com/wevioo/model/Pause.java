@@ -32,6 +32,7 @@ public class Pause {
 	@Column(name = "heure_fin", nullable = false)
 	private Time heureFin;
 	
+	
 	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "horaire", nullable = false)
