@@ -6,6 +6,8 @@ import com.wevioo.dto.UserDto;
 import com.wevioo.model.User;
 import com.wevioo.utility.mail.EmailStatus;
 
+import lombok.Getter;
+
 public interface UserService {
 	/**
 	 * Find All users

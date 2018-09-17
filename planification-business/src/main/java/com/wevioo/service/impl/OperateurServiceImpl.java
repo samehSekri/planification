@@ -132,12 +132,25 @@ public class OperateurServiceImpl implements OperateurService {
 	}
 
 	@Override
-	public List<Operateur> calculateNbrePolyvalencesForOperateurs(List<Operateur> operateurs, List<Article> articles,
-			Map<String, List<Polyvalence>> mapArtPoly) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Operateur> calculateNbrePolyvalencesForOperateurs(
+			List<Operateur> operateurs, List<Article> articles,
+			Map<String, List<Polyvalence>> mapArticlePolyvalences) {
+		for (Operateur op : operateurs) {
+			op.setNbrePolyvalence(0);
+			for (Article article : articles) {
+				List<Polyvalence> listPolyvalences = new ArrayList<Polyvalence>();
+				listPolyvalences = mapArticlePolyvalences.get(article
+						.getReference());
+				for (Polyvalence p : listPolyvalences) {
+					if (op.getMatricule().equals(
+							p.getOperateur().getMatricule())) {
+						op.setNbrePolyvalence(op.getNbrePolyvalence() + 1);
+					}
+				}
+			}
+		}
+		return operateurs;
 	}
-
 	@Override
 	public List<Operateur> findOperateurByMatriculeAndStatutAndUnite(String matricule,StatutOperateurEnum statut, String unite)
 			 {

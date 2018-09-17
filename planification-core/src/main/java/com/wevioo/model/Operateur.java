@@ -74,10 +74,10 @@ public class Operateur implements Serializable {
 	private Double chargeRestante;
 	
 	@Transient
-	private Integer toleranceMin;
+	private Integer toleranceMin=80;
 	
 	@Transient
-	private Integer toleranceMax;
+	private Integer toleranceMax=100;
 	
 	@Transient
 	private boolean checked;

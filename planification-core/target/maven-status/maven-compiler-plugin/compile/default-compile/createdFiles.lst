@@ -36,6 +36,7 @@ com\wevioo\model\OperateursAndArticlesDto.class
 com\wevioo\model\enumeration\TypeUnite.class
 com\wevioo\dto\HoraireDto.class
 com\wevioo\model\ArticleScenario.class
+com\wevioo\model\NbrePolyvalenceComparator.class
 com\wevioo\model\enumeration\PeriodeEnum.class
 com\wevioo\model\Article.class
 com\wevioo\dto\ParamPauseDto.class
