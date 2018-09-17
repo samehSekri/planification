@@ -1,0 +1,36 @@
+<ba-card [title]="'general.polyvalence.newfile' | translate" baCardClass="with-scroll table-panel">
+
+
+  <div style="text-align:center">
+    <label>
+      <input type="file" (change)="selectFile($event)">
+      </label>
+      <button [disabled]="!selectedFiles"
+  (click)="upload()">Upload</button>
+    </div>
+
+    <div class="panel panel-primary panel-widget">
+      <div class="panel-heading">
+        <i class="fa fa-shopping-bag" aria-hidden="true"></i> Upload Excel
+      </div>
+
+      <div class="panel-body">
+        Welcome! {{loginObj.username}}
+        <button class="btn btn-danger btn-sm" (click)="logout()">Logout</button>
+
+        <br />
+        <hr />
+
+        <h1>Demo for Excel Upload</h1>
+
+        <a href="http://localhost:9300/samples/products.xlsx" target="_blank">Excel Sample Download</a>
+
+        <hr />
+
+        <a class="btn btn-sm btn-primary" href="javascript:;">Upload Excel File
+          <input [(ngModel)]="excelUpload.FilePath" (change)="excelFileChange($event)" name="ExcelFPath"
+                 size="10" type="file"></a>
+
+      </div>
+    </div>
+</ba-card>

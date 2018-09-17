@@ -1,0 +1,16 @@
+
+<ba-card [title]="'general.cadence.newfile' | translate" baCardClass="with-scroll table-panel">
+
+    <p-header>
+      <div class="ui-helper-clearfix">
+        <div class="row">
+          
+          <a class="btn btn-sm btn-primary" href="javascript:;">
+            <input  (change)="excelFileChange($event)" name="ExcelFPath"
+                   size="10" type="file"></a>
+        </div>
+      </div>
+
+    </p-header>
+  
+</ba-card>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuration>
+
+	<Appenders>
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout
+				pattern="%highlight{%-5level |%d{dd/MM/yyyy HH:mm:ss}| %t |%c|: %msg%n%throwable}{FATAL=white, ERROR=red, WARN=blue, INFO=black, DEBUG=green, TRACE=blue}" />
+		</Console>
+	</Appenders>
+
+	<Loggers>
+
+		<!-- Application classes -->
+		<AsyncLogger name="com.wevioo" level="TRACE" />
+		<AsyncLogger name="org.hibernate" level="INFO" />
+
+		<AsyncRoot level="INFO">
+			<AppenderRef ref="Console" />
+		</AsyncRoot>
+
+	</Loggers>
+
+</Configuration>

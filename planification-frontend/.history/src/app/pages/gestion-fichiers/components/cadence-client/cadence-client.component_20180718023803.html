@@ -1,0 +1,16 @@
+<ba-card [title]="'general.cadence.newfile' | translate" baCardClass="with-scroll table-panel">
+
+  <form name="searchForm" class="form-horizontal " role="form" novalidate  #editForm="ngForm">
+    <p-header>
+      <div class="ui-helper-clearfix">
+          <input type="text" class="form-control" id="input01" name="resteProduire" [(ngModel)]="currentArticle.resteProduire" #resteProduire="ngModel"
+          placeholder="{{'general.cadence.selectionFile' | translate}}" required>
+        
+        <button type="button" class="btn btn-success btn-with-icon" style="float:left" data-toggle="tooltip" title="{{'action.new' | translate}}"
+          (click)="showDialog()">
+          <i class="ion-person-add"></i>{{'action.new' | translate}}
+        </button>
+      </div>
+    </p-header>
+  </form>
+</ba-card>

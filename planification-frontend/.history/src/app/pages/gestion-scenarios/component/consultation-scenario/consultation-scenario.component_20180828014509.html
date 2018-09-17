@@ -1,0 +1,138 @@
+
+<ba-card [title]="'general.menu.FiltreRecherche' | translate" baCardClass="with-scroll table-panel">
+  <form name="searchForm" role="form" novalidate  #editForm="ngForm">
+    <div class="row">
+  <div class="col-sm-6">
+    <div class="form-group">
+      <label class="ui-grid-col-4 control-label-dialog">UAP</label>
+      <select class="form-control" name="uap" required [(ngModel)]="currentUap"  (change)="getAtelierByParent();"
+        #uap>
+        <option *ngFor="let uap of uaps" [ngValue]="uap">{{uap.name}}</option>
+      </select>
+    </div>
+  </div>
+
+
+  <div class="col-sm-6">
+    <div class="form-group">
+      <label class="ui-grid-col-4 control-label-dialog">Atelier</label>
+      <select class="form-control" name="atelier"  required [(ngModel)]="currentAtelier" (change)="getIlotByParent();"
+        #atelier>
+        <option *ngFor="let atelier of ateliers" [ngValue]="atelier">{{atelier.name}}</option>
+      </select>
+    </div>
+ </div></div>
+ <div class="row">
+  <div class="col-sm-6">
+    <div class="form-group">
+      <label class="ui-grid-col-4 control-label-dialog">ILOT</label>
+
+      <select class="form-control" name="unite" [(ngModel)]="currentUnite"  #ilot>
+        <option *ngFor="let unite of ilots" [ngValue]="unite">{{unite.name}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="col-sm-6">
+     
+      <div class="form-group">
+        <label class="ui-grid-col-4 control-label-dialog">Statut</label>
+        <select class="form-control" name="unite" >
+          <option >BROUILLON</option>
+          <option >NON_VALIDE</option>
+          <option >VALIDE</option>
+          <option >REJETE</option>
+
+        </select>
+      
+         
+    </div></div></div>
+    <div class="row">
+    <div class="col-sm-6">
+        <div class="form-group">
+          <label class="ui-grid-col-4 control-label-dialog">Nom scénario</label>
+          <input type="text" class="form-control" id="nom" name="nameScenario" pInputText>
+         
+        </div>
+      </div>
+      <div class="col-sm-6">
+    <div class="form-group">
+      <label class="ui-grid-col-4 control-label-dialog">Date de création</label>
+      <input type="text" class="form-control" id="date" name="premierJours" 
+      required minlength="5" maxlength="50"  
+      ui-mask="99/99/9999" model-view-value="true" pInputText>
+    </div>
+       </div>
+  </div>
+ 
+  <div class="form-group">
+    <div class="row pull-left" style="margin-left: 20px;">
+      <div class="ui-helper-clearfix">
+          <button type="button" class="btn btn-danger " style="float:left" data-toggle="tooltip" title="{{'action.search' | translate}}"
+            >
+            <i class="ion-android-del"></i>   {{'action.viderFiltre' | translate}}
+          </button>
+        </div>
+      </div>
+      <div class="row pull-right" style="margin-left: 20px;">
+
+        <button type="button"  class="btn btn-success " 
+          data-toggle="tooltip" title="{{'action.new' | translate}}" [routerLink]="['../creation-scenario/']">
+          <i class="ion-android-checkmark-circle"></i>{{'action.newScenario' | translate }}</button>
+        <button type="button" style="margin-left:15px;" class="btn btn-warning btn-with-icon" data-toggle="tooltip"
+          title="{{'action.search' | translate}}" (click)="getScenarioByUnite();">
+          <i class="ion-android-search"></i>{{'action.search' | translate }}</button>
+      </div>
+    </div>
+</form>
+ </ba-card>
+ <ba-card  baCardClass="with-scroll table-panel">
+  
+    <p-dataTable [value]="scenarios" [rows]="10" [paginator]="true" [responsive]="true" [emptyMessage]="'message.emptyList' | translate"
+    #dt>
+   
+
+    <p-column field="name" [header]="'general.scenario.name' | translate" [filter]="true" filterPlaceholder="{{'action.search' | translate}}"
+      [sortable]="true" filterMatchMode="contains">
+      <ng-template let-col let-item="rowData" pTemplate="body">
+        <div class="align-center">
+          <div class="user-login" [title]="item[col.field]">{{item[col.field]}}</div>
+        </div>
+      </ng-template>
+    </p-column>
+    <p-column field="dateDebut" [header]="'general.scenario.dateDebut' | translate" [filter]="true" filterPlaceholder="{{'action.search' | translate}}"
+      filterMatchMode="contains" [sortable]="true"></p-column>
+    <p-column field="datecreation" [header]="'general.scenario.dateCreation' | translate" [filter]="true" filterPlaceholder="{{'action.search' | translate}}"
+      filterMatchMode="contains" [sortable]="true"></p-column>
+    <p-column field="cree_par" [header]="'general.scenario.responsable' | translate" [filter]="true"
+      filterPlaceholder="{{'action.search' | translate}}" filterMatchMode="contains" [sortable]="true"></p-column>
+    <p-column field="tauxsatisfactionclient" [header]="'general.scenario.tauxSatisfaction' | translate" [filter]="true" filterPlaceholder="{{'action.search' | translate}}"
+      filterMatchMode="contains" [sortable]="true"></p-column>
+    <p-column field="tauxoccupation" [header]="'general.scenario.tauxOccupation' | translate" [filter]="true" filterPlaceholder="{{'action.search' | translate}}"
+      filterMatchMode="contains" [sortable]="true"></p-column>
+    <p-column field="statut" [header]="'general.scenario.statut' | translate" [filter]="true" [style]="{'overflow':'visible'}"
+      [filterPlaceholder]="'action.search' | translate" [sortable]="true" filterMatchMode="equals">
+
+
+    </p-column>
+    <p-column styleClass="col-button" field="etat" [header]="'general.userManagement.actions' | translate">
+      <ng-template let-col let-item="rowData" pTemplate="body">
+        <div class="align-middle text-center">
+
+          <button type="submit" class="btn btn-primary btn-icon" data-toggle="tooltip" [title]="'action.edit' | translate" (click)="editArticle(item);">
+            <i class="ion-edit"></i>
+          </button>
+          <button type="button" class="btn btn-danger btn-icon" [disabled]="currentScenario.id == item.id" *ngIf="item[col.field]"
+            data-toggle="tooltip" [title]="'action.disable' | translate" (click)="changeArticleStatus(item)">
+            <i class="ion-trash-b"></i>
+          </button>
+
+          <button type="button" class="btn btn-success btn-icon" 
+            data-toggle="tooltip" [title]="'action.enable' | translate" (click)="changeArticleStatus(item)">
+            <i class="ion-checkmark"></i>
+          </button>
+        </div>
+      </ng-template>
+    </p-column>
+  </p-dataTable>
+      
+  </ba-card>

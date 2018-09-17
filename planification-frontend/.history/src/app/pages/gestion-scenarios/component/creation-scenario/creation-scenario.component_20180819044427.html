@@ -1,0 +1,49 @@
+<ba-card [title]="'general.menu.FiltreRecherche' | translate" baCardClass="with-scroll table-panel">
+    <form name="searchForm" role="form" novalidate (ngSubmit)="getAllArticles()" #editForm="ngForm">
+      <div class="row">
+    <div class="col-sm-6">
+      <div class="form-group">
+        <label class="ui-grid-col-4 control-label-dialog">UAP</label>
+        <select class="form-control" name="uap" required [(ngModel)]="currentUap"  (change)="getAtelierByParent();"
+          #uap>
+          <option *ngFor="let uap of uaps" [ngValue]="uap">{{uap.name}}</option>
+        </select>
+      </div>
+    </div>
+  
+  
+    <div class="col-sm-6">
+      <div class="form-group">
+        <label class="ui-grid-col-4 control-label-dialog">Atelier</label>
+        <select class="form-control" name="atelier"  required [(ngModel)]="currentAtelier" (change)="getIlotByParent();"
+          #atelier>
+          <option *ngFor="let atelier of ateliers" [ngValue]="atelier">{{atelier.name}}</option>
+        </select>
+      </div>
+   </div></div>
+   <div class="row">
+    <div class="col-sm-6">
+      <div class="form-group">
+        <label class="ui-grid-col-4 control-label-dialog">ILOT</label>
+  
+        <select class="form-control" name="unite" >
+          <option *ngFor="let unite of ilots" [ngValue]="unite">{{unite.name}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="form-group">
+          <label class="ui-grid-col-4 control-label-dialog">Premier jour</label>
+          <input type="text" class="form-control" id="date" name="premierJours" 
+          required minlength="5" maxlength="50"  
+          ui-mask="99/99/9999" model-view-value="true" pInputText>
+        </div>
+           </div>
+  </div>
+     
+       
+   
+   
+   
+  </form>
+   </ba-card>

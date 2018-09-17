@@ -1,0 +1,9 @@
+
+<ba-card [title]="'general.cadence.newfile' | translate" baCardClass="with-scroll table-panel">
+    <form id ='formData' #formdata method="post" enctype="multipart/form-data">
+      <input id="file" #data type="file" name="file" accept=".xlsx,.xls" (change)="getFiles(data)">
+      <input #upload type="submit" value="Upload" class="btn btn-success btn-with-icon" style="float:left" (click)="postfile();">
+      
+    </form>
+    
+</ba-card>

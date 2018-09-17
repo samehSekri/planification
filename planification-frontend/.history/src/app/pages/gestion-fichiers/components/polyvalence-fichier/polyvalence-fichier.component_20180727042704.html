@@ -1,0 +1,17 @@
+
+<ba-card [title]="'general.cadence.newfile' | translate" baCardClass="with-scroll table-panel">
+  <form name="searchForm" method="post" class="form-horizontal "  enctype="multipart/form-data" role="form" novalidate #editForm="ngForm">
+
+    <p-header>
+      <div class="ui-helper-clearfix">
+        <div class="row">
+          
+          <a class="btn btn-sm btn-primary" href="javascript:;">
+            <input  (ngModel)="fileUpload" (change)="excelFileChange($event)" name="ExcelFPath"
+                   size="100" type="file"></a>
+        </div>
+      </div>
+
+    </p-header>
+  </form>
+</ba-card>

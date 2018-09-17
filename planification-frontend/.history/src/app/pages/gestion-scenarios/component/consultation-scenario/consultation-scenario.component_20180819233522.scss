@@ -1,0 +1,25 @@
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { ConsultationScenarioComponent } from './creation-scenario.component';
+
+describe('ConsultationScenarioComponent', () => {
+  let component: ConsultationScenarioComponent;
+  let fixture: ComponentFixture<CreationScenarioComponent>;
+
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [ ConsultationScenarioComponent ]
+    })
+    .compileComponents();
+  }));
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(ConsultationScenarioComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

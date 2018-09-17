@@ -1,0 +1,194 @@
+.dropdown-content {
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  /* Links inside the dropdown */
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  /* Change color of dropdown links on hover */
+  .dropdown-content a:hover {background-color: #ddd}
+  
+  .company.ui-organizationchart .ui-organizationchart-node-content.ui-person {
+    padding: 0;
+    border: 0 none;
+  }
+  
+  .node-header,.node-content {
+    padding: .5em .7em;
+  }
+  
+  .node-header {
+    background-color: #495ebb;
+    color: #ffffff;
+  }
+  
+  .node-content {
+    text-align: center;
+    border: 1px solid #495ebb;
+  }
+  
+  .node-content img {
+    border-radius: 50%;
+  }
+  
+  .department-cfo {
+    background-color: #7247bc;
+    color: #ffffff;
+  }
+  
+  .department-coo {
+    background-color: #a534b6;
+    color: #ffffff;
+  }
+  
+  .department-cto {
+    background-color: #e9286f;
+    color: #ffffff;
+  }
+  
+  .ui-uap .ui-node-toggler {
+    color: #495ebb !important;
+  }
+  
+  .department-cto .ui-node-toggler {
+    color: #8a0a39 !important;
+  }
+  div.animation {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    position: relative;
+    -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+    -webkit-animation-delay: 2s; /* Safari 4.0 - 8.0 */
+    animation-name: example;
+    animation-duration: 4s;
+    animation-delay: -2s;
+  }
+  
+  /* Safari 4.0 - 8.0 */
+  @-webkit-keyframes example {
+    0%   {background-color:red; left:0px; top:0px;}
+    25%  {background-color:yellow; left:200px; top:0px;}
+    50%  {background-color:blue; left:200px; top:200px;}
+    75%  {background-color:green; left:0px; top:200px;}
+    100% {background-color:red; left:0px; top:0px;}
+  }
+  
+  /* Standard syntax */
+  @keyframes example {
+    0%   {background-color:red; left:0px; top:0px;}
+    25%  {background-color:yellow; left:200px; top:0px;}
+    50%  {background-color:blue; left:200px; top:200px;}
+    75%  {background-color:green; left:0px; top:200px;}
+    100% {background-color:red; left:0px; top:0px;}
+  }
+  
+  
+  ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    #8d8d8d;
+  }
+  :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    #8d8d8d;
+   opacity:  1;
+  }
+  ::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    #8d8d8d;
+   opacity:  1;
+  }
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    #8d8d8d;
+  }
+  ::-ms-input-placeholder { /* Microsoft Edge */
+   color:    #8d8d8d;
+  }
+  
+  .ui-growl-item-container.ui-state-highlight.ui-growl-message-error {
+    background-color: #f44336;
+    border-color: #f44336;
+  }
+  
+  .form-control-dialog {
+        background-color: #c1d8ec;
+        border: 1px solid #03a9f4;
+        height: 35px;
+        color: #0b5d80;
+  }
+  
+  
+   .control-label-dialog{
+    color: #0b5d80;
+    line-height: 35px;
+  }
+  
+  .box-shadow-border {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+      box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, 0.12);
+      width: calc(100% + 44px);
+      margin-left: -22px;
+    }
+  
+    .help-block {
+        color:#e91e63;
+    }
+  
+   div.form-group-dialog.row{
+     margin-bottom: 5px !important; 
+   }
+  
+   div.form-group-dialog.row.footer{
+      margin-top: -5px;
+      margin-bottom: 5px !important;
+   }
+  
+   .ui-grid-row{
+       padding: 2px;
+   }
+   label{
+    color: #282828
+  }
+  
+  .box-shadow-border {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+      box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, 0.12);
+      width: calc(100% + 44px);
+      margin-left: -22px;
+    }
+  
+  input.ng-valid[required] {
+  border-left: 5px solid #42A948; /* green */
+  }
+  
+  input.ng-invalid {
+  border-left: 5px solid #a94442; /* red */
+  }
+  
+  select.ng-valid[required] {
+  border-left: 5px solid #42A948; /* green */
+  }
+  
+  select.ng-invalid {
+  border-left: 5px solid #a94442; /* red */
+  }
+  
+  .text-error {
+  padding: 0 0 0 10px; margin-top: 2px;font-size:80%
+  }
+  /* You can add global styles to this file, and also import other style files */
+  .form-control {
+    color: #2191c0 !important;
+    border: #F0F0F0 1px solid;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: none;
+    font-size: 14px;
+  }

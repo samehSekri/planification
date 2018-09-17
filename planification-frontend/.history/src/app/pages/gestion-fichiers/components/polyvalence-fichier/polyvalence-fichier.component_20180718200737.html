@@ -1,0 +1,24 @@
+<ba-card [title]="'general.polyvalence.newfile' | translate" baCardClass="with-scroll table-panel">
+
+  <form name="searchForm" class="form-horizontal " role="form" novalidate #editForm="ngForm">
+    <p-header>
+      <div class="ui-helper-clearfix">
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <input type="text" class="form-control" id="input01" name="file" placeholder="{{'general.polyvalence.selectionFile' | translate}}"
+                required>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <button type="button" class="btn btn-success glyphicons glyphicons-file-plus" style="float:left" data-toggle="tooltip" title="{{'action.new' | translate}}"
+              >
+              <i class="ion-person-add"></i>{{'action.select' | translate}}
+            </button>
+          </div>
+        </div>
+      </div>
+   
+    </p-header>
+  </form>
+</ba-card>

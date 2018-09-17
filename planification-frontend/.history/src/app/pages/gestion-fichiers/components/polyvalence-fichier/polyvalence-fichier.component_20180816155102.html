@@ -1,0 +1,30 @@
+
+<ba-card [title]="'general.polyvalence.newfile' | translate" baCardClass="with-scroll table-panel">
+ 
+ <!-- <div class="progress progress-striped active" id="progress">
+      <div role="progressbar progress-striped" style="width: 0%;"  min="0" max="100" class="progress-bar progress-bar-success"><span>Uploding</span></div>
+    </div>
+  -->
+    <div class="progress">
+      <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" [attr.aria-valuenow]="progress" aria-valuemin="0" aria-valuemax ="100" 
+      style="min-width: 2em;" [style.width]="(progress/100)*100 + '%'">
+       {{progress}}%
+      </div>
+      </div>
+     <div class="demo-preview">
+  <form id ='formData' #formdata method="post" enctype="multipart/form-data">
+      <input id="file" #data type="file" name="file" accept=".xlsx,.xls" (change)="getFiles(data)">
+      <input #upload type="submit" value="Upload" class="btn btn-success pull-right" (click)="postfile();">
+      
+    </form>
+    </div>
+</ba-card>
+<ba-card  baCardClass="with-scroll table-panel">
+ 
+     <form id ='formConsole' #formconsole method="get" >
+      <div class="form-group">
+        <label for="comment">Console:</label>
+        <textarea class="form-control" rows="5" id="comment"></textarea>
+      </div>     </form>
+     
+ </ba-card>

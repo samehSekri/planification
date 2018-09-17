@@ -1,0 +1,17 @@
+
+<ba-card [title]="'general.cadence.newfile' | translate" baCardClass="with-scroll table-panel">
+ 
+  <div class="progress progress-striped active">
+      <div role="progressbar progress-striped" style="width: 0%;" class="progress-bar progress-bar-success"><span>Uploding</span></div>
+    </div>
+   
+    
+    
+ <div class="demo-preview">
+  <form id ='formData' #formdata method="post" enctype="multipart/form-data">
+      <input id="file" #data type="file" name="file" accept=".xlsx,.xls" (change)="getFiles(data)">
+      <input #upload type="submit" value="Upload" class="btn btn-success pull-right" (click)="postfile();">
+      
+    </form>
+    </div>
+</ba-card>

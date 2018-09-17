@@ -1,0 +1,14 @@
+
+<ba-card [title]="'general.cadence.newfile' | translate" baCardClass="with-scroll table-panel">
+    <form id ='formData' #formdata method="post" enctype="multipart/form-data">
+      <input id="file" #data type="file" name="file" accept=".xlsx,.xls" (change)="getFiles(data)">
+      <div class="col-sm-6">
+        <button type="button" class="btn btn-success btn-with-icon" style="float:left" data-toggle="tooltip" title="{{'action.new' | translate}}"
+        (click)="postfile();">
+          <i class="ion-person-add"></i>{{'action.select' | translate}}
+        </button>
+      </div>
+  
+    </form>
+    
+</ba-card>

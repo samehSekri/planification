@@ -1,0 +1,17 @@
+<ba-card [title]="'general.polyvalence.newfile' | translate" baCardClass="with-scroll table-panel">
+
+
+   <div class="panel-body">
+      
+      
+      
+        <a href="http://localhost:9300/samples/products.xlsx" target="_blank">Excel Sample Download</a>
+
+        <hr />
+
+        <a class="btn btn-sm btn-primary" href="javascript:;">Upload Excel File
+          <input  (change)="excelFileChange($event)" name="ExcelFPath"
+                 size="10" type="file"></a>
+
+      </div>
+</ba-card>

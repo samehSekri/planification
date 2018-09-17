@@ -1,0 +1,146 @@
+<ba-card [title]="'general.menu.FiltreRecherche' | translate" baCardClass="with-scroll table-panel">
+    <form name="searchForm" role="form" novalidate (ngSubmit)="getAllArticles()" #editForm="ngForm">
+      <div class="row">
+    <div class="col-sm-6">
+      <div class="form-group">
+        <label class="ui-grid-col-4 control-label-dialog">UAP</label>
+        <select class="form-control" name="uap" required [(ngModel)]="currentUap"  (change)="getAtelierByParent();"
+          #uap>
+          <option *ngFor="let uap of uaps" [ngValue]="uap">{{uap.name}}</option>
+        </select>
+      </div>
+    </div>
+  
+  
+    <div class="col-sm-6">
+      <div class="form-group">
+        <label class="ui-grid-col-4 control-label-dialog">Atelier</label>
+        <select class="form-control" name="atelier"  required [(ngModel)]="currentAtelier" (change)="getIlotByParent();"
+          #atelier>
+          <option *ngFor="let atelier of ateliers" [ngValue]="atelier">{{atelier.name}}</option>
+        </select>
+      </div>
+   </div></div>
+   <div class="row">
+    <div class="col-sm-6">
+      <div class="form-group">
+        <label class="ui-grid-col-4 control-label-dialog">ILOT</label>
+  
+        <select class="form-control" name="unite" >
+          <option *ngFor="let unite of ilots" [ngValue]="unite">{{unite.name}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="form-group">
+          <label class="ui-grid-col-4 control-label-dialog">Premier jour</label>
+          <input type="text" class="form-control" id="date" name="premierJours" 
+          required minlength="5" maxlength="50"  
+          ui-mask="99/99/9999" model-view-value="true" pInputText>
+        </div>
+           </div>
+  </div>
+     
+  <div class="form-group">
+    
+      <div class="row pull-right" style="margin-left: 20px;">
+
+        <button type="button"  class="btn btn-success "      data-toggle="tooltip" title="{{'action.lancerAlgorithme' | translate}}" >
+          <i class="ion-android-checkmark-circle"></i>{{'action.lancerAlgorithme | translate }}</button>
+        <button type="button" style="margin-left:15px;" class="btn btn-warning btn-with-icon" data-toggle="tooltip"
+          title="{{'action.search' | translate}}">
+          <i class="ion-android-search"></i>{{'action.search' | translate }}</button>
+      </div>
+    </div>
+   
+   
+   
+  </form>
+   </ba-card>
+   <ba-card [title]="'general.operatorManagement.operators' | translate" baCardClass="with-scroll table-panel">
+    <p-dataTable [value]="operateurs" [rows]="10" [paginator]="true" [responsive]="true" [emptyMessage]="'message.emptyList' | translate"
+      #dt>
+     
+
+      <p-column field="matricule" [header]="'general.operatorManagement.matricule' | translate" [filter]="true" filterPlaceholder="{{'action.search' | translate}}"
+        [sortable]="true" filterMatchMode="contains">
+        <ng-template let-col let-item="rowData" pTemplate="body">
+          <div class="align-center">
+            <div class="user-login" [title]="item[col.field]">{{item[col.field]}}</div>
+          </div>
+        </ng-template>
+      </p-column>
+      <p-column field="firstname" [header]="'general.operatorManagement.firstname' | translate" [filter]="true" filterPlaceholder="{{'action.search' | translate}}"
+        filterMatchMode="contains" [sortable]="true"></p-column>
+      <p-column field="lastname" [header]="'general.operatorManagement.lastname' | translate" [filter]="true" filterPlaceholder="{{'action.search' | translate}}"
+        filterMatchMode="contains" [sortable]="true"></p-column>
+      <p-column field="unite.name" [header]="'general.operatorManagement.unite' | translate" [filter]="true" [style]="{'overflow':'visible'}"
+        [filterPlaceholder]="'action.search' | translate" [sortable]="true" filterMatchMode="equals">
+
+
+      </p-column>
+      <p-column styleClass="col-button" field="enabled" [header]="'general.userManagement.actions' | translate">
+        <ng-template let-col let-item="rowData" pTemplate="body">
+          <div class="align-middle text-center">
+            <button type="submit" class="btn btn-primary btn-icon" data-toggle="tooltip" [title]="'action.edit' | translate" (click)="editOperator(item);">
+              <i class="ion-edit"></i>
+            </button>
+            <button type="button" class="btn btn-danger btn-icon" data-toggle="tooltip" [title]="'action.disable' | translate" (click)="confirmDelete(item)">
+              <i class="ion-trash-b"></i>
+            </button>
+          </div>
+        </ng-template>
+      </p-column>
+    </p-dataTable>
+  </ba-card>
+  <ba-card  baCardClass="with-scroll table-panel" [title]="'general.articleManagement.articles' | translate">
+  
+    <ba-card [title]="'general.articleManagement.articles' | translate" baCardClass="with-scroll table-panel">
+      <p-dataTable [value]="articles" [rows]="10" [paginator]="true" [responsive]="true" [emptyMessage]="'message.emptyList' | translate"
+        #dt>
+       
+
+        <p-column field="reference" [header]="'general.articleManagement.reference' | translate" [filter]="true" filterPlaceholder="{{'action.search' | translate}}"
+          [sortable]="true" filterMatchMode="contains">
+          <ng-template let-col let-item="rowData" pTemplate="body">
+            <div class="align-center">
+              <div class="user-login" [title]="item[col.field]">{{item[col.field]}}</div>
+            </div>
+          </ng-template>
+        </p-column>
+        <p-column field="quantite" [header]="'general.articleManagement.quantite' | translate" [filter]="true" filterPlaceholder="{{'action.search' | translate}}"
+          filterMatchMode="contains" [sortable]="true"></p-column>
+        <p-column field="resteProduire" [header]="'general.articleManagement.resteProduire' | translate" [filter]="true" filterPlaceholder="{{'action.search' | translate}}"
+          filterMatchMode="contains" [sortable]="true"></p-column>
+        <p-column field="integrationFileName" [header]="'general.articleManagement.integrationFileName' | translate" [filter]="true"
+          filterPlaceholder="{{'action.search' | translate}}" filterMatchMode="contains" [sortable]="true"></p-column>
+        <p-column field="cadence" [header]="'general.articleManagement.cadence' | translate" [filter]="true" filterPlaceholder="{{'action.search' | translate}}"
+          filterMatchMode="contains" [sortable]="true"></p-column>
+        <p-column field="efficience" [header]="'general.articleManagement.efficience' | translate" [filter]="true" filterPlaceholder="{{'action.search' | translate}}"
+          filterMatchMode="contains" [sortable]="true"></p-column>
+        <p-column field="unite.name" [header]="'general.articleManagement.unite' | translate" [filter]="true" [style]="{'overflow':'visible'}"
+          [filterPlaceholder]="'action.search' | translate" [sortable]="true" filterMatchMode="equals">
+
+
+        </p-column>
+        <p-column styleClass="col-button" field="etat" [header]="'general.userManagement.actions' | translate">
+          <ng-template let-col let-item="rowData" pTemplate="body">
+            <div class="align-middle text-center">
+
+              <button type="submit" class="btn btn-primary btn-icon" data-toggle="tooltip" [title]="'action.edit' | translate" (click)="editArticle(item);">
+                <i class="ion-edit"></i>
+              </button>
+              <button type="button" class="btn btn-danger btn-icon" [disabled]="currentArticle.reference == item.reference" *ngIf="item[col.field]"
+                data-toggle="tooltip" [title]="'action.disable' | translate" (click)="changeArticleStatus(item)">
+                <i class="ion-trash-b"></i>
+              </button>
+
+              <button type="button" class="btn btn-success btn-icon" [disabled]="currentArticle.reference == item.reference" *ngIf="! item[col.field]"
+                data-toggle="tooltip" [title]="'action.enable' | translate" (click)="changeArticleStatus(item)">
+                <i class="ion-checkmark"></i>
+              </button>
+            </div>
+          </ng-template>
+        </p-column>
+      </p-dataTable>
+    </ba-card>
