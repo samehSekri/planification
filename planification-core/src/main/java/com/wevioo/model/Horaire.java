@@ -18,7 +18,9 @@ import javax.persistence.Table;
 import com.wevioo.model.enumeration.DayOfWeekEnum;
 import com.wevioo.model.enumeration.PeriodeEnum;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
@@ -27,10 +29,12 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "horaire")
+@NoArgsConstructor
+@AllArgsConstructor
 public class Horaire {
 @Id
-@Column(name = "id_horaire", nullable = false, unique = true)
-private Long idHoraire;
+@Column(name = "id", nullable = false, unique = true)
+private String id;
 
 @Column(name = "jour", nullable = false)
 @Enumerated(EnumType.STRING)
@@ -54,25 +58,5 @@ private List<Pause> children;
 
 
 
-public Horaire() {
-	super();
-}
-
-
-
-public Horaire(Long idHoraire, DayOfWeekEnum jour, Time heureDebut, Time heureFin, Unite unite, PeriodeEnum periode,
-		List<Pause> children) {
-	super();
-	this.idHoraire = idHoraire;
-	this.jour = jour;
-	this.heureDebut = heureDebut;
-	this.heureFin = heureFin;
-	this.unite = unite;
-	this.periode = periode;
-	this.children = children;
-}
-
-
 	
-
 }

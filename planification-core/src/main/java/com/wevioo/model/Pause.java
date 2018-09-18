@@ -1,4 +1,4 @@
-package com.wevioo.model;
+	package com.wevioo.model;
 
 import java.sql.Time;
 
@@ -33,9 +33,10 @@ public class Pause {
 	private Time heureFin;
 	
 	
+
 	@JsonIgnore
 	@ManyToOne
-	@JoinColumn(name = "horaire", nullable = false)
+	@JoinColumn(name = "id_horaire", nullable = false)
 	private Horaire horaires;
 
 	public Pause(Long idPause, Time heureDebut, Time heureFin, Horaire horaires) {

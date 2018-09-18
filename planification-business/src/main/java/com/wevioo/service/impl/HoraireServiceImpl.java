@@ -36,9 +36,9 @@ public class HoraireServiceImpl implements HoraireService {
 		List<Horaire> horaires = findHorairesByUnite(uap);
 		if(horaires != null){
 			//get all pauses
-			Long idHoraire = horaires.get(0).getIdHoraire();
+			String idHoraire = horaires.get(0).getId();
 			System.out.println("************ id horaire = " + idHoraire);
-			List<Pause>pauses = pauseRepository.findPauseByHorairesIdHoraire(idHoraire);
+			List<Pause>pauses = pauseRepository.findPauseByHorairesId(idHoraire);
 			if(pauses != null){
 				//HeureFin - HeureDebut
 				Long duree = horaires.get(0).getHeureFin().getTime() - horaires.get(0).getHeureDebut().getTime();
@@ -64,7 +64,7 @@ public class HoraireServiceImpl implements HoraireService {
 		return null;
 	}
 	@Override
-	public Horaire findAllHoraires(Long id) {
+	public Horaire findAllHoraires(String id) {
 		if (id != null && !id.equals(0)) {
 			Horaire horaire = horaireRepository.findOne(id);
 			return horaire;
@@ -78,7 +78,7 @@ public class HoraireServiceImpl implements HoraireService {
 
 		if (horaire != null) {
 
-			horaire.setIdHoraire((horaire.getIdHoraire()));
+			horaire.setId((horaire.getId()));
 			horaire.setHeureDebut(horaire.getHeureDebut());
 			horaire.setHeureFin(horaire.getHeureFin());
 			horaire.setJour(horaire.getJour());

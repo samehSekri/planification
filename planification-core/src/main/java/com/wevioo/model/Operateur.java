@@ -1,10 +1,13 @@
 package com.wevioo.model;
 
 import java.io.Serializable;
+import java.sql.Time;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -18,15 +21,21 @@ import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.wevioo.model.enumeration.DayOfWeekEnum;
+import com.wevioo.model.enumeration.PeriodeEnum;
 import com.wevioo.model.enumeration.StatutOperateurEnum;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
 @Entity
 @Table(name = "operateur")
+@NoArgsConstructor
+@AllArgsConstructor
 public class Operateur implements Serializable {
 
 	private static final long serialVersionUID = 886569903829221913L;
@@ -64,7 +73,7 @@ public class Operateur implements Serializable {
 	@JsonIgnore
 	@OneToMany(mappedBy = "operateur")
 	private List<Polyvalence> polyvalences;
-	
+	@Enumerated(value=EnumType.STRING)
 	private StatutOperateurEnum statut;
 
 	@Transient
@@ -96,10 +105,7 @@ public class Operateur implements Serializable {
 	
 	@Transient
 	private Double tauxOccupationMoyen;
-	public Operateur() {
-		super();
-	}
-
+	
 	@JsonIgnore
 	@OneToMany(mappedBy = "operateur", fetch = FetchType.LAZY)
 	private List<Affectation> affectations;
@@ -111,34 +117,7 @@ public class Operateur implements Serializable {
 				+ checked + "]";
 	}
 
-	public Operateur(String matricule, String firstname, String lastname, String email, Unite unite, List<Conge> conges,
-			List<Polyvalence> polyvalences, StatutOperateurEnum statut, Double seuilTolerance, Double chargeRestante,
-			Integer toleranceMin, Integer toleranceMax, boolean checked, Integer nbrePolyvalence, Boolean affected,
-			Double chargeHoraireParScenario, Double tauxOccupationParScenario, Double tauxOccupationMoyen,
-			List<com.wevioo.model.Affectation> affectations) {
-		super();
-		this.matricule = matricule;
-		this.firstname = firstname;
-		this.lastname = lastname;
-		this.email = email;
-		this.unite = unite;
-		this.conges = conges;
-		this.polyvalences = polyvalences;
-		this.statut = statut;
-		this.seuilTolerance = seuilTolerance;
-		this.chargeRestante = chargeRestante;
-		this.toleranceMin = toleranceMin;
-		this.toleranceMax = toleranceMax;
-		this.checked = checked;
-		this.nbrePolyvalence = nbrePolyvalence;
-		this.affected = affected;
-		this.chargeHoraireParScenario = chargeHoraireParScenario;
-		this.tauxOccupationParScenario = tauxOccupationParScenario;
-		this.tauxOccupationMoyen = tauxOccupationMoyen;
-		this.affectations = affectations;
-	}
-
-
+	
 
 
 	

@@ -62,9 +62,9 @@ public class ArticleServiceImpl implements ArticleService {
 		if (article != null) {
 
 			article.setReference(article.getReference());
-			article.setCadence(article.getCadence());
+		
 			article.setEfficience(article.getEfficience());
-			article.setQuantite(article.getQuantite());
+
 			article.setEtat(true);
 			article.setIntegrationDate(article.getIntegrationDate());
 			article.setIntegrationFileName(article.getIntegrationFileName());

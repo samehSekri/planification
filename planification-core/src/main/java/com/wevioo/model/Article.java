@@ -6,6 +6,8 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -14,18 +16,23 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
 import org.hibernate.validator.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.wevioo.model.enumeration.StatutArticleEnum;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 @Getter
 @Setter
 @Entity
 @Table(name = "article")
+@NoArgsConstructor
+@AllArgsConstructor
 public class Article implements Serializable {
 
 	/**
@@ -41,12 +48,12 @@ public class Article implements Serializable {
 
 	@Column(name = "reste_produire")
 	private Integer resteProduire;
-
+	@Column(name = "etat")
+	private boolean etat;
 	@Column(name = "temps_standard")
 	private Double tempsStandard;
 
-	@Column(name = "quantite")
-	private Integer quantite;
+	
 
 	@Column(name = "date_integration", unique = false, nullable = true)
 	private Date integrationDate;
@@ -59,14 +66,13 @@ public class Article implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "user_integration")
 	private User integrationUser;
-	@Column(name = "cadence")
-	private Integer cadence;
-
+	
 	@Column(name = "efficience")
 	private Double efficience;
 
-	@Column(name = "etat")
-	private boolean etat;
+	@Column(name = "statut")
+	@Enumerated(EnumType.STRING)
+	private StatutArticleEnum statut;
 	@Column(name = "besoin_polyvalence")
 	private Double besoinPolyvalence;
 	@JsonIgnore
@@ -80,29 +86,8 @@ public class Article implements Serializable {
 	@Transient
 	private boolean checked;
 
-	public Article() {
-		super();
-	}
+	
+	
 
-	public Article(String reference, Integer resteProduire, Double tempsStandard, Integer quantite,
-			Date integrationDate, Integer engagementSemaine, String integrationFileName, User integrationUser,
-			Integer cadence, Double efficience, boolean etat, List<Polyvalence> polyvalences, Unite unite,
-			boolean checked) {
-		super();
-		this.reference = reference;
-		this.resteProduire = resteProduire;
-		this.tempsStandard = tempsStandard;
-		this.quantite = quantite;
-		this.integrationDate = integrationDate;
-		this.engagementSemaine = engagementSemaine;
-		this.integrationFileName = integrationFileName;
-		this.integrationUser = integrationUser;
-		this.cadence = cadence;
-		this.efficience = efficience;
-		this.etat = etat;
-		this.polyvalences = polyvalences;
-		this.unite = unite;
-		this.checked = checked;
-	}
 
 }

@@ -20,6 +20,7 @@ com\wevioo\dto\PauseDto.class
 com\wevioo\model\enumeration\StatutScenarioEnum.class
 com\wevioo\model\json\HttpResponseBodyJson.class
 com\wevioo\model\Pause.class
+com\wevioo\model\enumeration\StatutArticleEnum.class
 com\wevioo\model\enumeration\RoleNameEnum.class
 com\wevioo\model\json\PlanningDetailleJasper.class
 com\wevioo\model\Scenario.class

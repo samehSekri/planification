@@ -36,7 +36,7 @@ public interface HoraireService {
 	 * @param id
 	 * @return
 	 */
-	Horaire findAllHoraires(Long id);
+	Horaire findAllHoraires(String id);
 	/**
 	 * 
 	 * @param uap

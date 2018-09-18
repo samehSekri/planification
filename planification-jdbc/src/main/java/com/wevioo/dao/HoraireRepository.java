@@ -13,11 +13,11 @@ import com.wevioo.model.enumeration.PeriodeEnum;
 
 
 @Repository
-public interface HoraireRepository extends JpaRepository<Horaire, Long>{
+public interface HoraireRepository extends JpaRepository<Horaire, String>{
 	
 List<Horaire> findHoraireByUnite(Unite uap) ;
 
-List<Pause> findPauseByIdHoraire(Long horaire)  ;
+//List<Pause> findPauseByIdHoraire(Long horaire)  ;
 
 
 //String buildParamHoraireId(DayOfWeekEnum jour, PeriodeEnum periode, String uniteName);

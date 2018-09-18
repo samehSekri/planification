@@ -49,7 +49,7 @@ public class Unite {
 	@OneToMany
 	@JoinTable(name = "unite_horaire", joinColumns = {
 			@JoinColumn(name = "name", referencedColumnName = "name") }, inverseJoinColumns = {
-					@JoinColumn(name = "id_horaire", referencedColumnName = "id_horaire") })
+					@JoinColumn(name = "id", referencedColumnName = "id") })
 	private List<Horaire> horaires;
 
 	@OneToMany(mappedBy = "unite", fetch = FetchType.LAZY)
