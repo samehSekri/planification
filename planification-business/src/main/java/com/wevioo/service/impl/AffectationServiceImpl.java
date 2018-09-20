@@ -78,24 +78,24 @@ public class AffectationServiceImpl implements AffectationService, Serializable 
 		
 	}
 
-//	@Override
-//	public Double calculateSatisfactionClientGlobaleForArticle(Article article)  {
-//		List<Affectation> list = affectationRepository.findAffectationsByCriteria(null, article, 0, 0);
-//		double somme = 0.0;
-//		int nbre= 0;
-//		for(Affectation aff : list){
-//			if(aff.getSatisfactionClient()!=null){
-//				somme = somme + aff.getSatisfactionClient();
-//				nbre++ ;
-//			}
-//		}
-//		
-//		if(nbre==0){
-//			return 0.0;
-//		}else{
-//			return somme/nbre;
-//		}
-//	}
+	@Override
+	public Double calculateSatisfactionClientGlobaleForArticle(Article article)  {
+		List<Affectation> list = affectationRepository.getAffectationsByArticleReference(article.getReference());
+		double somme = 0.0;
+		int nbre= 0;
+		for(Affectation aff : list){
+			if(aff.getSatisfactionClient()!=null){
+				somme = somme + aff.getSatisfactionClient();
+				nbre++ ;
+			}
+		}
+		
+		if(nbre==0){
+			return 0.0;
+		}else{
+			return somme/nbre;
+		}
+	}
 
 	@Override
 	public List<Affectation> findAffectationsByArticle(Article article)

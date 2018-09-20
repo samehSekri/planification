@@ -79,13 +79,7 @@ public interface ScenarioService {
 	 * @return
 	 */
 	Scenario saveAndGetScenario(Scenario scenario);
-	/**
-	 * 
-	 * @param articles
-	 * @return
-	 */
-
-	double calculateTauxSatisfactionClient( List<Article> articles);
+	
 	/**
 	 * 
 	 * @param articles

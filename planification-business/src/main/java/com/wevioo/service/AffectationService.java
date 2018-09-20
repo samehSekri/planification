@@ -29,4 +29,6 @@ public interface AffectationService {
 	//Double calculateSatisfactionClientGlobaleForArticle(Article article);
 
 	List<Affectation> findAffectationsByArticle(Article article);
+
+	Double calculateSatisfactionClientGlobaleForArticle(Article article);
 }

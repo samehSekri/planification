@@ -165,13 +165,7 @@ public class ScenarioServiceImpl implements ScenarioService {
 		return null;
 	}
 
-	// @Override
-	// public List<JourOuvre> findJourOuvreByUniteAndDate(Unite unite, Date
-	// dateDebut) {
-	// List<JourOuvre> jourOuvres=
-	// scenarioRepository.findJourOuvreByUniteAndDateDebut(unite, dateDebut);
-	// return jourOuvres;
-	// }
+	
 
 	@Override
 	public List<JourOuvre> findJourOuvreByUniteAndDate(Unite unite, Date dateBegin) {
@@ -328,11 +322,7 @@ public class ScenarioServiceImpl implements ScenarioService {
 		return tauxOccupationTotale;
 	}
 
-	@Override
-	public double calculateTauxSatisfactionClient(List<Article> articles) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+
 
 	public List<Affectation> lancerAlgorithme(List<Operateur> listOp, List<Article> listArt,
 			Map<String, List<Polyvalence>> mapOpPoly, Map<String, List<Polyvalence>> mapArtPoly,

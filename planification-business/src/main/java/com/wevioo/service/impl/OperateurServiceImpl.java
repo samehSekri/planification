@@ -22,7 +22,7 @@ public class OperateurServiceImpl implements OperateurService {
 
 	@Autowired
 	private OperateurRepository operateurRepository;
-	private String entityName ="Operateur";
+	private String entityName = "Operateur";
 
 	// @Autowired
 	// private CongeRepository congeRepository;
@@ -82,10 +82,11 @@ public class OperateurServiceImpl implements OperateurService {
 	@Override
 	@Transactional
 	public void deleteOperateur(String matricule) {
-		 operateurRepository.delete(matricule);;
-		
+		operateurRepository.delete(matricule);
+		;
+
 	}
-	
+
 	// @Override
 	// public Operateur updateOperateur(Operateur operateur) {
 	// // TODO Auto-generated method stub
@@ -112,38 +113,36 @@ public class OperateurServiceImpl implements OperateurService {
 
 	@Override
 	public List<Operateur> findOperateurByUnite(Unite unite) {
-			if (unite != null && !unite.equals(null)) {
-				List<Operateur> operateurs = operateurRepository.findOperateurByUnite(unite);
-				if (operateurs != null) {
-					return operateurs;
-				}
+		if (unite != null && !unite.equals(null)) {
+			List<Operateur> operateurs = operateurRepository.findOperateurByUnite(unite);
+			if (operateurs != null) {
+				return operateurs;
 			}
-			return null;
-	}
-	@Override
-	public List<Operateur> findOperateurByUnite(String unite) {
-			if (unite != null ) {
-				List<Operateur> operateurs = operateurRepository.findOperateurByUnite(unite);
-				if (operateurs != null) {
-					return operateurs;
-				}
-			}
-			return null;
+		}
+		return null;
 	}
 
 	@Override
-	public List<Operateur> calculateNbrePolyvalencesForOperateurs(
-			List<Operateur> operateurs, List<Article> articles,
+	public List<Operateur> findOperateurByUnite(String unite) {
+		if (unite != null) {
+			List<Operateur> operateurs = operateurRepository.findOperateurByUnite(unite);
+			if (operateurs != null) {
+				return operateurs;
+			}
+		}
+		return null;
+	}
+
+	@Override
+	public List<Operateur> calculateNbrePolyvalencesForOperateurs(List<Operateur> operateurs, List<Article> articles,
 			Map<String, List<Polyvalence>> mapArticlePolyvalences) {
 		for (Operateur op : operateurs) {
 			op.setNbrePolyvalence(0);
 			for (Article article : articles) {
 				List<Polyvalence> listPolyvalences = new ArrayList<Polyvalence>();
-				listPolyvalences = mapArticlePolyvalences.get(article
-						.getReference());
+				listPolyvalences = mapArticlePolyvalences.get(article.getReference());
 				for (Polyvalence p : listPolyvalences) {
-					if (op.getMatricule().equals(
-							p.getOperateur().getMatricule())) {
+					if (op.getMatricule().equals(p.getOperateur().getMatricule())) {
 						op.setNbrePolyvalence(op.getNbrePolyvalence() + 1);
 					}
 				}
@@ -151,14 +150,15 @@ public class OperateurServiceImpl implements OperateurService {
 		}
 		return operateurs;
 	}
+
 	@Override
-	public List<Operateur> findOperateurByMatriculeAndStatutAndUnite(String matricule,StatutOperateurEnum statut, String unite)
-			 {
-		
+	public List<Operateur> findOperateurByMatriculeAndStatutAndUnite(String matricule, StatutOperateurEnum statut,
+			String unite) {
+
 		List<Object> param = new ArrayList<Object>();
 
-	StringBuffer queryStr = new StringBuffer("SELECT u FROM "+this.entityName +" u");
-queryStr.append(" WHERE 1=1");
+		StringBuffer queryStr = new StringBuffer("SELECT u FROM " + this.entityName + " u");
+		queryStr.append(" WHERE 1=1");
 
 		if (matricule != null && !matricule.isEmpty()) {
 			queryStr.append(" AND u.matricule = ?");
@@ -169,7 +169,7 @@ queryStr.append(" WHERE 1=1");
 			queryStr.append(" AND u.statut = ?");
 			param.add(statut);
 		}
-		
+
 		if (unite != null && !unite.isEmpty()) {
 			queryStr.append(" AND (u.unite.parent.parent.name = ?");
 			queryStr.append(" OR u.unite.parent.name = ?");
@@ -179,9 +179,10 @@ queryStr.append(" WHERE 1=1");
 			param.add(unite);
 		}
 
-
-		//List<Operateur> list =  executeResultListIgnoreNullValuesByRang(queryStr.toString(), firstRow, numRows, param.toArray());
-		//return list;
+		// List<Operateur> list =
+		// executeResultListIgnoreNullValuesByRang(queryStr.toString(),
+		// firstRow, numRows, param.toArray());
+		// return list;
 		return null;
 	}
 
@@ -191,5 +192,16 @@ queryStr.append(" WHERE 1=1");
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public List<Operateur> findOperatuersByStatut(StatutOperateurEnum statut) {
+		if (statut != null ) {
+			List<Operateur> operateurs = operateurRepository.findOperateurByStatut(statut);
+			if (operateurs != null) {
+				return operateurs;
+			}	
+			
+	}
+		return null;}
 
 }

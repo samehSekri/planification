@@ -98,4 +98,6 @@ public interface OperateurService {
 	 */
 
 	List<Operateur> findOperatuersByCriteria(Object object, StatutOperateurEnum actif, Object object2, int i, int j);
+
+	List<Operateur> findOperatuersByStatut(StatutOperateurEnum statut);
 }

@@ -35,7 +35,7 @@ import lombok.Setter;
 @Entity
 @Table(name = "operateur")
 @NoArgsConstructor
-@AllArgsConstructor
+
 public class Operateur implements Serializable {
 
 	private static final long serialVersionUID = 886569903829221913L;
@@ -115,6 +115,33 @@ public class Operateur implements Serializable {
 		return "Operateur [matricule=" + matricule + ", firstname=" + firstname + ", lastname=" + lastname + ", email="
 				+ email + ", unite=" + unite + ", conges=" + conges + ", polyvalences=" + polyvalences + ", checked="
 				+ checked + "]";
+	}
+
+	public Operateur(String matricule, String firstname, String lastname, String email, Unite unite, List<Conge> conges,
+			List<Polyvalence> polyvalences, StatutOperateurEnum statut, Double seuilTolerance, Double chargeRestante,
+			Integer toleranceMin, Integer toleranceMax, boolean checked, Integer nbrePolyvalence, Boolean affected,
+			Double chargeHoraireParScenario, Double tauxOccupationParScenario, Double tauxOccupationMoyen,
+			List<Affectation> affectations) {
+		super();
+		this.matricule = matricule;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.email = email;
+		this.unite = unite;
+		this.conges = conges;
+		this.polyvalences = polyvalences;
+		this.statut = statut;
+		this.seuilTolerance = seuilTolerance;
+		this.chargeRestante = chargeRestante;
+		this.toleranceMin = toleranceMin;
+		this.toleranceMax = toleranceMax;
+		this.checked = checked;
+		this.nbrePolyvalence = nbrePolyvalence;
+		this.affected = affected;
+		this.chargeHoraireParScenario = chargeHoraireParScenario;
+		this.tauxOccupationParScenario = tauxOccupationParScenario;
+		this.tauxOccupationMoyen = tauxOccupationMoyen;
+		this.affectations = affectations;
 	}
 
 	

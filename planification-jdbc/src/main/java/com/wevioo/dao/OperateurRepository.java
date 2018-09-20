@@ -39,6 +39,11 @@ public interface OperateurRepository extends JpaRepository<Operateur, String> {
 	 * @return
 	 */
 	List<Operateur> findOperateurByMatriculeAndStatutAndUnite(String matricule,StatutOperateurEnum statut, String unite);
+	/*
+	 * 
+	 * 
+	 */
+	List<Operateur> findOperateurByStatut(StatutOperateurEnum statut);
 		
 
 }

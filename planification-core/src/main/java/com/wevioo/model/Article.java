@@ -32,7 +32,7 @@ import lombok.Setter;
 @Entity
 @Table(name = "article")
 @NoArgsConstructor
-@AllArgsConstructor
+
 public class Article implements Serializable {
 
 	/**
@@ -85,6 +85,27 @@ public class Article implements Serializable {
 
 	@Transient
 	private boolean checked;
+
+	public Article(String reference, Integer resteProduire, boolean etat, Double tempsStandard, Date integrationDate,
+			Integer engagementSemaine, String integrationFileName, User integrationUser, Double efficience,
+			StatutArticleEnum statut, Double besoinPolyvalence, List<Polyvalence> polyvalences, Unite unite,
+			boolean checked) {
+		super();
+		this.reference = reference;
+		this.resteProduire = resteProduire;
+		this.etat = etat;
+		this.tempsStandard = tempsStandard;
+		this.integrationDate = integrationDate;
+		this.engagementSemaine = engagementSemaine;
+		this.integrationFileName = integrationFileName;
+		this.integrationUser = integrationUser;
+		this.efficience = efficience;
+		this.statut = statut;
+		this.besoinPolyvalence = besoinPolyvalence;
+		this.polyvalences = polyvalences;
+		this.unite = unite;
+		this.checked = checked;
+	}
 
 	
 	

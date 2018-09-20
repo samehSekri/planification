@@ -190,6 +190,7 @@
 			"atelier": "Atelier",
 			"ilot": "ILOT",
 			"articles": "Articles"
+		
 		},
 		"scenario": {
 			"newScenario": "Nouveau scénario",
@@ -206,7 +207,8 @@
 			"atelier": "Atelier",
 			"ilot": "ILOT",
 			"responsable": "Responsable",
-			"name": "Nom"
+			"name": "Nom scenario",
+			"idScenario":"id scenario"
 		},
 		"settings": {
 			"application": "Paramètres de l'application",
