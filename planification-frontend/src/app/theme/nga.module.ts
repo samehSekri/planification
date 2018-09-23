@@ -14,7 +14,7 @@ import {
 } from './theme.configProvider';
 
 import {
-  BaAmChart,
+  //BaAmChart,
   BaBackTop,
   BaCard,
   BaChartistChart,
@@ -62,7 +62,7 @@ import {
 import { UserManagementService } from "app/pages/administration/components/user-management/user-management.service";
 
 const NGA_COMPONENTS = [
-  BaAmChart,
+  //BaAmChart,
   BaBackTop,
   BaCard,
   BaChartistChart,

@@ -77,7 +77,7 @@ public class Affectation implements Serializable{
 	@ManyToOne
 	@JoinColumn(name = "ref_article")
 	private Article article;
-	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "scenario")
 	private Scenario scenario;

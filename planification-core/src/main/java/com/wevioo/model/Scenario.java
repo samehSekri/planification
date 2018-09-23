@@ -66,7 +66,7 @@ public class Scenario implements Serializable {
 	@ManyToOne
 	private Unite unite;
 
-	@JsonIgnore
+//	@JsonIgnore
 	@OneToMany(mappedBy = "scenario", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Affectation> affectation;
 
