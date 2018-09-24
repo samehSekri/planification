@@ -25,6 +25,7 @@ public interface UniteRepository extends JpaRepository<Unite, String> {
 	List<Unite> findUniteByParent (Unite parent);
 
 	
+	Unite findUniteByNameIgnoreCase(String name);
 	//List<Unite> FindUniteByUap(Unite unite);
 	
 	

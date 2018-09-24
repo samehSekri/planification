@@ -58,12 +58,16 @@ export class UnitManagementComponent implements OnInit {
 
     }
     public getUap(): void {
-
+        this.uaps = null;
+        this.currentAtelier = null;
+        //this.currentAtelierName=null;
+        this.currentUap = null;
+       this.currentUnit.name= null;
         this.uniteService.getByType(UniteTypeEnum.UAP).subscribe((data: Unit[]) => {
             this.uaps = data;
             if (this.uaps.length > 0) {
                 this.currentUap = data[0];
-                this.getAtelierByParent(this.currentUap);
+                this.getAtelierByParent(this.currentUap.name);
             }
             console.log(data);
         },
@@ -71,11 +75,22 @@ export class UnitManagementComponent implements OnInit {
             () => console.log('Get all Items complete'));
     }
 
-    public getAtelierByParent(uap: Unit): void {
-        this.currentUap = uap;
+    public getAtelierByParent(uap: String): void {
+        
+        this.uaps.forEach(element => {
+            if (element.name === uap) {
+                this.currentUap = element;
+
+            }
+        });
+
+        //this.currentUap = uap;
 
         this.uniteService.getByParent(this.currentUap).subscribe((data: Unit[]) => {
             this.ateliers = data;
+            if (this.ateliers.length > 0) {
+                this.currentAtelier = this.ateliers[0];
+            }
             console.log(data);
         },
             error => console.log(error),
@@ -118,13 +133,19 @@ export class UnitManagementComponent implements OnInit {
 
         this.uniteService.add(this.currentUnit, type).subscribe(response => {
             this.isSaving = true;
-            this.msgSuccess.push({ severity: 'success', summary: this.translate.instant('message.save.successMsgTitle'), detail: this.translate.instant("message.save.successMsg") });
-
+            ////this.msgSuccess.push({ severity: 'success', summary: this.translate.instant('message.save.successMsgTitle'), detail: this.translate.instant("message.save.successMsg") });
+            this.messages = [{ severity: 'success', summary: this.translate.instant('message.save.successMsgTitle'), detail: this.translate.instant("message.save.successMsg") }];
+            this.currentAtelier = null;
+            this.currentAtelierName = null;
+            this.currentUap = null;
+            this.currentUnit = null;
+            this.display = false;
         },
             error => {
                 var bodyMsg = JSON.parse(error._body);
                 if (error._body && bodyMsg) {
-                    this.msgs.push({ severity: 'error', summary: '', detail: bodyMsg.errors[0] });
+                    //  this.msgs.push({ severity: 'error', summary: '', detail: bodyMsg.message });
+                    this.messages = [{ severity: 'error', summary: 'Erreur', detail: bodyMsg.message }];
                 } else {
                     this.msgs.push({ severity: 'error', summary: 'Error Message', detail: 'Validation failed' });
                 }
@@ -148,8 +169,8 @@ export class UnitManagementComponent implements OnInit {
 
 
         this.uniteService.getAll().subscribe((data: TreeNode[]) => {
-                this.unites = data;
-                console.log(data);
+            this.unites = data;
+            console.log(data);
         });
 
         this.data1 = [{
@@ -254,6 +275,7 @@ export class UnitManagementComponent implements OnInit {
     }
     showDialog() {
         this.display = true;
+
         this.getUap();
 
 

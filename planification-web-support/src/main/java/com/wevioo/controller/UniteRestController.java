@@ -69,13 +69,13 @@ public class UniteRestController {
 		data.setName("Zodiac Aerospace");
 		data.setAvatar("walter.jpg");
 		treeNode.setData(data);
-		
+
 		List<NodeUniteDto> uapNodes = new ArrayList<NodeUniteDto>();
 
 		List<Unite> unites = uniteService.findUniteByType(TypeUnite.UAP);
 		if (unites != null && unites.size() > 0) {
 			for (Unite unite : unites) {
-		
+
 				NodeUniteDto uap = new NodeUniteDto();
 				uap.setLabel(unite.getName());
 				uap.setType("person");
@@ -87,7 +87,6 @@ public class UniteRestController {
 				uap.setData(data);
 
 				List<NodeUniteDto> childrenUap = new ArrayList<NodeUniteDto>();
-				
 
 				// Get list atelier
 				List<Unite> uniteAteliers = uniteService.findUniteByParent(unite);
@@ -120,19 +119,19 @@ public class UniteRestController {
 								childrenAtelier.add(ilot);
 							}
 						}
-						//Convert children atelier ArrayList to array 
+						// Convert children atelier ArrayList to array
 						NodeUniteDto[] children = new NodeUniteDto[childrenAtelier.size()];
 						children = childrenAtelier.toArray(children);
 						atelier.setChildren(children);
 						childrenUap.add(atelier);
-						
+
 					}
 				}
 				NodeUniteDto[] childrenUapNode = new NodeUniteDto[childrenUap.size()];
 				childrenUapNode = childrenUap.toArray(childrenUapNode);
 				uap.setChildren(childrenUapNode);
 				uapNodes.add(uap);
-				
+
 			}
 		}
 		NodeUniteDto[] childrenUapNode = new NodeUniteDto[uapNodes.size()];
@@ -302,16 +301,23 @@ public class UniteRestController {
 		if (isUniteNameAlreadyExist(unite.getName())) {
 
 			// Nom unite existe déjà renvoyer erreur
-			ApiException error = new ApiException(HttpStatus.CONFLICT, "error.unite.name.exist",
-					messageUtil.getMessage("error.unite.name.exist"));
+			ApiException error = new ApiException(HttpStatus.CONFLICT, messageUtil.getMessage("error.unite.name.exist"),
+					"error.unite.name.exist");
 			return new ResponseEntity<Object>(error, new HttpHeaders(), error.getStatus());
 		} else {
-			// if (unite.getType() == TypeUnite.ILOT) {
-			// Check if atelier name exist
-			Unite atelier = unite.getParent();
-			Unite uap = atelier.getParent();
+			Unite atelier = null;
+			Unite uap = null;
 
-			if (type == TypeUnite.UAP) {
+			if (unite.getType() == TypeUnite.ILOT) {
+				// Check if atelier name exist
+				atelier = unite.getParent();
+				uap = atelier.getParent();
+			} else if (type == TypeUnite.UAP) {
+				uap = unite;
+			}else 	if (type == TypeUnite.ATELIER)
+			{
+				atelier=unite;
+				uap = atelier.getParent();
 
 			}
 
@@ -319,16 +325,14 @@ public class UniteRestController {
 			 * Check if uap name exist
 			 */
 			if (type == TypeUnite.UAP && isUniteNameAlreadyExist(uap.getName())) {
-				/*
-				 * Le nom de l'UAP existe déjà : Erreur
-				 */
-				return null;
+				ApiException error = new ApiException(HttpStatus.CONFLICT,
+						messageUtil.getMessage("error.unite.name.exist"), "error.unite.name.exist");
+				return new ResponseEntity<Object>(error, new HttpHeaders(), error.getStatus());
 			} else if ((type == TypeUnite.UAP && isUniteNameAlreadyExist(atelier.getName())
 					|| type == TypeUnite.ATELIER && isUniteNameAlreadyExist(atelier.getName()))) {
-				/*
-				 * Le nom de l'atelier existe déjà : Erreur
-				 */
-				return null;
+				ApiException error = new ApiException(HttpStatus.CONFLICT,
+						messageUtil.getMessage("error.unite.name.exist"), "error.unite.name.exist");
+				return new ResponseEntity<Object>(error, new HttpHeaders(), error.getStatus());
 			} else {
 
 				// 1- Save the uap
@@ -344,17 +348,22 @@ public class UniteRestController {
 					// 4- Update the ilot with the persisted atelier
 					unite.setParent(atelier);
 				}
-
+try{
 				// 5- Save the ilot
 				unite = uniteService.createUnite(unite);
 				return unite;
+}catch(Exception e){
+	ApiException error = new ApiException(HttpStatus.CONFLICT,
+			messageUtil.getMessage("error.unite.creation.error"), "error.unite.creation.error");
+	return new ResponseEntity<Object>(error, new HttpHeaders(), error.getStatus());
+}
 			}
 		}
 	}
 
 	private boolean isUniteNameAlreadyExist(String unitName) {
 		if (unitName != null && !unitName.isEmpty()) {
-			Unite unite = uniteService.findUniteByName(unitName.toLowerCase());
+			Unite unite = uniteService.findUniteByNameIgnoreCase(unitName);
 			return unite != null && !unite.getName().isEmpty();
 		}
 		return false;

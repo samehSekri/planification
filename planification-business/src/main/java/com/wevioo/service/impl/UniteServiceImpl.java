@@ -110,6 +110,11 @@ public class UniteServiceImpl implements UniteService {
 		return unites;
 	}
 
+	@Override
+	public Unite findUniteByNameIgnoreCase(String name) {
+		return uniteRepository.findUniteByNameIgnoreCase(name);
+	}
+
 //	@Override
 //public List<Unite> FindUniteByUap(Unite unite) {
 //List<Unite> unites = uniteRepository.FindUniteByUap(unite);

@@ -37,7 +37,7 @@ public interface UniteService {
 	 * 
 	 */
 
-	//List<Unite>FindUniteByUap(Unite unite);
+	Unite findUniteByNameIgnoreCase(String name);
 	/**
 	 * 
 	 * @param unite
