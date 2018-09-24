@@ -1,0 +1,71 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.wevioo</groupId>
+		<artifactId>planification</artifactId>
+		<version>1.0.0</version>
+	</parent>
+	<artifactId>planification-business</artifactId>
+	<version>${project.global.version}</version>
+
+	<properties>
+		<modelmapper-spring-boot-starter.version>1.1.0</modelmapper-spring-boot-starter.version>
+		<commons-lang.version>3.5</commons-lang.version>
+		<spring-boot-starter-mail.version>1.5.4.RELEASE</spring-boot-starter-mail.version>
+		<!-- <spring-boot-starter-thymeleaf.version>1.5.4.RELEASE</spring-boot-starter-thymeleaf.version> -->
+		<thymeleaf-spring4.version>2.1.2.RELEASE</thymeleaf-spring4.version>
+	</properties>
+	<!-- ================================================================================ -->
+	<dependencies>
+		<dependency>
+			<groupId>com.wevioo</groupId>
+			<artifactId>planification-jdbc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.github.jmnarloch</groupId>
+			<artifactId>modelmapper-spring-boot-starter</artifactId>
+			<version>${modelmapper-spring-boot-starter.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>${commons-lang.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
+			<version>${spring-boot-starter-mail.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.thymeleaf</groupId>
+			<artifactId>thymeleaf-spring4</artifactId>
+			<version>${thymeleaf-spring4.version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>javassist</artifactId>
+					<groupId>org.javassist</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>org.scala-lang</groupId>
+			<artifactId>scala-library</artifactId>
+			<version>2.11.0</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-httpclient</groupId>
+			<artifactId>commons-httpclient</artifactId>
+			<version>3.1</version>
+		</dependency>
+	</dependencies>
+
+
+	<!-- ================================================================================ -->
+
+
+
+</project>
