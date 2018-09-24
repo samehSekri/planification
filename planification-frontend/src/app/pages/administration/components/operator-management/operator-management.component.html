@@ -1,5 +1,4 @@
 <p-growl [(value)]="messages"></p-growl>
-
 <p-dialog header="Ajout | translate" [(visible)]="display" [resizable]="false" [responsive]="true" [modal]="true" width="600">
   <div class="ui-grid ui-grid-responsive ui-fluid">
     <div class="widgets">
@@ -15,7 +14,7 @@
 
                   <label for="float-input">Matricule</label>
                   <input type="text" class="form-control" id="input03" name="matricule" [(ngModel)]="currentOperator.matricule" #matricule="ngModel"
-                    required minlength="5" maxlength="50" pattern="^[_'.@A-Za-z0-9-]*$" placeholder="{{'general.operatorManagement.matricule' | translate }}"
+                    required minlength="3" maxlength="50" pattern="^[_'.@A-Za-z0-9-]*$" placeholder="{{'general.operatorManagement.matricule' | translate }}"
                     pInputText>
                   <div class="alert alert-danger text-error" translate="message.matricule.isrequired"></div>
 

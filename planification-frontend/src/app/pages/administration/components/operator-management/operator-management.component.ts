@@ -31,6 +31,8 @@ export class OperatorManagementComponent implements OnInit {
   uaps: Unit[];
   ilots: Unit[];
   ateliers: Unit[];
+  public messages: Message[];
+
 
 
   constructor(private operatorService: OperatorManagementService,private uniteService: UnitManagementService, private router: Router,
@@ -72,6 +74,8 @@ export class OperatorManagementComponent implements OnInit {
     this.isSaving = false;
     this.msgs = [];
     this.msgSuccess = [];
+    this.messages = [{ severity: 'success', summary: this.translate.instant('message.save.successMsgTitle'), detail: this.translate.instant("message.save.successMsg") }];
+
 console.log(this.currentOperator);
   //  if (this.currentOperator.matricule != null) {
      
@@ -82,14 +86,15 @@ console.log(this.currentOperator);
         //go to the next Operator
       this.currentOperator = new Operator(null, "", "", "",null,true,null,null);
       },
-        error => {
-          var bodyMsg = JSON.parse(error._body);
-          if (error._body && bodyMsg) {
-            this.msgs.push({ severity: 'error', summary: '', detail: bodyMsg.errors[0] });
-          } else {
+      error => {
+        var bodyMsg = JSON.parse(error._body);
+        if (error._body && bodyMsg) {
+            //  this.msgs.push({ severity: 'error', summary: '', detail: bodyMsg.message });
+            this.messages = [{ severity: 'error', summary: 'Erreur', detail: bodyMsg.message }];
+        } else {
             this.msgs.push({ severity: 'error', summary: 'Error Message', detail: 'Validation failed' });
-          }
-        });
+        }
+    });
         this.getAllOperators();
         this.closeDialog();
 
