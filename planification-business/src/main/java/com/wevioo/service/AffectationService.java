@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.wevioo.model.Affectation;
 import com.wevioo.model.Article;
+import com.wevioo.model.Scenario;
 
 /**
  *
@@ -25,6 +26,8 @@ public interface AffectationService {
 	public List<Affectation> findArticlesByScenario(Long scenarioId);
 
 	void delete(List<Affectation> affectations);
+	
+	Affectation saveAndGetScenario(Affectation[] affectations);
 
 	//Double calculateSatisfactionClientGlobaleForArticle(Article article);
 

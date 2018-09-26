@@ -22,6 +22,7 @@ public abstract class DateUtils {
 	public static final String DATE_FORMAT_DAY_MASIT = "yyyy-MM-DD";
 	public static final String DATE_FORMAT_SIMPLE = "dd/MM/yyyy";
 	public static final String DATE_FORMAT_SIMPLE2 = "dd-MM-yyyy";
+	public static final String DATE_FORMAT_SIMPLE3 = "yyyy-MM-dd";
 	public static final String DATE_FORMAT_SECOND = "dd/MM/yyyy HH:mm:ss";
 	public static final String DATE_FORMAT_TIMESTAMP_FULL = "yyyyMMddHHmmss";
 	public static final String DATE_FORMAT_HOURS = "HHmmss";
@@ -34,6 +35,7 @@ public abstract class DateUtils {
 	 */
 	public static final DateFormat DATE_FORMATTER_SIMPLE = new SimpleDateFormat(DATE_FORMAT_SIMPLE);
 	public static final DateFormat DATE_FORMATTER_SIMPLE2 = new SimpleDateFormat(DATE_FORMAT_SIMPLE2);
+	public static final DateFormat DATE_FORMATTER_SIMPLE3 = new SimpleDateFormat(DATE_FORMAT_SIMPLE3);
 	public static final DateFormat DATE_FORMATTER_SECOND = new SimpleDateFormat(DATE_FORMAT_SECOND);
 	public static final DateFormat DATE_FORMATTER_DAY = new SimpleDateFormat(DATE_FORMAT_DAY);
 	public static final DateFormat DATE_FORMATTER_TIMESTAMP_FULL = new SimpleDateFormat(DATE_FORMAT_TIMESTAMP_FULL);

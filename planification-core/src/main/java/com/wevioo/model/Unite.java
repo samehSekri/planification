@@ -52,6 +52,7 @@ public class Unite {
 					@JoinColumn(name = "id", referencedColumnName = "id") })
 	private List<Horaire> horaires;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "unite", fetch = FetchType.LAZY)
 	private List<Scenario> scenarios;
 

@@ -24,11 +24,10 @@ import lombok.Setter;
 public class Affectation implements Serializable{
 	
 	
-
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 3203671006218721468L;
+	private static final long serialVersionUID = -7962130975936159586L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -70,9 +69,11 @@ public class Affectation implements Serializable{
 	@Column(name = "quantite", columnDefinition = "integer default 0")
 	private Integer quantite;
 	
+	
 	@ManyToOne
 	@JoinColumn(name = "operator_id")
 	private Operateur operateur;
+	
 	
 	@ManyToOne
 	@JoinColumn(name = "ref_article")

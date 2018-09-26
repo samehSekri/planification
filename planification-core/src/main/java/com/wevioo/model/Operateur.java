@@ -63,6 +63,7 @@ public class Operateur implements Serializable {
 	@Column(length = 50, name = "email")
 	@Size(min = 2, max = 50, message = "{error.operateur.firstname.max}")
 	private String email;
+	
 	@ManyToOne
 	@JoinColumn(name = "name_unite", nullable = false)
 	private Unite unite;

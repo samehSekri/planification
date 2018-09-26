@@ -38,7 +38,8 @@ public class AffectationServiceImpl implements AffectationService, Serializable 
 	@Override
 	public void saveAffectations(List<Affectation> affectations)
 		 {
-		affectationRepository.save(affectations);
+		 affectationRepository.save(affectations);
+		
 		
 	}
 
@@ -100,6 +101,12 @@ public class AffectationServiceImpl implements AffectationService, Serializable 
 	@Override
 	public List<Affectation> findAffectationsByArticle(Article article)
 			 {
+		return null;
+	}
+
+	@Override
+	public Affectation saveAndGetScenario(Affectation[] affectations) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
