@@ -1,4 +1,108 @@
 <p-growl [(value)]="messages"></p-growl>
+<div *ngIf="code==1">
+<p-dialog header="Ajout | translate" [(visible)]="display" [resizable]="false" [responsive]="true" [modal]="true" width="600">
+  <div class="ui-grid ui-grid-responsive ui-fluid">
+    <div class="widgets">
+
+
+      <ba-card [title]="'general.operatorManagement.newoperator' | translate" baCardClass="with-scroll table-panel">
+
+        <form name="searchForm" class="form-horizontal " role="form" novalidate (ngSubmit)="getAllOperators()" #editForm="ngForm">
+          <div class="ui-g ui-fluid provider-product-inputs">
+            <div class="row">
+              <div class="col-md-6">
+                
+
+                  <label for="float-input">Matricule</label>
+                  <input type="text" class="form-control" id="input03" name="matricule" [(ngModel)]="currentOperator.matricule" #matricule="ngModel"
+                    required minlength="3" maxlength="50" pattern="^[_'.@A-Za-z0-9-]*$" placeholder="{{'general.operatorManagement.matricule' | translate }}"
+                    >
+                  <div [hidden]="!(matricule.dirty && matricule.invalid)" class="alert alert-danger text-error" translate="message.matricule.isrequired"></div>
+             
+
+              </div>
+              <div class="col-md-6">
+             
+
+                  <label for="input01" translate="general.operatorManagement.lastname"></label>
+                  <input type="text" class="form-control" id="input01" name="lastname" [(ngModel)]="currentOperator.lastname" #lastname="ngModel"
+                    required minlength="3" maxlength="50" pattern="^[_'.@A-Za-z0-9-]*$" placeholder="{{'general.operatorManagement.matricule' | translate }}"
+                    >
+                    <div [hidden]="!(lastname.dirty && lastname.invalid)" class="alert alert-danger text-error" translate="message.lastname.isrequired"></div>
+               
+              </div></div>
+              <div class="row">
+                <div class="col-md-6">
+                 
+                    <label for="input02" translate="general.operatorManagement.firstname"></label>
+                    <input type="text" class="form-control" id="input02" name="firstname" [(ngModel)]="currentOperator.firstname" #firstname="ngModel"
+                      required minlength="2" maxlength="50">
+                      <div [hidden]="!(firstname.dirty && firstname.invalid)" class="alert alert-danger text-error" translate="message.firstname.isrequired"></div>
+                    
+                </div>
+                <div class="col-md-6">
+                 
+                    <label for="input05">Email</label>
+                    <input type="text" class="form-control" id="input05" name="email" [(ngModel)]="currentOperator.email" #email="ngModel" required
+                      minlength="4" maxlength="100" placeholder="{{'general.operatorManagement.email' | translate}}">
+                      <div [hidden]="!(email.dirty && email.invalid)" class="alert alert-danger text-error" translate="message.email.isrequired"></div>
+                 
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-4">
+                  <div class="form-group">
+                    <label class="ui-grid-col-4 control-label-dialog">UAP</label>
+                    <select class="form-control" name="uap" required [(ngModel)]="currentUap"  (change)="getAtelierByParent($event.target.value);"    #uap>
+                      <option *ngFor="let uap of uaps" [ngValue]="uap">{{uap.name}}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="form-group">
+                    <label class="ui-grid-col-4 control-label-dialog">Atelier</label>
+                    <select class="form-control" name="atelier" required [(ngModel)]="currentAtelier"  (change)="getIlotByParent();" #atelier>
+                      <option *ngFor="let atelier of ateliers" [ngValue]="atelier">{{atelier.name}}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="form-group">
+                    <label class="ui-grid-col-4 control-label-dialog">ILOT</label>
+
+                    <select class="form-control" name="unite" [(ngModel)]="currentOperator.unite" #unite="ngModel" required #unite>
+                      <option *ngFor="let unite of ilots" [ngValue]="unite">{{unite.name}}</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+        
+
+
+
+            <div class="form-group">
+              <div class="box-shadow-border"></div>
+            </div>
+            <div class="form-group">
+              <div class="row pull-right" style="margin-right: 10px;">
+                <button type="submit" (click)="saveOperator(item);" class="btn btn-success btn-with-icon" [disabled]="editForm.form.invalid || isSaving "
+                  data-toggle="tooltip" title="{{'action.save' | translate}}">
+                  <i class="ion-android-checkmark-circle"></i>{{'action.save' | translate }}</button>
+                <button type="button" style="margin-left:15px;" (click)=" closeDialog();" class="btn btn-warning btn-with-icon" data-toggle="tooltip"
+                  title="{{'action.cancel' | translate}}">
+                  <i class="ion-android-cancel"></i>{{'action.cancel' | translate }}</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </ba-card>
+
+
+    </div>
+  </div>
+</p-dialog></div>
+<div *ngIf="code==2">
 <p-dialog header="Ajout | translate" [(visible)]="display" [resizable]="false" [responsive]="true" [modal]="true" width="600">
   <div class="ui-grid ui-grid-responsive ui-fluid">
     <div class="widgets">
@@ -13,10 +117,9 @@
                 <div class="form-group">
 
                   <label for="float-input">Matricule</label>
-                  <input type="text" class="form-control" id="input03" name="matricule" [(ngModel)]="currentOperator.matricule" #matricule="ngModel"
-                    required minlength="3" maxlength="50" pattern="^[_'.@A-Za-z0-9-]*$" placeholder="{{'general.operatorManagement.matricule' | translate }}"
-                    pInputText>
-                  <div class="alert alert-danger text-error" translate="message.matricule.isrequired"></div>
+                  <input type="text" class="form-control" id="input03" name="matricule" [(ngModel)]="currentOperator.matricule" #matricule="ngModel" [disabled]="currentOperator.matricule || isSaving "
+                    required   pInputText>
+                    <div [hidden]="!(matricule.dirty && matricule.invalid)" class="alert alert-danger text-error" translate="message.matricule.isrequired"></div>
 
                 </div>
 
@@ -27,24 +130,24 @@
                   <label for="input01" translate="general.operatorManagement.lastname"></label>
                   <input type="text" class="form-control" id="input01" name="lastname" [(ngModel)]="currentOperator.lastname" #lastname="ngModel"
                     required minlength="2" maxlength="50">
-                  <div class="alert alert-danger text-error" translate="message.lastname.isrequired"></div>
+                    <div [hidden]="!(lastname.dirty && lastname.invalid)" class="alert alert-danger text-error" translate="message.lastname.isrequired"></div>
                 </div>
-              </div>
+              </div></div>
               <div class="row">
                 <div class="col-sm-6">
                   <div class="form-group">
                     <label for="input02" translate="general.operatorManagement.firstname"></label>
                     <input type="text" class="form-control" id="input02" name="firstname" [(ngModel)]="currentOperator.firstname" #firstname="ngModel"
                       required minlength="2" maxlength="50">
-                    <div class="alert alert-danger text-error" translate="message.firstname.isrequired"></div>
-                  </div>
+                      <div [hidden]="!(firstname.dirty && firstname.invalid)" class="alert alert-danger text-error" translate="message.firstname.isrequired"></div>
+                    </div>
                 </div>
                 <div class="col-sm-6">
                   <div class="form-group">
                     <label for="input05">Email</label>
                     <input type="text" class="form-control" id="input05" name="email" [(ngModel)]="currentOperator.email" #email="ngModel" required
                       minlength="4" maxlength="100" placeholder="{{'general.operatorManagement.email' | translate}}">
-                    <div class="alert alert-danger text-error" translate="message.email.isrequired"></div>
+                      <div [hidden]="!(email.dirty && email.invalid)" class="alert alert-danger text-error" translate="message.email.isrequired"></div>
                   </div>
                 </div>
               </div>
@@ -76,7 +179,7 @@
                 </div>
               </div>
 
-            </div>
+         
 
 
 
@@ -85,10 +188,10 @@
             </div>
             <div class="form-group">
               <div class="row pull-right" style="margin-right: 10px;">
-                <button type="submit" (click)="saveOperator(item);" class="btn btn-success btn-with-icon" [disabled]="editForm.form.invalid || isSaving "
+                <button type="submit" (click)="updateOperator(item);" class="btn btn-success btn-with-icon" [disabled]="editForm.form.invalid || isSaving "
                   data-toggle="tooltip" title="{{'action.save' | translate}}">
                   <i class="ion-android-checkmark-circle"></i>{{'action.save' | translate }}</button>
-                <button type="button" style="margin-left:15px;" [routerLink]="['..']" class="btn btn-warning btn-with-icon" data-toggle="tooltip"
+                <button type="button" style="margin-left:15px;" (click)=" closeDialog();" class="btn btn-warning btn-with-icon" data-toggle="tooltip"
                   title="{{'action.cancel' | translate}}">
                   <i class="ion-android-cancel"></i>{{'action.cancel' | translate }}</button>
               </div>
@@ -100,7 +203,7 @@
 
     </div>
   </div>
-</p-dialog>
+</p-dialog></div>
 <p-confirmDialog [message]="'message.confirmDeleteAction' | translate" header="Confirmation" icon="fa fa-trash" width="425"></p-confirmDialog>
 <div class="widgets">
   <div class="row">
@@ -111,7 +214,7 @@
           <p-header>
             <div class="ui-helper-clearfix">
               <button type="button" class="btn btn-success btn-with-icon" style="float:left" data-toggle="tooltip" title="{{'action.new' | translate}}"
-                (click)="showDialog()">
+                (click)="saveDialog();">
                 <i class="ion-person-add"></i>{{'action.new' | translate}}
               </button>
             </div>

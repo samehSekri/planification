@@ -21,6 +21,11 @@
 			"isrequired": "Le mot de passe est obligatoire (minimum 5 caractères).",
 			"notmatch": "Les Mots de passe ne sont pas conformes."
 		},
+		
+		"engagementSemaine": {
+			"isrequired": "veuillez saisir une valeur numerique .",
+			"notmatch": "veuillez saisir une valeur numerique."
+		},
 		"firstname": {
 			"isrequired": "Le prénom utilisateur doit contenir au moins 2 caractères."
 		},

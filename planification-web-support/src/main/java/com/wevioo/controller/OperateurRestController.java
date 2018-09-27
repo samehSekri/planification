@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.wevioo.dto.OperateurDto;
+import com.wevioo.dto.UserDto;
 import com.wevioo.exception.ApiException;
 import com.wevioo.model.Article;
 import com.wevioo.model.Operateur;
@@ -93,7 +94,7 @@ public class OperateurRestController {
 
 	private boolean isOperateurMatriculeAlreadyExist(String matricule) {
 		if (matricule != null && !matricule.isEmpty()) {
-			Operateur op = operateurService.findOperateurByFirstname(matricule);
+			Operateur op = operateurService.findOperateurByMatricule(matricule);
 			return op != null && !op.getMatricule().isEmpty();
 		}
 		return false;
@@ -114,7 +115,7 @@ public class OperateurRestController {
 			return operateur;
 		} catch (Exception e) {
 			ApiException error = new ApiException(HttpStatus.CONFLICT,
-					messageUtil.getMessage("error.unite.creation.error"), "error.unite.creation.error");
+					messageUtil.getMessage("error.operateur.creation.error"), "error.operateur.creation.error");
 			return new ResponseEntity<Object>(error, new HttpHeaders(), error.getStatus());
 		}
 	}
@@ -125,5 +126,19 @@ public class OperateurRestController {
 		operateurService.deleteOperateur(matricule);
 
 	}
+	
+	@RequestMapping(method = RequestMethod.PUT)
+	public @ResponseBody Object updateOperateur(@RequestBody Operateur operateur) {
+		 //operateur = operateurService.findOperateurByMatricule(operateur.getMatricule());
+
+		
+		
+	
+		Operateur updatedOperateur = operateurService.saveAndGetOperateur(operateur);
+
+		return updatedOperateur;
+	}
 
 }
+
+

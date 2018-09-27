@@ -32,6 +32,7 @@ export class OperatorManagementComponent implements OnInit {
   ilots: Unit[];
   ateliers: Unit[];
   public messages: Message[];
+  code: number;
 
 
 
@@ -69,13 +70,16 @@ export class OperatorManagementComponent implements OnInit {
   /**
    * function init
    */
-
+public saveDialog(){
+  this.code = 1
+  this.showDialog();
+}
   public saveOperator() {
     this.isSaving = false;
     this.msgs = [];
     this.msgSuccess = [];
     this.messages = [{ severity: 'success', summary: this.translate.instant('message.save.successMsgTitle'), detail: this.translate.instant("message.save.successMsg") }];
-
+   
 console.log(this.currentOperator);
   //  if (this.currentOperator.matricule != null) {
      
@@ -95,17 +99,48 @@ console.log(this.currentOperator);
             this.msgs.push({ severity: 'error', summary: 'Error Message', detail: 'Validation failed' });
         }
     });
-        this.getAllOperators();
+    this.currentOperator = new Operator(null, "", "", "",null,true,null,null);
+    this.currentAtelier=null;
+    this.currentUap=null;
+    this.getAllOperators();
         this.closeDialog();
 
     //}
+  }
+   public updateOperator(item) {
+
+    this.isSaving = false;
+    this.msgs = [];
+    this.msgSuccess = [];
+    this.messages = [{ severity: 'success', summary: this.translate.instant('message.save.successMsgTitle'), detail: this.translate.instant("message.save.successMsg") }];
+    
+      this.operatorService.update(this.currentOperator).subscribe(response => {
+        this.isSaving = true;
+        this.msgSuccess.push({ severity: 'success', summary: this.translate.instant('message.save.successMsgTitle'), detail: this.translate.instant("message.save.successMsg") });
+      
+        //go to the next Operator
+      this.currentOperator = new Operator(null, "", "", "",null,true,null,null);
+      },
+      error => {
+        var bodyMsg = JSON.parse(error._body);
+        if (error._body && bodyMsg) {
+            //  this.msgs.push({ severity: 'error', summary: '', detail: bodyMsg.message });
+            this.messages = [{ severity: 'error', summary: 'Erreur', detail: bodyMsg.message }];
+        } else {
+            this.msgs.push({ severity: 'error', summary: 'Error Message', detail: 'Validation failed' });
+        }
+    });
+   
+    this.getAllOperators();
+        this.closeDialog();
+
+    
   }
   compareFn(c1: Unit, c2: Unit): boolean {
     return c1 && c2 ? c1.name === c2.name : c1 === c2;
    }
   editOperator(item){
-console.log(item);
-
+this.code=2;
     this.showDialog();
     this.currentOperator=item;
     if(this.currentOperator.unite){
@@ -113,6 +148,7 @@ console.log(item);
     this.currentOperator.unite=this.currentUnite;
     this.currentAtelier=this.currentUnite.parent;
     this.currentUap=this.currentAtelier.parent;
+
     
 }
   }
@@ -149,6 +185,10 @@ console.log(item);
   }
   
   public showDialog() {
+    this.currentOperator = new Operator(null, "", "", "",null,true,null,null);
+    this.currentAtelier=null;
+    this.currentUap=null;
+
     this.display = true;
    
   }

@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -53,8 +54,6 @@ public class Article implements Serializable {
 	@Column(name = "temps_standard")
 	private Double tempsStandard;
 
-	
-
 	@Column(name = "date_integration", unique = false, nullable = true)
 	private Date integrationDate;
 
@@ -62,11 +61,13 @@ public class Article implements Serializable {
 
 	@Column(name = "fichier_integration", unique = false, nullable = true)
 	private String integrationFileName;
-
+	@JsonIgnore
+	@OneToMany(mappedBy = "article", fetch = FetchType.LAZY)
+	private List<Affectation> affectation;
 	@ManyToOne
 	@JoinColumn(name = "user_integration")
 	private User integrationUser;
-	
+
 	@Column(name = "efficience")
 	private Double efficience;
 
@@ -106,9 +107,5 @@ public class Article implements Serializable {
 		this.unite = unite;
 		this.checked = checked;
 	}
-
-	
-	
-
 
 }
