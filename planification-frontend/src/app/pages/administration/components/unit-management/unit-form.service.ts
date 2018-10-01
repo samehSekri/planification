@@ -73,12 +73,16 @@ export class UnitManagementService {
    *            the Unitname of Unit
    * @returns UnitDto
    */
-  public getByName = (name: string): Observable<Unit> => {
-    return this.http.get(this.actionUrl + name, this.options())
+  public getByName = (name: String): Observable<Unit> => {
+    return this.http.get(this.actionUrl +"/unite/"+name, this.options())
       .map((response: Response) => <Unit>response.json())
       .catch((response: Response) => this.errorHandler(response));
   }
-
+  public changeEtat = (unite: Unit): Observable<Unit> => {
+    return this.http.put(this.actionUrl +"/etat/", unite, this.options())
+      .map((response: Response) => <Unit>response.json())
+      .catch((response: Response) => this.errorHandler(response));
+  }
   /**
    * Add new Unit
    * @param itemToAdd

@@ -2,10 +2,14 @@ package com.wevioo.service;
 
 import java.util.List;
 
+import com.wevioo.model.Article;
 import com.wevioo.model.Unite;
 import com.wevioo.model.enumeration.TypeUnite;
 
 public interface UniteService {
+	
+	
+	Unite changeEtat(String name);
 
 	List<Unite> findAllUnite();
 
@@ -23,7 +27,8 @@ public interface UniteService {
 	 */
 
 
-	
+	void deleteUnite(String name);
+
 	List<Unite> findUniteByParent(Unite parent);
 
 	/**

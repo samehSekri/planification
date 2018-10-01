@@ -34,6 +34,10 @@ public class Unite {
 	@Enumerated(EnumType.STRING)
 	private TypeUnite type;
 
+	@Column(name = "etat")
+	
+	private boolean etat;
+	
 	@ManyToOne(cascade = javax.persistence.CascadeType.PERSIST)
 	@JoinColumn(name = "parent_id")
 	private Unite parent;

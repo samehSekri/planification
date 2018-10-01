@@ -24,10 +24,12 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.wevioo.dto.ArticleDto;
 import com.wevioo.dto.NodeDataDto;
 import com.wevioo.dto.NodeUniteDto;
 import com.wevioo.dto.UniteDto;
 import com.wevioo.exception.ApiException;
+import com.wevioo.model.Article;
 import com.wevioo.model.Unite;
 import com.wevioo.model.enumeration.TypeUnite;
 import com.wevioo.service.UniteService;
@@ -110,12 +112,11 @@ public class UniteRestController {
 								NodeUniteDto ilot = new NodeUniteDto();
 								ilot.setLabel(i.getName());
 								ilot.setType("ilot");
-								ilot.setStyleClass("department-cto");
+								ilot.setStyleClass(i.isEtat() == false ? "department-cto" : "department-actif");
 								data = new NodeDataDto();
 								data.setName(i.getType().name());
 								data.setAvatar("jesse.jpg");
 								ilot.setData(data);
-
 								childrenAtelier.add(ilot);
 							}
 						}
@@ -266,6 +267,15 @@ public class UniteRestController {
 		return null;
 	}
 
+	@RequestMapping(value = "/etat/", method = RequestMethod.PUT)
+	public @ResponseBody Object deleteUnite(@RequestBody Unite unite) throws Exception {
+		
+	Unite updatedUnit = uniteService.changeEtat(unite.getName());
+
+
+		return updatedUnit;
+	}
+
 	@RequestMapping(value = "{type}", method = RequestMethod.GET)
 	public @ResponseBody List<UniteDto> findUniteByType(@PathVariable TypeUnite type) throws Exception {
 		List<Unite> unites = uniteService.findUniteByType(type);
@@ -314,9 +324,8 @@ public class UniteRestController {
 				uap = atelier.getParent();
 			} else if (type == TypeUnite.UAP) {
 				uap = unite;
-			}else 	if (type == TypeUnite.ATELIER)
-			{
-				atelier=unite;
+			} else if (type == TypeUnite.ATELIER) {
+				atelier = unite;
 				uap = atelier.getParent();
 
 			}
@@ -348,15 +357,15 @@ public class UniteRestController {
 					// 4- Update the ilot with the persisted atelier
 					unite.setParent(atelier);
 				}
-try{
-				// 5- Save the ilot
-				unite = uniteService.createUnite(unite);
-				return unite;
-}catch(Exception e){
-	ApiException error = new ApiException(HttpStatus.CONFLICT,
-			messageUtil.getMessage("error.unite.creation.error"), "error.unite.creation.error");
-	return new ResponseEntity<Object>(error, new HttpHeaders(), error.getStatus());
-}
+				try {
+					// 5- Save the ilot
+					unite = uniteService.createUnite(unite);
+					return unite;
+				} catch (Exception e) {
+					ApiException error = new ApiException(HttpStatus.CONFLICT,
+							messageUtil.getMessage("error.unite.creation.error"), "error.unite.creation.error");
+					return new ResponseEntity<Object>(error, new HttpHeaders(), error.getStatus());
+				}
 			}
 		}
 	}

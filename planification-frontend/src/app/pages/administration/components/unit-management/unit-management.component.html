@@ -1,103 +1,183 @@
 <p-growl [(value)]="messages"></p-growl>
+<div *ngIf="code==2">
+  <p-dialog header="Ajout | translate" [(visible)]="display" [resizable]="false" [responsive]="true" [modal]="true"
+    width="600">
+    <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="currentUnit!=null">
+      <form name="searchForm" role="form" novalidate #editForm="ngForm" novalidate>
 
-<p-dialog header="Ajout | translate" [(visible)]="display" [resizable]="false" [responsive]="true" [modal]="true" width="600" >
-  <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="currentUnit!=null">
-    <form name="searchForm" role="form" novalidate #editForm="ngForm"  novalidate  >
-
-      <div class="modal-body">
-        <div class="ui-grid-ro">
-          <label class="ui-grid-col-4 control-label-dialog">Type</label>
-          <div class="ui-grid-col-8">
-            <select id="type" name="type" class="form-control user-form-select" [(ngModel)]="currentUnit.type" required>
-              <option value="UAP"> UAP</option>
-              <option value="ATELIER" (change)="getUap();"> Atelier</option>
-              <option value="ILOT"> Ilot</option>
-            </select>
+        <div class="modal-body">
+          <div class="ui-grid-ro">
+            <label class="ui-grid-col-4 control-label-dialog">Type</label>
+            <div class="ui-grid-col-8">
+              <select id="type" name="type" class="form-control user-form-select" [(ngModel)]="currentUnitType"
+                required>
+                <option value="UAP"> UAP</option>
+                <option value="ATELIER" (change)="getUap();"> Atelier</option>
+                <option value="ILOT"> Ilot</option>
+              </select>
+            </div>
           </div>
-        </div>
 
-        <div class="ui-grid-row" *ngIf="currentUnit.type=='ATELIER'||currentUnit.type=='ILOT'">
-          <label class="ui-grid-col-4 control-label-dialog">UAP</label>
-          <div class="ui-grid-col-8">
-            <select id="uap" name="select1" class="form-control" 
-               (change)="getAtelierByParent($event.target.value);" #uap required>
-              <option *ngFor="let uap of uaps" [ngValue]="uap">{{uap.name}}</option>
-            </select>
-          </div>
-        </div>
-        <div class="ui-grid-row" *ngIf="currentUnit.type=='UAP'">
+          <div class="ui-grid-row">
             <label class="ui-grid-col-4 control-label-dialog">UAP</label>
             <div class="ui-grid-col-8">
-                <input type="text" class="form-control" id="inputUap" name="inputUap" [(ngModel)]="currentUapName" #uapName="ngModel" required >
+              <select id="uap" name="select1" class="form-control" (change)="getAtelierByParent($event.target.value);"
+                #uap required>
+                <option *ngFor="let uap of uaps" [ngValue]="uap.name" [selected]="uap.name==currentUapName">{{uap.name}}</option>
+              </select>
+            </div>
+          </div>
+
+
+
+          <div class="ui-grid-row">
+            <label class="ui-grid-col-4 control-label-dialog">Atelier</label>
+            <div class="ui-grid-col-8">
+              <select id="atelier" name="select2" class="form-control" (change)="changeAtelier($event.target.value);"
+                #atelier required>
+                <option *ngFor="let atelier of ateliers" [ngValue]="atelier.name" [selected]="atelier.name==currentAtelierName">{{atelier.name}}</option>
+              </select>
+            </div>
+          </div>
+
+
+          <div class="ui-grid-row">
+            <label class="ui-grid-col-4 control-label-dialog">Ilot</label>
+            <div class="ui-grid-col-8">
+              <input type="text" class="form-control" id="inputIlot" name="ilot" [disabled]="butDisabled" [(ngModel)]="currentUnitName"
+                #ilot="ngModel" required>
+            </div>
+          </div>
+        </div>
+        <p-footer>
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-4">
+              <button type="submit" class="btn btn-success" (click)="updateUnit();" [disabled]="editForm.form.invalid || isSaving "
+                data-toggle="tooltip">Modifier une unité</button>
+            </div>
+            <div>
+            <!-- <div *ngIf="currentUnit.etat==true" class="ui-grid-col-5"> -->
+              <button type="button" [ngClass]="getClass()" (click)=" deleteUnit(currentUnit.name);">{{currentUnit.etat ? 'Désactiver' : 'Activer'}}</button>
+            <!-- </div> -->
+            <!-- <div *ngIf="currentUnit.etat==false" class="ui-grid-col-5"> -->
+              <!-- <button type="button" class="btn btn-success" (click)=" deleteUnit(currentUnit.name);">Activer</button> -->
+            <!-- </div> -->
+            <button type="button" style="margin-left:15px;" (click)=" closeDialog();" class="btn btn-warning btn-with-icon"
+              data-toggle="tooltip" title="{{'action.cancel' | translate}}">
+              <i class="ion-android-cancel"></i>{{'action.cancel' | translate }}</button>
+          </div>
+          </div>
+    </p-footer>
+    </form>
+</div>
+</p-dialog>
+</div>
+<div *ngIf="code==1">
+  <p-dialog header="Ajout | translate" [(visible)]="display" [resizable]="false" [responsive]="true" [modal]="true"
+    width="600">
+    <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="currentUnit!=null">
+      <form name="searchForm" role="form" novalidate #editForm="ngForm" novalidate>
+        <div class="modal-body">
+          <div class="ui-grid-ro">
+            <label class="ui-grid-col-4 control-label-dialog">Type</label>
+            <div class="ui-grid-col-8">
+              <select id="type" name="type" class="form-control user-form-select" [(ngModel)]="currentUnit.type"
+                required>
+                <option value="UAP"> UAP</option>
+                <option value="ATELIER" (change)="getUap();"> Atelier</option>
+                <option value="ILOT"> Ilot</option>
+              </select>
+            </div>
+          </div>
+          <div class="ui-grid-row" *ngIf="currentUnit.type=='ATELIER'||currentUnit.type=='ILOT'">
+            <label class="ui-grid-col-4 control-label-dialog">UAP</label>
+            <div class="ui-grid-col-8">
+              <select id="uap" name="select1" class="form-control" (change)="getAtelierByParent($event.target.value);"
+                #uap required>
+                <option *ngFor="let uap of uaps" [ngValue]="uap">{{uap.name}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="ui-grid-row" *ngIf="currentUnit.type=='UAP'">
+            <label class="ui-grid-col-4 control-label-dialog">UAP</label>
+            <div class="ui-grid-col-8">
+              <input type="text" class="form-control" id="inputUap" name="inputUap" [(ngModel)]="currentUapName"
+                #uapName="ngModel" required>
             </div>
           </div>
           <div class="ui-grid-row" *ngIf="currentUnit.type=='ATELIER'||currentUnit.type=='UAP'">
-              <label class="ui-grid-col-4 control-label-dialog">Atelier</label>
-              <div class="ui-grid-col-8">
-                  <input type="text" class="form-control" id="inputAtelier" name="inputAtelier" [(ngModel)]="currentAtelierName" #atelierName="ngModel" required >
-              </div>
+            <label class="ui-grid-col-4 control-label-dialog">Atelier</label>
+            <div class="ui-grid-col-8">
+              <input type="text" class="form-control" id="inputAtelier" name="inputAtelier" [(ngModel)]="currentAtelierName"
+                #atelierName="ngModel" required>
             </div>
-
-
-
-        <div class="ui-grid-row" *ngIf="currentUnit.type=='ILOT'">
-          <label class="ui-grid-col-4 control-label-dialog">Atelier</label>
-          <div class="ui-grid-col-8">
-            <select id="atelier" name="select2" class="form-control" (change)="changeAtelier($event.target.value);"
-                #atelier required>
-              <option *ngFor="let atelier of ateliers" [ngValue]="atelier">{{atelier.name}}</option>
-            </select>
           </div>
-        </div>
-       
-       
-        <div class="ui-grid-row" *ngIf="currentUnit.type=='ILOT'||currentUnit.type=='UAP'||currentUnit.type=='ATELIER'">
+
+
+
+          <div class="ui-grid-row" *ngIf="currentUnit.type=='ILOT'">
+            <label class="ui-grid-col-4 control-label-dialog">Atelier</label>
+            <div class="ui-grid-col-8">
+              <select id="atelier" name="select2" class="form-control" (change)="changeAtelier($event.target.value);"
+                #atelier required>
+                <option *ngFor="let atelier of ateliers" [ngValue]="atelier">{{atelier.name}}</option>
+              </select>
+            </div>
+          </div>
+
+
+          <div class="ui-grid-row" *ngIf="currentUnit.type=='ILOT'||currentUnit.type=='UAP'||currentUnit.type=='ATELIER'">
             <label class="ui-grid-col-4 control-label-dialog">Ilot</label>
             <div class="ui-grid-col-8">
-                <input type="text" class="form-control" id="inputIlot" name="ilot" [(ngModel)]="currentUnit.name" #ilot="ngModel" required >
+              <input type="text" class="form-control" id="inputIlot" name="ilot" [(ngModel)]="currentUnit.name" #ilot="ngModel"
+                required>
             </div>
           </div>
-        
-      </div>
-      <p-footer>
-        <div class="ui-grid-row">
-          <div class="ui-grid-col-4">
-            <button type="submit" class="btn btn-success" (click)="saveUnit();"  [disabled]="editForm.form.invalid || isSaving " data-toggle="tooltip" >Ajouter une unité</button>
-          </div>
-          <div class="ui-grid-col-5">
-            <button type="button" class="btn btn-primary">Horraire</button>
-          </div>
+
         </div>
-      </p-footer>
-    </form>
-  </div>
-</p-dialog>
-  <p-header>
-    <div class="ui-helper-clearfix">
-      <button type="button" class="btn btn-success btn-with-icon" style="float:left" data-toggle="tooltip" title="{{'action.new' | translate}}"
-        (click)="showDialog()">
-        <i class="ion-person-add"></i>{{'action.new' | translate}}
-      </button>
-    </div>
-  </p-header>
-
-  <div style="margin-top:50px">
-    <form>
-      <p-organizationChart [value]="unites" selectionMode="single" [(selection)]="selectedNode" (onNodeSelect)="onNodeSelect($event)"
-        styleClass="company" (onNodeUnselect)="onNodeUnSelect($event)">
-        <ng-template let-node pTemplate="person">
-          <div class="node-header ui-corner-top">{{node.label}}</div>
-          <div class="node-content">
-            <img width="32">
-            <div>{{node.data.name}}</div>
+        <p-footer>
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-4">
+              <button type="submit" class="btn btn-success" (click)="saveUnit(item);" [disabled]="editForm.form.invalid || isSaving "
+                data-toggle="tooltip">Ajouter une unité</button>
+            </div>
+            <div class="ui-grid-col-5">
+              <button type="button" class="btn btn-primary">Horraire</button>
+              <button type="button" style="margin-left:15px;" (click)=" closeDialog();" class="btn btn-warning btn-with-icon"
+                data-toggle="tooltip" title="{{'action.cancel' | translate}}">
+                <i class="ion-android-cancel"></i>{{'action.cancel' | translate }}</button>
+            </div>
           </div>
-        </ng-template>
-        <ng-template let-node pTemplate="uap">
-          {{node.label}}
-        </ng-template>
-      </p-organizationChart>
-
-    </form>
-
+        </p-footer>
+      </form>
+    </div>
+  </p-dialog>
+</div>
+<p-header>
+  <div class="ui-helper-clearfix">
+    <button type="button" class="btn btn-success btn-with-icon" style="float:left" data-toggle="tooltip" title="{{'action.new' | translate}}"
+      (click)="newDialog()">
+      <i class="ion-person-add"></i>{{'action.new' | translate}}
+    </button>
   </div>
+</p-header>
 
+<div style="margin-top:50px">
+  <form>
+    <p-organizationChart [value]="unites" selectionMode="single" [(selection)]="selectedNode" (onNodeSelect)="onNodeSelect($event)"
+      styleClass="company" (onNodeUnselect)="onNodeUnSelect($event)">
+      <ng-template let-node pTemplate="person">
+        <div class="node-header ui-corner-top">{{node.label}}</div>
+        <div class="node-content">
+          <img width="32">
+          <div>{{node.data.name}}</div>
+        </div>
+      </ng-template>
+      <ng-template let-node pTemplate="uap">
+        {{node.label}}
+      </ng-template>
+    </p-organizationChart>
+
+  </form>
+
+</div>

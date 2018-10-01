@@ -351,7 +351,7 @@ public class ScenarioServiceImpl implements ScenarioService {
 
 			int nbreOpsAffectes = 0;
 			int nbreOps = 0;
-			for (int k = 0; k < myArticle.getEngagementSemaine(); k++) {
+			for (int k = 0; k < myArticle.getResteProduire(); k++) {
 				if (myArticle.getBesoinPolyvalence() > mapArticlesPolyvalences.get(myArticle.getReference()).size()) {
 					nbreOps = mapArticlesPolyvalences.get(myArticle.getReference()).size();
 					// System.out

@@ -83,8 +83,7 @@ public class OperateurServiceImpl implements OperateurService {
 	@Transactional
 	public void deleteOperateur(String matricule) {
 		operateurRepository.delete(matricule);
-		;
-
+		
 	}
 
 	// @Override

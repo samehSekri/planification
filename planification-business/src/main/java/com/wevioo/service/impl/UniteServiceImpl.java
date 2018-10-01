@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.wevioo.dao.UniteRepository;
+import com.wevioo.model.Article;
 import com.wevioo.model.Unite;
 import com.wevioo.model.enumeration.TypeUnite;
 import com.wevioo.service.UniteService;
@@ -122,8 +123,34 @@ public class UniteServiceImpl implements UniteService {
 //}
 	
 
-	
+	@Override
+	@Transactional
+	public void deleteUnite(String name) {
+		uniteRepository.delete(name);
+		
 
-	
+	}
+
+	@Override
+	@Transactional
+	public Unite changeEtat(String name) {
+		if (name != null) {
+			Unite unite = uniteRepository.findOne(name);
+			if (unite != null) {
+//				if(unite.isEtat()==true) {
+//					
+//					unite.setEtat(false);
+//					
+//				}else {
+//					unite.setEtat(true);
+//				}
+				unite.setEtat(! unite.isEtat());
+				
+				unite = saveAndGetUnite(unite);
+				return unite;
+			}
+		}
+		return null;
+	}
 
 }

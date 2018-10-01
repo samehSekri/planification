@@ -43,26 +43,31 @@ export class UnitManagementComponent implements OnInit {
     public currentUnit: Unit;
     public ilots: Unit[];
     public children: TreeNode[];
-
+    public butDisabled: boolean = true;
     public currentAtelierName: string;
     public currentUapName: string;
-
     public item: Unit;
     public displayHoraire: boolean = false;
     items: any;
     response: TreeNode[];
     unites: TreeNode[];
+    code: number;
+    unite: any;
+    uap: string;
+    currentUnitName: String;
+    currentUnitType: String;
+   public etat: boolean;
     constructor(private uniteService: UnitManagementService, private router: Router,
         private confirmationService: ConfirmationService, private translate: TranslateService,
     ) {
 
     }
     public getUap(): void {
-        this.uaps = null;
-        this.currentAtelier = null;
-        //this.currentAtelierName=null;
-        this.currentUap = null;
-       this.currentUnit.name= null;
+        //     this.uaps = null;
+        //     this.currentAtelier = null;
+        //     //this.currentAtelierName=null;
+        //     this.currentUap = null;
+        //    this.currentUnit.name= null;
         this.uniteService.getByType(UniteTypeEnum.UAP).subscribe((data: Unit[]) => {
             this.uaps = data;
             if (this.uaps.length > 0) {
@@ -76,7 +81,7 @@ export class UnitManagementComponent implements OnInit {
     }
 
     public getAtelierByParent(uap: String): void {
-        
+
         this.uaps.forEach(element => {
             if (element.name === uap) {
                 this.currentUap = element;
@@ -103,7 +108,13 @@ export class UnitManagementComponent implements OnInit {
             () => console.log('Get all parents complete'));
     }
 
+    public newDialog() {
+        this.code = 1;
+        this.currentUnit = new Unit("", null, null,null);
+        this.showDialog();
 
+
+    }
     public saveUnit() {
         this.isSaving = false;
         this.msgs = [];
@@ -112,7 +123,7 @@ export class UnitManagementComponent implements OnInit {
         if (this.currentUnit) {
             if (this.currentUnit.type === UniteTypeEnum.ATELIER) {
 
-                let atelier = new Unit(this.currentAtelierName, UniteTypeEnum.ATELIER, this.currentUap);
+                let atelier = new Unit(this.currentAtelierName, UniteTypeEnum.ATELIER, this.currentUap,null);
                 this.currentUnit.type = UniteTypeEnum.ILOT;
 
                 this.currentUnit.parent = atelier;
@@ -121,8 +132,64 @@ export class UnitManagementComponent implements OnInit {
             } else if (this.currentUnit.type === UniteTypeEnum.ILOT) {
                 this.currentUnit.parent = this.currentAtelier;
             } else {
-                let uap = new Unit(this.currentUapName, UniteTypeEnum.UAP, null);
-                let atelier = new Unit(this.currentAtelierName, UniteTypeEnum.ATELIER, uap);
+                let uap = new Unit(this.currentUapName, UniteTypeEnum.UAP, null,null);
+                let atelier = new Unit(this.currentAtelierName, UniteTypeEnum.ATELIER, uap,null);
+                this.currentUnit.type = UniteTypeEnum.ILOT;
+                this.currentUnit.parent = atelier;
+                this.currentUnit.etat = true;
+
+
+            }
+        }
+
+        this.uniteService.add(this.currentUnit, type).subscribe(response => {
+            this.isSaving = true;
+            ////this.msgSuccess.push({ severity: 'success', summary: this.translate.instant('message.save.successMsgTitle'), detail: this.translate.instant("message.save.successMsg") });
+            this.messages = [{ severity: 'success', summary: this.translate.instant('message.save.successMsgTitle'), detail: this.translate.instant("message.save.successMsg") }];
+            this.currentAtelier = null;
+            this.currentAtelierName = null;
+            this.currentUap = null;
+            this.currentUnit = null;
+            this.display = false;
+        },
+            error => {
+                var bodyMsg = JSON.parse(error._body);
+                if (error._body && bodyMsg) {
+                    //  this.msgs.push({ severity: 'error', summary: '', detail: bodyMsg.message });
+                    this.messages = [{ severity: 'error', summary: 'Erreur', detail: bodyMsg.message }];
+                } else {
+                    this.msgs.push({ severity: 'error', summary: 'Error Message', detail: 'Validation failed' });
+                }
+            });
+
+        this.getUap();
+
+        //this.getAtelierByParent(this.currentUap);
+
+
+
+        //}
+
+    }
+    public updateUnit() {
+        this.isSaving = false;
+        this.msgs = [];
+        this.msgSuccess = [];
+        let type = this.currentUnit.type.toString();
+        if (this.currentUnit) {
+            if (this.currentUnit.type === UniteTypeEnum.ATELIER) {
+
+                let atelier = new Unit(this.currentAtelierName, UniteTypeEnum.ATELIER, this.currentUap,null);
+                this.currentUnit.type = UniteTypeEnum.ILOT;
+
+                this.currentUnit.parent = atelier;
+
+
+            } else if (this.currentUnit.type === UniteTypeEnum.ILOT) {
+                this.currentUnit.parent = this.currentAtelier;
+            } else {
+                let uap = new Unit(this.currentUapName, UniteTypeEnum.UAP, null,null);
+                let atelier = new Unit(this.currentAtelierName, UniteTypeEnum.ATELIER, uap,null);
                 this.currentUnit.type = UniteTypeEnum.ILOT;
                 this.currentUnit.parent = atelier;
                 // this.currentUnit = this.currentUap;
@@ -160,10 +227,43 @@ export class UnitManagementComponent implements OnInit {
 
     }
 
+    public getClass(){
+        return this.currentUnit.etat ? 'btn btn-danger' : 'btn btn-success';
+    }
+    public deleteUnit() {
+        this.isSaving = false;
+        this.msgs = [];
+        this.msgSuccess = [];
+        console.log(this.currentUnit);
+        
+        this.uniteService.changeEtat(this.currentUnit).subscribe(data => {
+            this.currentUnit=data;
+            this.messages = [{ severity: 'success', summary: this.translate.instant('message.save.successMsgTitle'), detail: this.translate.instant("message.save.successMsg") }];
+            this.uniteService.getAll().subscribe((data: TreeNode[]) => {
+                this.unites = data;
+                console.log(data);
+            });
+        },
+            error => {
+                var bodyMsg = JSON.parse(error._body);
+                if (error._body && bodyMsg) {
+                    //  this.msgs.push({ severity: 'error', summary: '', detail: bodyMsg.message });
+                    this.messages = [{ severity: 'error', summary: 'Erreur', detail: bodyMsg.message }];
+                } else {
+                    this.msgs.push({ severity: 'error', summary: 'Error Message', detail: 'Validation failed' });
+                }
+            });
+
+          
+
+
+        //}
+
+    }
     ngOnInit() {
 
-        this.currentUnit = new Unit("", null, null);
-        this.currentUap = new Unit("", null, null);
+        this.currentUnit = new Unit("", null, null,null);
+        this.currentUap = new Unit("", null, null,null);
         this.ateliers = [];
         this.uaps = [];
 
@@ -267,10 +367,50 @@ export class UnitManagementComponent implements OnInit {
         this.currentNode = event.node;
         this.selectedNode = event.node;
         this.setMenuItems(event.node);
-        this.showDialog();
+        this.code = 2;
+        console.log(this.currentNode);
+        console.log(this.selectedNode);
+
+        //     this.unite.type=this.currentNode.type;
+        //    this.unite= this.currentNode.label
+        //this.selectedNode=this.currentUnit.type;
+        if (this.currentNode.data.name == "ILOT") {
+            this.showDialog();
+            this.currentUnitType = this.selectedNode.data.name;
+            this.currentUnitName = this.selectedNode.label;
+
+            //Unit unite = new Unit(this.currentUnitName, this.currentUnitName)
+
+            this.uniteService.getByName(this.currentUnitName).subscribe(data => {
+                this.currentUnit = data;
+                console.log(data);
+                console.log("+++++++++++++++++++");
+                this.currentUap = data.parent.parent;
+                this.etat=this.currentUnit.etat;
+                console.log(this.currentUap);
+                this.uniteService.getByParent(this.currentUap).subscribe(data1 => {
+                    this.ateliers = data1;
+                    console.log(data1);
+
+                    data1.forEach(element => {
+                        if (element.name === data.parent.name) {
+                            this.currentAtelier = element;
+                            this.currentUapName=this.currentUap.name;
+                            this.currentAtelierName=this.currentAtelier.name;
+                        }
+                    });
+                });
+            },
+                error => console.log(error),
+                () => console.log('Get all parents complete'));
 
 
-        this.messages = [{ severity: 'success', summary: 'Node Selected', detail: event.node.label }];
+
+        }
+        else {
+            this.messages = [{ severity: 'success', summary: 'Node Selected', detail: 'Vous ne pouvez pas modier cette unité.' }];
+
+        }
 
     }
     showDialog() {
@@ -284,6 +424,15 @@ export class UnitManagementComponent implements OnInit {
     showDialogHorraire() {
         this.displayHoraire = true;
 
+
+
+    }
+    closeDialog() {
+        this.currentAtelier = null;
+        this.currentAtelierName = null;
+        this.currentUap = null;
+        this.currentUnit = null;
+        this.display = false;
 
 
     }
